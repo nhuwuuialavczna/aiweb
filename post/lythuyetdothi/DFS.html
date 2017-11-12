@@ -80,7 +80,7 @@
                 visited[u] = true;
             }
             for (int j = 0; j < matrix[u].length; j++) {
-                if (!visited[j] && matrix[u][j] > 0)
+                if (!visited[j] && graph[u][j] > 0)
                     stack.push(j);
             }
         }
