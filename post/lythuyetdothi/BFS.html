@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BFS - Duyệt đồ thị theo chiều sâu</title>
+</head>
+<body>
+    <pre><h3>Hướng dẫn duyệt đồ thị theo chiều sâu - Code mẫu: Java</h3>
+        I. Giới thiệu và ý tưởng
+            1. Giới thiệu:
+                - Trong lý thuyết đồ thị, tìm kiếm theo chiều rộng (BFS) là một thuật toán tìm kiếm trong đồ thị trong đó việc tìm kiếm chỉ bao gồm 2 thao tác:
+                    + (a) cho trước một đỉnh của đồ thị;
+                    + (b) thêm các đỉnh kề với đỉnh vừa cho vào danh sách có thể hướng tới tiếp theo.
+                - Có thể sử dụng thuật toán tìm kiếm theo chiều rộng cho hai mục đích: tìm kiếm đường đi từ một đỉnh gốc cho trước tới một đỉnh đích, và tìm kiếm đường đi từ đỉnh gốc tới tất cả các đỉnh khác.
+                - Trong đồ thị không có trọng số, thuật toán tìm kiếm theo chiều rộng luôn tìm ra đường đi ngắn nhất có thể.
+                -Thuật toán BFS bắt đầu từ đỉnh gốc và lần lượt nhìn các đỉnh kề với đỉnh gốc. Sau đó, với mỗi đỉnh trong số đó, thuật toán lại lần lượt nhìn trước các đỉnh kề với nó mà chưa được quan sát trước đó và lặp lại. Xem thêm thuật toán tìm kiếm theo chiều sâu, trong đó cũng sử dụng 2 thao tác trên nhưng có trình tự quan sát các đỉnh khác với thuật toán tìm kiếm theo chiều rộng.
+            2. Ý tưởng thuật toán:
+                - Thuật toán sử dụng một cấu trúc dữ liệu hàng đợi để lưu trữ thông tin trung gian thu được trong quá trình tìm kiếm:
+                    1. Chèn đỉnh gốc vào hàng đợi (đang hướng tới)
+                    2. Lấy ra đỉnh đầu tiên trong hàng đợi và quan sát nó
+                    3. Nếu đỉnh này chính là đỉnh đích, dừng quá trình tìm kiếm và trả về kết quả.
+                    4. Nếu không phải thì chèn tất cả các đỉnh kề với đỉnh vừa thăm nhưng chưa được quan sát trước đó vào hàng đợi.
+                    5. Nếu hàng đợi là rỗng, thì tất cả các đỉnh có thể đến được đều đã được quan sát – dừng việc tìm kiếm và trả về "không thấy".
+                    6. Nếu hàng đợi không rỗng thì quay về bước 2.
+                - Ghi chú: Nếu sử dụng một ngăn xếp thay vì hàng đợi thì thuật toán trở thành thuật toán tìm kiếm theo chiều sâu
+        II. Mã giả - Vì mình hướng dẫn bằng code Java nên cung cấp mã giả cho các bạn dể dàng hiện thực ở ngôn ngữ khác
+            1. Dùng đệ quy: Lúc này sẽ tương tự như DFS. Bạn xem lại bài DFS nha
+            2. Dùng cấu trúc dữ liệu Queue.
+
+            Giả sử ta đã có được 1 ma trận kề là đồ thị cần xét: int[][] matrix và 1 mảng visited[], và biết được số đỉnh của đồ thị (soDinh)
+
+                function bfsQueue(int u) {
+                    thêm u và queue
+                    while (queue còn phần tử) {
+                        lấy đỉnh v ra khỏi danh sách hàng đợi
+                        xem đỉnh v là đã thăm
+                        foreach mỗi đỉnh i kề với v và i chưa xét thì
+                            thêm phần tử i vào queue dồng thời cho rằng đỉnh này đã xét
+                    }
+                }
+        III. Cài đặt:
+            1. Với DFS cài đặt tương tự duyệt theo chiều sâu
+
+            2. Tôi chỉ giới thiệu các bạn về cài đặt bằng QUEUE. Sử dụng code Java để hiện thực nha
+                public void bfsQueue(int u) {
+                    Queue< Integer > queue = new LinkedList<>();
+                    queue.add(u);
+                    visited[u] = true;
+                    while (!queue.isEmpty()) {
+                        int v = queue.poll();
+                        visited[v] = true;
+                        for (int i = 0; i < soDinh; i++) {
+                            if (matrix[v][i] > 0 && !visited[i]) {
+                                queue.add(i);
+                                visited[i] = true;
+                            }
+                        }
+                    }
+                }
+        IV. Chú ý:
+
+            1. Đây là 1 cách duyệt đồ thị được áp dụng trên 1 thành phần liên thông, nghĩa là đồ thị có nhiều thành phần liên thông bạn sẽ không thể duyệt được tất
+            cả các đỉnh của đồ thị. Khi đó:
+
+            Bạn cần viết thêm 1 phương thức để tìm đỉnh chưa xét:
+
+            Đối với 2 cách duyệt đồ thị thêm các bạn đều có thể áp dụng cách này để duyệt tất cả đỉnh:
+
+            public int dinhChuaXet(){
+                for(int i=0;i< soDinh; i++)
+                    if(!visited[b]) return b;
+                return -1;
+            }
+
+
+            while(true){
+                int dinh = dinhChuaXet();
+                if(dinh ==-1) return;
+                BFS(dinh);
+            }
+
+            2. Phần code chỉ mang tính chất tham khảo. Nếu không hài lòng xin gửi về hộp thư tại phần liên hệ.
+
+            3. Mình code bằng Java vì để cho vài bạn trong khoa mình tham khảo. Bạn nào có nhu cầu mình sẽ covert hộ sang ngôn ngữ khác.
+
+        V. Độ phức tạp thuật toán:
+            1. Độ phức tạp không gian của DFS thấp hơn của BFS (tìm kiếm theo chiều rộng).
+            2. Độ phức tạp thời gian của hai thuật toán là tương đương nhau và bằng O(|V| + |E|).
+    </pre>
+</body>
+</html>
