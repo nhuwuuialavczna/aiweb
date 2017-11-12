@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm chu trình và đường đi Hamilton</title>
+</head>
+<body>
+<a href="../../index.html">Về trang chủ</a><br>
+<h3>Bài viết tìm đường đi và chu trình Hamilton</h3>
+    <pre>
+        <h3>* Chu trình Hamilton</h3>
+        <b>I. Lý thuyết</b>
+            - Cho G liên thông, đường đi (tương tự chu trình) Hamilton trong G là đường đi (tương tự chu trình) đi qua tất cả các đỉnh của G, mỗi đỉnh qua đúng 1 lần
+                + Mỗi đồ thị có chu trình Hamilton gọi là đồ thị Hamilton
+                + Mỗi đồ thị có đường đi Hamilton gọi là đồ thị nữa Hamilton
+            - Các quy tắc tìm chu trình Hamilton
+                + Nếu tồn tại 1 đỉnh của G có bậc <=1 thì G không có chu trình Hamilton
+                + Nếu đỉnh X có bậc 2 thì cả 2 cạnh nối đỉnh X đều phải nằm trong chu trình Hamilton
+                + Chu trình Hamilton không có bấc kì chu trình con thực sự nào
+                + Trong quá trình xây dựng chu trình Hamilton, sau khi đã lấy 2 cạnh tới đỉnh X đặt vào chu trình thì phải xóa mọi cạnh còn lại nối tới X
+            - Các định lý:
+                + Mọi đồ thị đủ đều có chu trình Hamilton
+                + Cho đồ thị G, giả sử có k đỉnh sao cho khi xóa số đỉnh bé hơn k (1,2,3,...,n) n < k thì số thành phần liên thông của G tăng lên. Khi đó đồ thị G không có chu
+                  trình Hamilton
+                + (Dirac) Cho G là đồ thị có n đỉnh (n >= 3). Nếu mọi đỉnh của G đều có bậc >= n/2 thì G có chu trình Hamilton
+                + Mọi đồ thị có hướng, liên thông mạnh, n đỉnh, nếu mỗi đỉnh V thuộc đồ thị thỏa:
+                    deg(v)<sup>-</sup> >= n/2 và deg(v)<sup>+</sup> >= n/2
+                  thì G có chu trình Hamilton
+            - Bao đóng của đồ thị:
+                Cho đơn đồ thị G có n đỉnh. Bao đóng c(G) được tạo ra từ G bằng cách bổ sung cho mỗi cặp đỉnh không kề nhau u và v với deg(v) + deg(u) >= n một cạnh mới uv
+            - Đồ thị đấu loại: là đồ thị có 2 đỉnh bất kì được nối vs nhau bởi đúng 1 cung
+                + Mọi đồ thị đấu loại đều có đường đi hamilton
+                + Mọi đồ thị đấu loại liên thông mạnh đều có chu trình hamilton
+            - Định lý Ore 1960: Một đơn đồ thị vô hướng G gồm n đỉnh n>= 3. Nếu deg(u) + deg(v) >= n với mọi cặp đỉnh u,v  không kề nhau trong G thì G là đồ thị Hamilton(có chu trình Hamilton)
+        <b>II. Ý tưởng thuật toán</b>
+            <i>Tới thời điểm này thì vẫn chư có 1 thuật toán tối ưu nào để áp dụng. Đoạn code dưới sử dụng thuật toán đệ qui quay lùi</i>
+
+                Thuật toán đệ quy quay lùi thực hiện các bước sau:
+                B1: đưa đỉnh x vào đường đi
+                B2: kiểm tra chu trình đủ chiều dài chưa? (tức là đã đi hết tất cả các đỉnh chưa?) và đồng thời kiểm tra đình đầu và đỉnh cuối của chu trình có cạnh nối hay ko? Nếu true hết cả 2 điều kiện thì kết luận có chu trình Hamilton. Ngược lại gọi B3
+                B3: Duyệt hết tất cả các đỉnh kề với x
+                B4: Kiểm tra đỉnh kề đã đi qua chưa? Nếu true gọi lại hàm đệ qui tìm chu trình Hamilton
+                B5: Xóa đỉnh kề ra khỏi chu trình
+        <b>III. Mã giả</b>
+
+        <b>IV. Hiện thực với Java</b>
+                int b[] = new int[soDinh];
+                int c[] = new int[soDinh];
+
+                // khởi tạo xong
+                public void timTatCaChuTrinhHamiltonCuaDoThi(int j) {
+                    for (int k = 0; k < soDinh; k++) {
+                        if (b[k] == 0 && matrix[c[j - 1]][k] > 0) {
+                            b[k] = 1;
+                            c[j] = k;
+                            if (j == soDinh - 1) {
+                                if (matrix[c[j]][c[0]] > 0) {
+                                    showpath();
+                                }
+                            } else {
+                                timTatCaChuTrinhHamiltonCuaDoThi(j + 1);
+                            }
+                            b[k] = 0;
+                        }
+                    }
+                }
+
+                private void showpath() {
+                    for (int k = 0; k < soDinh; k++) System.out.printf("%4d", c[k] + 1);
+                    System.out.printf("%4d\n", c[0] + 1);
+                }
+        <b>V. Giải thích đôi xíu về đoạn code rườm rà trên</b>
+            if (b[k]==0 && a[c[j-1]][k])// Nếu đỉnh k chưa duyệt đến và có nối với đỉnh vừa được ghi nhận trước đó (thứ j-1, số hiệu là c[j-1])
+            {
+                b[k] = 1; c[j] = k;// Xem như duyệt đỉnh k và nó là đỉnh thứ j theo trình tự ghi nhận
+                if (j==n-1) // Nếu đã ghi nhận đủ số đỉnh
+                {
+                   if(a[c[j]][c[0]])showpath(); // Nếu đỉnh cuối có nối với đỉnh đầu tiên thì hiển thị chu trình
+                }
+                else
+                {  Hamilton(j+1); }// Nếu chưa ghi nhận đủ n đỉnh thì đệ quy để tìm đỉnh thứ j+1
+                b[k] = 0;// Quay lui chính là chỗ này đây
+            }
+
+        -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        <h3>* Đường đi Hamilton</h3>
+
+         <b>I. Lý thuyết</b>
+            Xem ở trên
+        <b>II. Ý tưởng thuật toán</b>
+
+        <b>III. Mã giả</b>
+
+        <b>IV. Hiện thực với Java</b>
+    </pre>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-order-by="reverse_time" data-href="chutrinheuler.html" data-width="100%" data-numposts="5"></div>
+</body>
+</html>
