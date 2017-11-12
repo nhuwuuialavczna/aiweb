@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DFS</title>
+    <title>DFS - duyệt đồ thị theo chiều rộng</title>
 </head>
 <body>
 <h3>Hướng dẫn duyệt đồ thị theo chiều sâu - Code mẫu ngôn ngữ Java</h3>
 <pre>
     - Mình xin hướng dẫn các bạn về thuật toán duyệt đồ thị theo chiều sâu.
+
     I. Giới thiệu và ý tưởng:
+
         Duyệt đồ thị là 1 phương pháp dùng để đi qua tất cả các đỉnh của 1 đồ thị. Nếu đồ thị có nhiều thành phần liên thông bạn phải xem như
     mỗi thành phần liên thông là 1 đồ thị. Khi đó phải duyệt tất cả thành phần liên thông để duyệt hoàn toàn đồ thị
     Chúng ta sẽ duyệt đồ thị khi đồ thị được biểu diễn ở dạng ma trận kề
+
     Có 2 cách để duyệt đồ thị theo chiều rộng:
+
         1. Dùng đệ quy:
             Bước 1: Khởi tạo, Chọn 1 đỉnh xuất phát (V) và tạo 1 mảng visited để đánh dấu đỉnh nào đã được đi qua
             Bước 2: Lấy đỉnh V và xem các đỉnh kề (I) với V và chưa xét thì gọi đệ quy phương thức DFS với đỉnh I và visited[i] = true
@@ -22,7 +26,9 @@
             Bước 3: Nếu stack rỗng thì dừng ngược lại thực hiện lại bước 2.
 
     II. Mã giả - Vì mình hướng dẫn bằng code Java nên cung cấp mã giả cho các bạn dể dàng hiện thực ở ngôn ngữ khác
+
     1. Dùng đệ quy:
+
     Khởi tạo: visited[] : boolean hoặc int (Nếu dùng int thì 0 biểu diễn cho chưa xét và 1 là đã xét)
     function DFS(v){
         foreach đỉnh u nằm trong tập V(tập đỉnh của đồ thị) và kề với đỉnh v
@@ -31,7 +37,8 @@
     }
 
     2. Dùng stack
-    khỏi tạo stack, visited tương tự cách trên với mảng visited này
+
+    Khởi tạo stack, visited tương tự cách trên với mảng visited này
     function DFS(v){
         stack.push(v);
         visited[v] = true
@@ -41,13 +48,15 @@
     }
 
     III. Cài đặt:
+
     Mình sẽ sử dụng Java để cài đặt. Bạn nào cần code của ngôn ngữ nào thì có thể liên hệ mình mình gửi cho nhen
 
     Cài đặt như sau:
 
     1. Dùng đệ quy:
 
-    Giả sử ta có được biến: int soDinh, boolean visited[soDinh], và ma trận kề của đồ thị là: int[][] graph
+    Giả sử ta có được biến: int soDinh, boolean visited[soDinh], và ma trận kề của đồ thị là: int[][] graph.
+
     public void DFS(int v){
         System.out.print(v);
         for(int i =0; i < soDinh;i++){
@@ -59,6 +68,7 @@
     }
 
     2. Dùng stack
+
     Giả sử ta có được 1 stack, int soDinh, boolean visited[soDinh], và ma trận kề của đồ thị là: int[][] graph
 
      public void DFS(int u) {
@@ -79,12 +89,14 @@
     Với cách này để in ra được các đỉnh đã duyệt bạn có thể dùng 1 cái gì đó để lưu lại các đỉnh được pop ra khỏi stack
 
     IV. Chú ý:
+
     1. Đây là 1 cách duyệt đồ thị được áp dụng trên 1 thành phần liên thông, nghĩa là đồ thị có nhiều thành phần liên thông bạn sẽ không thể duyệt được tất
     cả các đỉnh của đồ thị. Khi đó:
 
     Bạn cần viết thêm 1 phương thức để tìm đỉnh chưa xét:
 
-    Đối với 2 cách duyệt đồ thị thêm các bạn đều có thể áp dụng cách này để duyệt tất cả đỉnh
+    Đối với 2 cách duyệt đồ thị thêm các bạn đều có thể áp dụng cách này để duyệt tất cả đỉnh:
+
     public int dinhChuaXet(){
         for(int i=0;i< soDinh; i++)
             if(!visited[b]) return b;
@@ -98,6 +110,9 @@
         DFS(dinh);
     }
 
+    2. Phần code chỉ mang tính chất tham khảo. Nếu không hài lòng xin gửi về hộp thư tại phần liên hệ.
+
+    3. Mình code bằng Java vì để cho vài bạn trong khoa mình tham khảo. Bạn nào có nhu cầu mình sẽ covert hộ sang ngôn ngữ khác.
     </pre>
 
 </body>
