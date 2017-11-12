@@ -9,7 +9,8 @@
 
 </head>
 <body>
-Choose a subject:
+Có bài viết gì các bạn có thể thiết kế 1 file html viết về nội dung đó rồi gửi cho tôi nha. Xin cảm ơn.<br>
+Choose a subject:<br>
 <select id="subject">
     <option value="">Choose subject to view</option>
     <option value="lythuyetdothi">Lý thuyết đồ thị</option>
@@ -23,8 +24,17 @@ Choose a subject:
     <option value="javafx">Java fx</option>
     <option value="tkhdt">Thiết kế hướng đối tượng</option>
 </select>
-<div id="listPost">
 
+<div id="listPost">
+Bạn có thể để lại bình luận tại đây
 </div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-order-by="reverse_time" data-href="index.html?id=hau" data-width="100%" data-numposts="5"></div>
 </body>
 </html>

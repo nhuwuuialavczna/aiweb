@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm đường đi và chu trình euler</title>
+</head>
+<body>
+<a href="../../index.html">Về trang chủ</a><br>
+<h3>Bài viết tìm đường đi và chu trình euler</h3>
+<pre>
+<h3>* Tìm đường đi euler</h3>
+    <b>I. Lý thuyết:</b>
+        - Cho G là 1 đồ thị liên thông, một chu trình euler của G là 1 chu trình đơn đi qua tất cả các cạnh(cung) của G.
+        - Cho G là 1 đồ thị liên thông, một đường đi euler là 1 đường đi đơn đi qua tất cả các cạnh (cung) của G
+        - Đồ thị vô hướng G = (V,E) liên thông và |V| > 1, G có chu trình euler <==> mọi đỉnh của G đều có bậc chẵn.
+        - Cho G = (V,E) có hướng, không có đỉnh cô lập. Và |V| > 1 có đường đi euler nhưng không có chu trình Euler <==> G liên thông yếu và có đúng 2 đỉnh x,y thỏa
+            deg<sup>+</sup>(x) = deg<sup>-</sup>(x) + 1
+            deg<sup>-</sup>(x) = deg<sup>+</sup>(x) + 1
+
+            Các đỉnh còn lại cân bằng
+        - Cho đồ thị có hướng G = (V,E) liên thông yếu và |V| > 1. G có chu trình euler <==> mọi đỉnh trong G đều có nữa bậc trong bằng nữa bậc ngoài (hay G cân bằng)
+
+
+    <b>II. Ý tưởng thuật toán</b>
+        - Trước tiên phải chắc chắn rằng đồ thị liên thông
+        - Thứ 2 phải đảm bảo rằng đồ thị có đúng 2 đỉnh bậc lẻ
+        - Sau khi đảm bảo được 2 vấn đề trên thì ta bắt đầu tìm chu trình euler
+            + Chọn 1 đỉnh trong 2 đỉnh bậc lẻ.
+            + Thêm đỉnh đầu tiên vào stack và tạo 1 cái gì đó để lưu chu trình: list hoặc mảng....
+            + Thực hiện công việc sau cho đến khi stack rỗng;
+                Lấy 1 đỉnh (v) trong stack xem giá trị (không phải lấy ra khỏi stack) nghĩa là peek()
+                Tìm đỉnh kề đầu tiên của v ra. giả sử đỉnh kề là i
+                    Nếu nó có đỉnh kề thì lưu đỉnh kề đó vào stack và xóa cạnh v,i
+                    Nếu nó không có đỉnh kề lưu đỉnh đó và chu trình và xóa đỉnh đó ra khỏi stack
+        - Kết quả của chu trình là list hoặc mảng theo thứ tự ngược lại
+
+
+    <b>III. Mã giả</b>
+        Tương tự tìm chu trình nhưng thay đổi đỉnh bắt đầu
+    <b>IV. Hiện thực với code java</b>
+        Tương tự tìm chu trình nhưng thay đổi đỉnh bắt đầu
+
+    <b>V. Chú ý:</b>
+<h3>* Tìm chu trình euler</h3>
+    <b>I. Lý thuyết:</b>
+       (xem lại ở trên)
+    <b>II. Ý tưởng thuật toán</b>
+        - Trước tiên phải chắc chắn rằng đồ thị liên thông
+        - Thứ 2 phải đảm bảo rằng tất cả các đỉnh của đồ thị đều có bậc chẵn
+        - Sau khi đảm bảo được 2 vấn đề trên thì ta bắt đầu tìm chu trình euler
+            + Chọn 1 đỉnh bất kì trong các đỉnh. thường chọn đỉnh đầu tiên
+            + Thêm đỉnh đầu tiên vào stack và tạo 1 cái gì đó để lưu chu trình: list hoặc mảng....
+            + Thực hiện công việc sau cho đến khi stack rỗng;
+                Lấy 1 đỉnh (v) trong stack xem giá trị (không phải lấy ra khỏi stack) nghĩa là peek()
+                Tìm đỉnh kề đầu tiên của v ra. giả sử đỉnh kề là i
+                    Nếu nó có đỉnh kề thì lưu đỉnh kề đó vào stack và xóa cạnh v,i
+                    Nếu nó không có đỉnh kề lưu đỉnh đó và chu trình và xóa đỉnh đó ra khỏi stack
+        - Kết quả của chu trình là list hoặc mảng theo thứ tự ngược lại
+    <b>III. Mã giả</b>
+        stack := rỗng, chuTrinh[] := rỗng
+        stack.push(0)
+        while(còn phần tử trong stack){
+            v là đỉnh trong stack được lấy ra xem giá trị (v= stack.peek())
+            for each đỉnh kề với v đặt là i.
+                if v kề i
+                    break;
+            if không có đỉnh kề v (v cô lập)
+                chuTrinh.add(i)
+            else
+                stack.push(i)
+                xóa cạnh v,i
+        }
+        Hiển thị kết quả theo thứ tự ngược lại của chuTrinh[]
+
+    <b>IV. Hiện thực với code java</b>
+        public void chuTrinhEuler(int u) {
+            if (soDinhBacLe() > 0) {
+                System.out.println("Not found euler circuit !");
+            } else {
+                Stack< Integer > stack = new Stack<>();
+                List< Integer > CE = new LinkedList<>();
+                stack.push(u);
+                while (!stack.isEmpty()) {
+                    int v = stack.peek();
+                    int dinhKeVoiV = -1;
+                    for (int i = 0; i < soDinh; i++) {
+                        if (matrix[v][i] > 0) {
+                            dinhKeVoiV = i;
+                            break;
+                        }
+                    }
+                    if (dinhKeVoiV == -1) { //lấy ra khỏi stack.
+                        CE.add(stack.pop());
+                    } else { //đỉnh x là đỉnh kề với đỉnh v.
+                        stack.push(dinhKeVoiV);
+                        removeEgdes(dinhKeVoiV, v);
+                    }
+                }
+                for (int i = CE.size() - 1; i >= 0; i--)
+                    System.out.print(CE.get(i) + "-->");
+            }
+
+        }
+
+    <b>V. Chú ý:</b>
+        - Thuật toán tìm chu trình và đường đi có lẽ đã chính xác. Chỉ là có lẽ thôi nha. Bạn nào có ý kiến hay hơn xin để lại comment hoặc gửi về hộp thư của mình
+</pre>
+
+
+
+
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-order-by="reverse_time" data-href="chutrinheuler.html" data-width="100%" data-numposts="5"></div>
+</body>
+</html>
