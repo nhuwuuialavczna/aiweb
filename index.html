@@ -3,15 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Share artificial intelligence (AI) code and computer science </title>
-    <script src="lib/js/index.js"></script>
+    <script src="lib/js/graph.js"></script>
+    <script src="lib/js/ai.js"></script>
+    <script src="lib/js/jquery-3.2.1.js"></script>
     <script>
-
+        $(document).ready(function () {
+            $("#subject").on('change', function () {
+                var value = $("#subject").val();
+                if ( value=== 'graph') {
+                    $("#listPost").empty();
+                    listGraphPost.forEach(function (t, number) {
+                        $("#listPost").append('<p>'+(number+1)+'.<a href="' + t.link + '">' + t.name + '</a> | Đăng bởi:' + t.userpost + ' | Ngày: ' + t.date + '</p>');
+                    });
+                }
+                if (value === 'ai') {
+                    $("#listPost").empty();
+                    listAIPost.forEach(function (t, number) {
+                        $("#listPost").append('<p>'+(number+1)+'.<a href="' + t.link + '">' + t.name + '</a> | Đăng bởi:' + t.userpost + ' | Ngày: ' + t.date + '</p>');
+                    });
+                }
+            });
+        });
     </script>
+
 </head>
 <body>
 Choose a subject:
 <select id="subject">
-    <option value=""></option>
+    <option value="graph">Graph theory</option>
+    <option value="ai">Artificial intelligence (AI)</option>
 </select>
+<div id="listPost">
+
+</div>
 </body>
 </html>
