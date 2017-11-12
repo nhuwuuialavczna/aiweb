@@ -2,9 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Thành phần liên thông trong đồi thị</title>
 </head>
 <body>
+    <pre>
+        I. Ôn lại về lý thuyết
+            1. Về đồ thị vô hướng.
+                - Cho đồ thị G= (V,E) , V là tập đỉnh, E là tập cạnh. Nếu luôn tồn tại đường đi giữa 2 đỉnh thì đồ thị vô hướng này liên thông
+            2. Về đồ thị có hướng.
+                - Đồ thị G có hướng gọi là LIÊN THÔNG YẾU nếu đồ thị vô hướng tương ứng liên thông
+                - Đồ thị G có hướng gọi là LIÊN THÔNG MẠNH nếu luôn tìm được đường đi giữa 2 đỉnh trong đồ thị
 
+        II. Các định nghĩa và mệnh đề:
+            1. Định nghĩa: Cho G liên thông
+                - Cạnh e của G gọi là cầu nếu sau khi loại bỏ e,G không còn liên thông
+                - Đỉnh v trong G gọi là đỉnh nối (đỉnh cắt) nếu sau khi loại bỏ v cùng với các cạnh liên thuộc với nó thì G không còn liên thông
+            2. Các mệnh đề:
+                - Giữa mọi cặp đỉnh phân biệt của đồ thị vô hướng liên thông luôn có đường đi sơ cấp
+                - Mọi đơn đồ thị vô hướng n đỉnh (n>=2) có tổng bậc của 2 đỉnh tùy ý không nhỏ hơn n đều là đồ thị liên thông.
+                    Hệ quả: Đơn đồ thị mà bậc của đỉnh của nó không còn nhỏ hơn một nữa số đỉnh là đồ thị liên thông.
+                - Nếu 1 đồ thị có đúng 2 đỉnh bậc lẻ thì 2 đỉnh này phải liên thông, tức là 1 đường đi nối chúng.
+                - Cho G = (V,E) là 1 đồ thị liên thông. Khi đó một đỉnh của G là điểm khớp khi và chỉ khi trong G tồn tại 2 đỉnh u và v sao cho mỗi đường đi
+                  nối u và v đều phải đi qua đỉnh này.
+
+        III. Các thuật toán về sự liên thông của đồ thị:
+            Tôi xin giới thiệu với các bạn các thuật toán:
+                - Kiểm tra xem có đường đi giữa 2 đỉnh hay không
+                - Kiểm tra đồ thị có liên thông hay không
+                - Đếm số thành phần liên thông
+                - In ra tất cả các thành phần liên thông
+
+
+        IV. Giải quyết các thuật toán đã nhắc tới
+            1. Kiểm tra có đường đi giữa 2 đỉnh hay không.
+                a. Ý tưởng:
+                    - Phương thức nhận vào 2 đỉnh u, v.
+                    - Chúng ta dùng thuật toán duyệt đồ thị bằng DFS hay BFS gì cũng được. Nếu duyệt đến đỉnh v thì dừng lại và xác định rằng có đường đi
+                b. Mã giả:
+                    function isConnected(u,v) {
+                        them đỉnh u vào stack
+                        while (khi stack không rỗng) {
+                            - lấy ra 1 đỉnh trong stack gọi là d
+                            - nếu đỉnh d chưa xét thì gán d đã xét
+                            - nếu d và v là giống nhau: return có đường đi.
+                            foreach mỗi đỉnh i kề với d và chưa xét
+                                thêm các đỉnh y vào stack
+                        }
+                        return không có đường đi
+                    }
+
+                c. Hiện thực với code Java.
+                    public boolean isConnected(int u, int v) {
+                        Stack< Integer > s = new Stack<>();
+                        boolean[] vis = new boolean[soDinh];
+                        s.push(u);
+                        while (!s.empty()) {
+                            u = s.pop();
+                            if (!vis[u]) {
+                                vis[u] = true;
+                            }
+                            if (u == v) {
+                                return true;
+                            }
+                            for (int j = 0; j < matrix[u].length; j++) {
+                                if (!vis[j] && matrix[u][j] > 0)
+                                    s.push(j);
+                            }
+                        }
+                        return false;
+                    }
+
+                    * Trong đó matrix là ma trận kề biểu diễn cho đồ thị
+            2. Kiểm tra đồ thị có liên thông hay không.
+                a. Ý tưởng:
+                    - Kiểm tra xem giữa 2 đỉnh bất kì trong đồ thị có đường đi hay không. Phương thức ở trên.
+
+            3. Điếm số thành phần liên thông
+                a. Ý tưởng:
+                    - Chúng ta sẽ dùng thuật toán DFS hoặc BSF để duyệt đồ
+                    - Thực hiện cho đến khi tất cả các đỉnh đều được xét thì dừng lại. Mỗi lần kiểm tra như vậy ta tìm được 1 thành phần liên thông
+                b. Mã giả
+                    1.
+                    function dinhChuaXet()
+                        if(tồn tại đỉnh v chưa xét dựa trên visited[])
+                            return v;
+                        else return -1
+                    2.
+                    while(còn đỉnh chưa xét){
+                        ta có đỉnh v là đỉnh chưa xét
+                        DFS(v) hoặc BFS(v)
+                        soThanhPhanLienThong++;
+                    }
+
+                c. Hiện thực bằng code Java
+                    public int demSoThanhPhanLienThong() { // phai duyet do thi truoc
+                        int tplt = 0;
+                        while (dinhChuaTHam()!=-1) {
+                            tplt++;
+                            int i = dinhChuaTHam();
+                            if (i == -1) {
+                                break;
+                            }
+                            dfsRecursive(i);
+                        }
+                        return tplt;
+                    }
+
+
+            4. Thuật toán in ra các thành phần liên thông.
+                Các bạn xử lý giống như trên nha. Nhưng thêm xuất kết quả cho hàm DFS(v);
+    </pre>
 </body>
 </html>
