@@ -6,7 +6,7 @@
 </head>
 <body>
     <pre><h3>Hướng dẫn duyệt đồ thị theo chiều sâu - Code mẫu: Java</h3>
-        I. Giới thiệu và ý tưởng
+        <b>I. Giới thiệu và ý tưởng</b>
             1. Giới thiệu:
                 - Trong lý thuyết đồ thị, tìm kiếm theo chiều rộng (BFS) là một thuật toán tìm kiếm trong đồ thị trong đó việc tìm kiếm chỉ bao gồm 2 thao tác:
                     + (a) cho trước một đỉnh của đồ thị;
@@ -23,7 +23,7 @@
                     5. Nếu hàng đợi là rỗng, thì tất cả các đỉnh có thể đến được đều đã được quan sát – dừng việc tìm kiếm và trả về "không thấy".
                     6. Nếu hàng đợi không rỗng thì quay về bước 2.
                 - Ghi chú: Nếu sử dụng một ngăn xếp thay vì hàng đợi thì thuật toán trở thành thuật toán tìm kiếm theo chiều sâu
-        II. Mã giả - Vì mình hướng dẫn bằng code Java nên cung cấp mã giả cho các bạn dể dàng hiện thực ở ngôn ngữ khác
+        <b>II. Mã giả - Vì mình hướng dẫn bằng code Java nên cung cấp mã giả cho các bạn dể dàng hiện thực ở ngôn ngữ khác</b>
             1. Dùng đệ quy: Lúc này sẽ tương tự như DFS. Bạn xem lại bài DFS nha
             2. Dùng cấu trúc dữ liệu Queue.
 
@@ -38,7 +38,7 @@
                             thêm phần tử i vào queue dồng thời cho rằng đỉnh này đã xét
                     }
                 }
-        III. Cài đặt:
+        <b>III. Cài đặt:</b>
             1. Với DFS cài đặt tương tự duyệt theo chiều sâu
 
             2. Tôi chỉ giới thiệu các bạn về cài đặt bằng QUEUE. Sử dụng code Java để hiện thực nha
@@ -57,7 +57,7 @@
                         }
                     }
                 }
-        IV. Chú ý:
+        <b>IV. Chú ý:</b>
 
             1. Đây là 1 cách duyệt đồ thị được áp dụng trên 1 thành phần liên thông, nghĩa là đồ thị có nhiều thành phần liên thông bạn sẽ không thể duyệt được tất
             cả các đỉnh của đồ thị. Khi đó:
@@ -83,7 +83,7 @@
 
             3. Mình code bằng Java vì để cho vài bạn trong khoa mình tham khảo. Bạn nào có nhu cầu mình sẽ covert hộ sang ngôn ngữ khác.
 
-        V. Độ phức tạp thuật toán:
+        <b>V. Độ phức tạp thuật toán:</b>
             1. Độ phức tạp không gian của DFS thấp hơn của BFS (tìm kiếm theo chiều rộng).
             2. Độ phức tạp thời gian của hai thuật toán là tương đương nhau và bằng O(|V| + |E|).
     </pre>

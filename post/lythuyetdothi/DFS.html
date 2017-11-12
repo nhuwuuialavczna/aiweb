@@ -9,8 +9,7 @@
 <pre>
     - Mình xin hướng dẫn các bạn về thuật toán duyệt đồ thị theo chiều sâu.
 
-    I. Giới thiệu và ý tưởng:
-
+    <b>I. Giới thiệu và ý tưởng:</b>
         Duyệt đồ thị là 1 phương pháp dùng để đi qua tất cả các đỉnh của 1 đồ thị. Nếu đồ thị có nhiều thành phần liên thông bạn phải xem như
     mỗi thành phần liên thông là 1 đồ thị. Khi đó phải duyệt tất cả thành phần liên thông để duyệt hoàn toàn đồ thị
     Chúng ta sẽ duyệt đồ thị khi đồ thị được biểu diễn ở dạng ma trận kề
@@ -25,7 +24,7 @@
             Bước 2: Lấy phần tử đầu tiên trong stack ra và xem các đỉnh kề (I) với V và chưa xét rồi gán visited[i] = true và thêm tất cả I vào stack
             Bước 3: Nếu stack rỗng thì dừng ngược lại thực hiện lại bước 2.
 
-    II. Mã giả - Vì mình hướng dẫn bằng code Java nên cung cấp mã giả cho các bạn dể dàng hiện thực ở ngôn ngữ khác
+    <b>II. Mã giả - Vì mình hướng dẫn bằng code Java nên cung cấp mã giả cho các bạn dể dàng hiện thực ở ngôn ngữ khác</b>
 
     1. Dùng đệ quy:
 
@@ -47,7 +46,7 @@
 
     }
 
-    III. Cài đặt:
+    <b>III. Cài đặt:</b>
 
     Mình sẽ sử dụng Java để cài đặt. Bạn nào cần code của ngôn ngữ nào thì có thể liên hệ mình mình gửi cho nhen
 
@@ -88,7 +87,7 @@
 
     Với cách này để in ra được các đỉnh đã duyệt bạn có thể dùng 1 cái gì đó để lưu lại các đỉnh được pop ra khỏi stack
 
-    IV. Chú ý:
+    <b>IV. Chú ý:</b>
 
     1. Đây là 1 cách duyệt đồ thị được áp dụng trên 1 thành phần liên thông, nghĩa là đồ thị có nhiều thành phần liên thông bạn sẽ không thể duyệt được tất
     cả các đỉnh của đồ thị. Khi đó:
@@ -114,7 +113,7 @@
 
     3. Mình code bằng Java vì để cho vài bạn trong khoa mình tham khảo. Bạn nào có nhu cầu mình sẽ covert hộ sang ngôn ngữ khác.
 
-    V. Độ phức tạp thuật toán:
+    <b>V. Độ phức tạp thuật toán:</b>
         1. Độ phức tạp không gian của DFS thấp hơn của BFS (tìm kiếm theo chiều rộng).
         2. Độ phức tạp thời gian của hai thuật toán là tương đương nhau và bằng O(|V| + |E|).
 </pre>

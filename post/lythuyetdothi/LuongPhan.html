@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra đồ thị lưỡng phân</title>
+</head>
+<body>
+    <h3>Bài viết hướng dẫn kiểm tra đồ thị có lưỡng phân hay không</h3>
+
+    <pre>
+      <b>I. Ôn lại lý thuyết:</b>
+            - Định lý: Một đồ thị lưỡng phân nếu mỗi cạnh trong E đều nối 1 đỉnh trong V1 với 1 đỉnh trong V2
+            - Một đơn đồ thị là lưỡng phân nếu và chỉ nếu có thể dùng 1 trong 2 màu khác nhau cho trước để gán
+              cho mỗi đỉnh sao cho không có 2 đỉnh kề nhau có chung 1 màu.
+            - Đồ thị lưỡng phân đủ(Comlete Bipartite Graphs): Đồ thị lưỡng phân là đầy đủ. Mọi đỉnh trong V1 đều kề với mọi đỉnh trong V2
+      <b>II. Ý tưởng</b>
+            - Chọn 1 đỉnh bất kì của đồ thị. Rồi sao đó tô màu đỉnh đó ví dụ màu 1. Và thêm đỉnh đó vào queue
+            - Chọn lấy trong queue ra 1 đỉnh v. Sau đó tìm các đỉnh kề với đỉnh v các đỉnh đó tạm đặt là i. Nếu đỉnh i:
+                + Nếu chưa xét thì thêm đỉnh i vào queue và tô màu i khác màu với v
+                + Nếu i đã tô màu và cùng màu thì dừng lại và kết quả là không lưỡng phân
+            - Thực hiện lại bước 2 cho đến khi queue không còn phần tử nào
+
+      <b>III. Mã giả</b>
+            function dinhChuaXet(){
+              trả về đỉnh chưa xét
+            }
+            function isLuongPhan(){
+                while (dinhChuaXet() != -1) {
+                  colorArr[dinhChuaXet()] = 1; // bắt đầu từ đỉnh chưa xét và tô màu 0 là màu 1
+                  queue.add(dinhChuaXet());
+                  visited[dinhChuaXet()] = true;
+                  while (khi queue còn phần tử) {
+                      u là 1 đỉnh trong queue
+                      if (matrix[u][u] == 1) return false;
+                      for each đỉnh kề của đỉnh u trong đồ thị
+                          if(v chưa tô màu)
+                                tô màu v khác với màu u
+                                queue.add(v);
+                                visited[v] = true;
+                          else if đỉnh u và v kề nhau và cùng màu{
+                                return false;
+                          }
+
+                  }
+                }
+              }
+        <b>IV. Hiện thực bằng code java</b>
+          public boolean isLuongPhan() {
+              while (dinhChuaXet() != -1) {
+                  int colorArr[] = new int[soDinh];
+                  for (int i = 0; i < soDinh; i++) {
+                      colorArr[i] = -1;
+                  }
+                  colorArr[0] = 1;
+                  Queue<Integer> q = new LinkedList<Integer>();
+                  q.add(dinhChuaXet());
+                  visited[dinhChuaXet()] = true;
+                  while (q.size() != 0) {
+                      int u = q.poll();
+                      if (matrix[u][u] == 1) return false;
+                      for (int v = 0; v < soDinh; v++) {
+                          if (matrix[u][v] == 1 && colorArr[v] == -1) {
+                              colorArr[v] = 1 - colorArr[u];
+                              q.add(v);
+                              visited[v] = true;
+                          } else if (matrix[u][v] == 1 && colorArr[v] == colorArr[u]) {
+                              return false;
+                          }
+                      }
+                  }
+              }
+              return true;
+          }
+
+    </pre>
+</body>
+</html>

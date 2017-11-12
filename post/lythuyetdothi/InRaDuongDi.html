@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In ra đường đi trong đồ thị</title>
+</head>
+<body>
+    <h3>Bài viết hướng dẫn in ra đường đi giữa 2 đỉnh và tất cả đường đi giữa 2 đỉnh</h3>
+
+    <pre>
+        <b>I. Giới thiệu</b>
+            - Chúng ta xét đồ thị sau:
+                Tìm dường đi giữa đỉnh 3 và 5
+
+                            3......4
+                            .       .
+                           .         .5.......6
+                1.........2
+            - Với đồ thị trên. Nếu như dùng dfs hay bfs để duyệt và in ra trong quá trình duyệt. Bạn sẽ nhận được kết quả sau: 3 2 1 4 5.
+            Đó không phải là đường đi từ 3 đến 5.
+            - Vì thế mình sẽ viết về vấn đề này và hướng dẫn cách bạn cụ thể về ý tưởng lẫn code
+
+        <b>II. Ý tưởng</b>
+            Phương thức nhận vào 2 tham số là đinh v và đỉnh đích u
+            1. Chúng ta sẽ dùng dfs để duyệt. Và qua mỗi đỉnh sễ bỏ đỉnh đó vào stack nếu trong stack chưa tồn tại đỉnh này.
+            2. Nếu bạn đã biết dfs sẽ quay lui về khi không còn điểm đi tiếp. Ta sẽ lợi dụng điểm  này để thực hiện xóa bỏ các đỉnh mà dfs đi lùi từ đó về.
+		Ví dụ: Trong trường hợp trên. Chúng ta duyệt đến 1 thì trong stack đã có 3,2,1 (phần tử đỉnh stack là 1). Khi đó từ 1 sẽ đi lùi về 2. chúng 
+		ta dùng pop để lấy 1 ra khỏi stack tương tự với đỉnh 2.
+	    3. Thực hiện như thế nếu gặp đỉnh 5 thì in ra stack thực hiện như vậy đến khi tất cả các đỉnh được xét thì dừng lại
+		
+	<b>III. Mã giả:</b>
+			
+		function FindAllPaths(source,dest) {
+			- thêm vào stack đỉnh source
+				
+			if( source trùng dest) 
+				in ra stack;
+			else
+				FindAllPaths(i,dest) trong đó i là đỉnh kề với source và chưa nằm trong stack(chưa xét)
+				
+			lấy đỉnh ở đầu stack ra vì quay lui
+		}
+			
+	<b>IV. Hiện thực lại với code Java</b>
+		public void FindAllPaths(int u, int dest) {
+			stack.push(u);
+			if (u == dest) {
+				System.out.println(stack);
+			} else {
+				for (int i = 0; i < soDinh; i++) {
+					if (matrix[u][i] > 0 && !stack.contains(i))
+						FindAllPaths(i, dest);
+				}
+			}
+			stack.pop();
+		}
+		Phương thức trên sẽ in ra tất cả đường đi từ đỉnh source đến đỉnh dest. Trong đó, stack rỗng.
+
+
+    </pre>
+</body>
+</html>
