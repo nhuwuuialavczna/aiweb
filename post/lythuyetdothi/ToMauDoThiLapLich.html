@@ -11,8 +11,87 @@
 
 <pre>
     <b>* Tô màu đồ thị</b>
+        <b>I. Bài toán</b>
+            - Để phân biệt các miền trên bản đồ ta phải tô màu chúng bằng các màu khác nhau.
+            - Mô hình hóa bài toán:
+                + Mỗi miền tương ứng với 1 đỉnh của đồ thị
+                + Hai đỉnh có cạnh nối với nhau nếu 2 miền đó có chung biên. Đồ thị nhận được là đồ thị đối ngẫu của bản đồ
+                + Đồ thị đối ngẫu của bản đồ là đồ thị phẳng
+            - Bài toán tương đương: Tô màu các đỉnh của đồ thị sao cho 2 đỉnh kề nhau thì được tô bởi 2 màu khác nhau và số màu là ít nhất
 
+        <b>II. Các định nghĩa và định lý:</b>
+
+            - Tô màu 1 đơn đồ thị là gán mỗi màu cho 1 đỉnh của đồ thị sao cho không có 2 đỉnh kề được gán cùng 1 màu.
+            - Số màu của 1 đồ thị G kí hiệu là X(G) là số màu tối thiểu cần để tô màu đồ thị G
+            - Số màu của 1 đồ thị phẳng bất kì không lớn hơn 4
+            - Nhận xét:
+                + Số màu của đồ thị lưỡng phân là 2 màu
+                + Số màu của đồ thị đầy đủ K<sub>n</sub> là n màu
+
+        <b>III. Thuật toán tô màu đồ thị</b>
+            1. Tô màu theo bậc:
+
+                a. Thuật toán
+
+                    While(tất cả các đỉnh đã được tô)
+                    {
+                        Bước 1: tô màu I cho đỉnh có bậc lớn nhất
+                        Bước 2: + Bậc của đỉnh được tô màu thi hạ xuống 0
+                        + Bậc của đỉnh kề với đỉnh đã tô thị: bậc=bâc-1
+                        Bước 3: cấm tô màu I cho các đỉnh vừa bị hạ bậc
+                    }
+                b. Mã giả:
+
+                    Khởi tạo giá trị ban đầu cho mảng daxet[] và mảng maucam[][]
+
+                    For(i € n){ // n là số đỉnh
+                        Daxet[i]=-1; //chưa có đỉnh nào được xét
+                    }
+
+                    for(i€n){
+                        for(j€n){
+                            maucam[i][j]=-1; // chưa có màu cấm cho các đỉnh
+                        }
+                    }
+
+                    do{
+                        dinh_max=dinh_bac_max(); //gọi hàm con tính đinh_bac_max;
+                        mau_dinh[dinh_max]=chonmau[dinh_max] //gọi hàm tô màu
+                        daxet[dinh_max]=1; //xem như đã xét,
+                        dem++;// biến đại diện cho đỉnh đã tô,
+                        for(i€n){
+                            If(a[dinh_max,i]=1 && daxet[i]!=1){
+                                Maucam[i][dinh_max]=mau_dinh[dinh_max];
+                                // màu của đỉnh đã tô sẽ bị cấm đối với các đỉnh kề với nó
+                                tong_bac_dinh[i]-- ;
+                                Tong_bac_dinh[dinh_max]=0;
+                            }
+
+                            If(tong_bac_dinh[i]==0 && daxet[i]!=1){
+                                // lúc này xét xem sau khi hạ bậc nếu bậc đỉnh nào =0 và chưa xét thì tô luôn
+                                Mau_dinh[i]=chon_mau[i];
+                                Daxet[i]=1;
+                                Dem++;
+                            }
+                        }
+                    }while(dem&lt;=n);
+
+                d. Hiện thực bài toán
+
+                e. Ưu khuyết của thuật toán:
+
+                        Với thuật toán trên chương trình sẽ chạy khá tốt, độ phức tạp củ giải thuật là O(n<sup>2</sup>) ,
+                    tuy nhiên cho đến này vẫn chưa có thuật toán nào thật sự tối ưu, không phải lúc nào
+                    việc "tô màu" cũng cho ra sắc số bé nhất.
     <b>* Bài toán lập lịch</b>
+        <u>Đề bài:</u> Hãy lập lịch thi trong trường đại học sao cho không có sinh viên nào phải thi đồng thời hai môn cùng 1 lúc
+            <u>Mô hình hóa bài toán:</u>
+                - Hai đỉnh của 1 đồ thị là 1 môn thi
+                - Hai đỉnh có cạnh nối với nhau nếu đó là 2 môn học mà sinh viên đó phải thi
+                - Thời điểm thi ứng với mỗi môn ứng với một màu
+                Bài toán trở thành bài toán tô màu cho đồ thị trên sao cho 2 đỉnh kề nhau có màu khác nhau.
+
+        <b>Giải bài toán:</b>
 </pre>
 
 <script>(function (d, s, id) {
