@@ -29,7 +29,7 @@
                 + Số màu của đồ thị đầy đủ K<sub>n</sub> là n màu
 
         <b>III. Thuật toán tô màu đồ thị</b>
-            1. Tô màu theo bậc:
+            1. Tô màu theo giải thuật hạ bậc:
 
                 a. Thuật toán
 
@@ -76,13 +76,108 @@
                         }
                     }while(dem&lt;=n);
 
-                d. Hiện thực bài toán
+                d. Hiện thực bài toán với Java code
+                    // các bạn khởi tạo các biến sau ở trên nha.
+                    int maucam[][];
+                    int tong_bac_dinh[];
+                    int dinh[];
+                    int mau_dinh[];
+
+                    // sau đó trong constructor các bạn khởi tạo giá trị như sau
+                    mau_dinh = new int[soDinh];
+                    tong_bac_dinh = new int[soDinh];
+                    maucam = new int[soDinh][soDinh];
+                    dinh = new int[soDinh];
+                    for (int i = 0; i < soDinh; i++) {
+                        mau_dinh[i] = -1;
+                    }
+                    // tôi mặc đinh là các bạn đã có được ma trận kề (matrix của tôi) và soDinh (số đỉnh) rồi nha
+                    // Đây là toàn bộ phần code
+
+                    public void tongbac() {
+                        for (int i = 0; i < soDinh; i++) {
+                            tong_bac_dinh[i] = 0;
+                            for (int j = 0; j < soDinh; j++)
+                                tong_bac_dinh[i] = tong_bac_dinh[i] + matrix[i][j];
+                        }
+                    }
+
+                    // ham tra ve dinh co bac lon nhat
+                    public int dinh_bac_max() {
+                        int max, vitri;
+                        max = tong_bac_dinh[0];
+                        vitri = 0;
+                        for (int i = 0; i < soDinh; i++) {
+                            if (tong_bac_dinh[i] > max) {
+                                max = tong_bac_dinh[i];
+                                vitri = i;
+                            }
+                        }
+                        return vitri;
+                    }
+
+                    // ham kiemra xem nhung mau nao se cam va khong to cho dinh dang xet
+                    public int kiemtra_maucam(int v, int mau) {
+                        for (int i = 0; i < soDinh; i++)
+                            if (maucam[v][i] == mau) //
+                                return 1;
+                        return 0;
+
+                    }
+
+                    public int chonmau(int v) {    // ham se chon ra mau thich hop de to cho dinh dang xet
+                        int mau = 0;
+                        do {
+                            if (kiemtra_maucam(v, mau) == 0) { // mau to cho dinh v phai khong trung voi mau cam
+                                return mau;
+                            } else
+                                mau++;
+                        } while (true);
+                    }
+
+
+                    void tomau() {
+                        int dem = 0;
+                        int dinh_max;
+                        int daxet[] = new int[soDinh];
+                        for (int i = 0; i < soDinh; i++) {
+                            daxet[i] = -1; //xet xem dinh nao da duoc to mau hay chua to mau
+                        }
+                        for (int i = 0; i < soDinh; i++) {
+                            for (int j = 0; j < soDinh; j++) {
+                                maucam[i][j] = -1;// khoi tao mang hai chieu &quot;macam&quot;va khoi tao gia tri bang dau=-1 tuc khong co dinh nao bi cam
+                            }
+                        }
+                        do {
+                            dinh_max = dinh_bac_max();
+                            mau_dinh[dinh_max] = chonmau(dinh_max);
+                            daxet[dinh_max] = 1;
+                            dem++;
+                            for (int i = 0; i < soDinh; i++) {
+                                if ((matrix[dinh_max][i] == 1) && (daxet[i] != 1)) {
+                                    maucam[i][dinh_max] = mau_dinh[dinh_max]; //mau da to cho dinh_max se bi cam to cho cac dinh ke voi no
+                                    tong_bac_dinh[i]--; //ha bac cac dinh xuong
+                                }
+                                if (tong_bac_dinh[i] == 0 && daxet[i] != 1) {// luc nay xet  xem sau khi ha bac neu dinh nao =0 va chua xet thi to luon
+                                    mau_dinh[i] = chonmau(i);
+                                    daxet[i] = 1;
+                                    dem++;
+                                }
+                            }
+                            tong_bac_dinh[dinh_max] = 0; // bac dinh da to duoc gan bang  0;
+                        } while (dem < soDinh);
+                        for (int i = 0; i < soDinh; i++) {
+                            System.out.printf("mau dinh %d: %d\n", i + 1, mau_dinh[i] + 1);
+                        }
+                    }
 
                 e. Ưu khuyết của thuật toán:
-
-                        Với thuật toán trên chương trình sẽ chạy khá tốt, độ phức tạp củ giải thuật là O(n<sup>2</sup>) ,
+                    Với thuật toán trên chương trình sẽ chạy khá tốt, độ phức tạp củ giải thuật là O(n<sup>2</sup>) ,
                     tuy nhiên cho đến này vẫn chưa có thuật toán nào thật sự tối ưu, không phải lúc nào
                     việc "tô màu" cũng cho ra sắc số bé nhất.
+            2. Tô màu theo giải thuật tham lam
+                Sẽ cập nhật sau nhé
+
     <b>* Bài toán lập lịch</b>
         <u>Đề bài:</u> Hãy lập lịch thi trong trường đại học sao cho không có sinh viên nào phải thi đồng thời hai môn cùng 1 lúc
             <u>Mô hình hóa bài toán:</u>
@@ -92,6 +187,75 @@
                 Bài toán trở thành bài toán tô màu cho đồ thị trên sao cho 2 đỉnh kề nhau có màu khác nhau.
 
         <b>Giải bài toán:</b>
+            1 .Ví dụ: có 7 môn thi với thông tin như sau
+                Môn 1: có các sinh viên A,B, C, D thi
+                Môn 2: có các sinh vien A,E,F,G,H thi
+                Môn 3: có các sinh viên B,E,I,J,K thi
+                Môn 4: có các sinh vien B,F,L,M thi
+                Môn 5: có các sinh viên G,L,N,O thi
+                Môn 6: có các sinh viên J,M,N,P thi
+                Môn 7: có các sinh viên D,H,K,O, P thi
+                Hãy sắp xếp lịch thi thành các đợt sao cho các sinh viên điểu có thể dự thi tuần tự các
+                môn mình đăng kí
+                Từ dữ liệu đề bài cho ta dựng được đồ thị sau:
+                <img src="../../lib/img/lythuyetdothi/tomau.png">
+
+                Quy luật để tạo ra đồ thị như sau: (theo cách mình nghĩ nhé)
+                    1. Xét môn 1 trước: Thấy có 4 môn A,B,C,D.
+                    2. Lấy A (sinh viên A) xem có nằm trong môn nào không. Ở đây ta thấy A có nằm trong môn 2
+                    3. Tìm thấy A trong 2 nghĩa là có 1 cạnh nối môn 1 và môn 2.
+                    4. Thực hiện cho đến hết sinh viên trong 1 môn và hết tất cả môn
+
+            2. Các bạn áp dụng thuật toán bằng Code hoặc chạy tay đều được. Thuật toán ở trên nhé kết quả sẽ là:
+                a. Kết quả khi chạy thuật toán:
+                    Đỉnh   |   Màu
+                      1         1
+                      2         2
+                      3         3
+                      4         4
+                      5         1
+                      6         2
+                      7         4
+                b. Kết quả được liệt kê lại như sau
+                    Đợt thi | Môn thi
+                       1    |   1,5
+                       2    |   2,6
+                       3    |   3
+                       4    |   4,7
+    <b>Các bài toán khác</b>
+
+       1. Bài toán phân chia tần số
+        Các kênh truyền hình từ số 2 đến sô 13được phân chia cho các đài truyền hình sao cho
+        không có hai đài cách nhau không qua 150 dặm lại dùng chung một kênh, hãy tìm cách
+        phân sao cho số kênh dùng là ít nhất
+
+        Giải pháp:
+            Biểu diễn bằng đồ thị:
+            Mỗi đình là một đài phát
+            Hai đỉnh được nối với nhau một cạnh nếu hai đài phát cách nhau ít hơn 150 dặm. Số
+            màu của đồ thị chính là số kênh cần dùng
+
+        2. Định vị các thanh ghi:
+
+            Một chương trình dời chỗ các giá trị của các biến bên trong bộ nhớ của máy tính điện
+            tử, trong khi đó một chương trình số lại có nhu cầu dời các giá trị của các biến trong
+            thanh ghi, vì thanh ghi rất nhanh và khá đắt, vì vậy việc sử dụng chúng hữu hiệu là cần
+            thiết
+            Nếu hai biến không được sử dụng cùng một thời điểm, ta có thể ghi chúng lên cùng
+            một thanh ghi.
+            Như vậy đối với mỗi biến, ta phải tính toán thời gian khởi đầu và kết thúc. Một biến
+            được gọi là đang hoạt động giữa thời gian khởi đầu và kết thúc của nó. Ta xây dựng
+            một đồ thị G=(V,E) với:
+                Tập đỉnh V=tập các biến
+                Tập cạnh E= canh e nối giữa hai đỉnh nếu hai biến này cùng hoạt động trong cùng một
+                thời điểm
+                Sắc số γ(G) của G là số các thanh ghi nhỏ nhất cần thiết.
+        3. Bản đồ địa dư:
+
+            Một bài toán lí thú là tô màu các bản đồ sao cho hai vùng khác nhau mà giáp nhau
+            không cùng một màu.
+            Đỉnh đồ thị: các nước tren bản đồ
+            Cạnh đồ thị: hai đỉnh được nối nêu hai nước trên bản đồ giáp nhau
 </pre>
 
 <script>(function (d, s, id) {
