@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Giới thiệu về cây đồ thị</title>
+    <script>
+//        if (sessionStorage.getItem('us')===null) {
+//            window.location.href = "../../Security.html";
+//        }
+    </script>
 </head>
 <body>
 <a href="../../index.html">Về trang chủ</a><br>
@@ -13,7 +18,52 @@
         - Định lý: Giữa 2 đỉnh bất kì trong T luông có 1 và chỉ 1 đường đi trong T nối chúng
         - Định nghĩa: Cây có gốc (rooted tree) là 1 cây có hướng, trên đó đã chọn 1 đỉnh làm gốc (root) của cây và các cạnh định hướng sao cho với mọi đỉnh luôn có 1 đường
           đi từ gốc đến đỉnh đó
-        - Một cây tự do có thể chọn bất kỳ đỉnh nào làm gốc để trở thành cây có góc
+        - Một cây tự do có thể chọn bất kỳ đỉnh nào làm gốc để trở thành cây có gốc
+        - Định nghĩa: Tập hợp các cây đôi 1 không có đỉnh chung gọi là rừng (Forest). Một rừng gồm nhiều cây không có đỉnh chung
+        - Mọi đỉnh trong 1 cây là gốc của 1 cây con. Khi xóa đỉnh x khỏi cây ta được 1 rừng
+        - Định nghĩa: Độ lệch tâm của đỉnh V là khoảng cách lớn nhất từ v đến đỉnh bất kỳ trong T, Kí hiệu E(v)
+
+            E(v) = MAX <sup>$(u,v)</sup>
+                    u thuộc T
+        - Đỉnh có độ lệch tâm nhỏ nhất là tâm (center) của T
+        - Độ lệch tâm của tâm gọi là bán kính (radius) của T
+
+        - Cho cây có gốc T:
+            + Nếu số con tối đa của 1 đỉnh trong T là m và có ít nhất 1 đỉnh đúng m con thì T gọi là cây m - phần (m - ary tree)
+            + Nếu mọi đỉnh trong của T đều có đúng m cây con thì cây T gọi là cây phân đủ
+            + Cây m - phân với m = 2 gọi là  cây nhị phân
+
+        - Định lý: (Định lý Daisy Chain): T là 1 đồ thị có n đỉnh, các mệnh đề sau đây tương đương:
+            + T là cây
+            + T không có chu trình và có n-1 cạnh
+            + T liên thông và khi hủy bất kì cạnh nào trong T, T sẽ mất tính liên thông.
+            + Giữa 2 đỉnh bất kì trong T luôn có đường đi duy nhất giữa 2 đỉnh đó
+            + T không có chu trình, nếu thêm 1 cạnh nối 2 đỉnh bất kì trong T, T sẽ có chu trình
+            + T liên thông và có n - 1 cạnh
+        - Định lý: Cây tự do có nhiều nhất 2 tâm
+        - Định lý: Một cây m - phân đầy đủ có i đỉnh trong thì có mi + 1 đỉnh
+        - Hệ luận: T là một cây m - phân đầy đủ:
+            + T có i đỉnh trong => T có l = (m-1)i + 1 lá
+            + T có l lá => T có l = (l - 1)/ (m - 1) đỉnh trong và n = (ml - 1)/(m - 1) đỉnh
+            + T có n đỉnh => T có i = (n - 1)/m đỉnh trong và l = [(m - 1)n + 1]/m nút lá
+        - Định lý:
+            + Một cây m - phân có chiều cao h thì có nhiều nhất là m<sup>h</sup> lá
+            + Một cây m-phân có l lá thì có chiều cao h >= [log<sub>m</sub>l]
+            + Một cây m - phân đầy đủ, cân bằng có l lá thì có chiều cao h = [log<sub>m</sub>l]
+    <b>II. Cây bao trùm</b>
+        - Cho đồ thị vô hướng G. Cây T gọi là một cây bao trùm của G nếu T <= G và T chứa mọi đỉnh của G.
+        - Đồ thị G có cây bao trùm <=> G liên thông.
+
+    <b>III. Tìm cây bao trùm</b>
+        - Chúng ta sẽ tìm hiểu cách tìm hiểu cây bao trùm theo các phương pháp:
+            + BFS, DFS: Tìm cây bao trùm
+            + Kruskal và prim để tìm cây bao trùm nhỏ nhất
+        - Tuy nhiên trong bài viết này chỉ tìm hiểu về DFS và BFS thôi, hai cái kia sẽ có bài viết riêng vì khá quan trọng
+
+    <b>IV. Tìm cây bao trùm bằng DFS</b>
+
+    <b>V. Tìm cây bao trùm bằng BFS</b>
+
 </pre>
 
 
