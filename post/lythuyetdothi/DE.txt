@@ -1,0 +1,48 @@
+public int dinhBacLeDE() {
+		int bl = 0;
+		for (int i = 0; i < maTran.length; i++) {
+			if (bacDinh(i) % 2 != 0) {
+				bl = i;
+				break;
+			}
+		}
+		return bl;
+
+	}
+
+	@Override
+	public ArrayList<Integer> DE() {
+		ArrayList<Integer> DE = new ArrayList<>();
+		Stack<Integer> stack = new Stack<>();
+		int[][] matrix = maTran;
+
+		stack.push(dinhBacLeDE());
+		while (!stack.empty()) {
+			int a = stack.peek();
+
+			int x = -1;
+			for (int i = 0; i < matrix.length; i++) {
+				if (matrix[a][i] > 0) {
+					x = i;
+					break;
+				}
+			}
+
+			if (x == -1) {
+				DE.add(a);
+				stack.pop();
+			} else {
+				stack.push(x);
+				matrix[a][x] -= 1;
+				matrix[x][a] -= 1;
+			}
+
+		}
+		return DE;
+	}
+//*T?o m?t m?ng DE d? ghi du?ng di và m?t stack d? x?p các d?nh ta s? xét. X?p vào dó m?t d?nh b?c l?
+ u nào dó c?a d? th?, nghia là d?nh u s? du?c xét d?u tiên. 
+*Xét d?nh trên cùng c?a ngan x?p, gi? s? d?nh dó là d?nh v và th?c hi?n: 
+- N?u v là d?nh cô l?p thì l?y v kh?i ngan x?p và dua vào DE; 
+- N?u v là liên thông v?i d?nh x thì x?p x vào ngan x?p sau dó xoá b? c?nh (v, x); 
+*Quay l?i bu?c 2 cho t?i khi ngan x?p r?ng. K?t qu? dg di Euler du?c ch?a trong DE theo th? t? ngu?c l?i.
