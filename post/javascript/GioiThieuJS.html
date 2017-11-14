@@ -24,14 +24,29 @@
         <b>II. Những nội dung tìm hiểu</b>
             Ở đây tôi mặc nhiên cho rằng bạn đã biết đôi chút về JS như mảng, string, cách thao tác với dom,....
             - Lập trình hướng đối tượng với JavaScript (OOP)
-            - Design pattern với JS
-            - Lập trình Game đơn giản: Caro, Rắn săn mồi với JavaScript chạy trên 1 trang html
-            - Giải phải giải quyết bất đồng bộ
-            - Tìm hiểu ES6 - TypeScritp
-            - Tạo web bán hàng đơn giản với NodeJS
-            - Tạo web chat với SocketIO - NodeJS
-            - Tạo web service (resful) với NodeJS
-            - Một số khái niệm đáng quan tâm khác...
+            - NodeJS
+            - Xử lý bất đồng bộ trong JavaScript
+
+        <b>III. Sơ lượt những nội dung trên:</b>
+            1. OOP
+                - Bạn sẽ được hướng dẫn về làm việc với đối tượng trong JS như kế thừa,...
+            2. Học về npm và tạo web với nodejs
+            3. JavaScript là 1 ngôn ngữ bất đồng bộ nghĩa là đoạn code nằm trên chưa chắc đã chạy trước đoạn code nằm dưới và ngược lại
+                Ví dụ:
+                    var a = {};
+                    $("#getdata").on('click', function () {
+                        $.ajax({
+                            url: "https://freegeoip.net/json/",
+                            success: function (dataOfUser) { // ở đây dataOfUser trả về 1 json
+                                a = dataOfUser; // ta gán a cho dataOfUser
+                            }
+                        });
+                    });
+                    console.log(a);
+                    Trong đó getdata là id của 1 thẻ html
+                Đoạn code trên được thực thi nếu không phải ngôn ngữ JavaScript kết quả in ra sẽ có giá trị là dataOfUser.
+                Tuy nhiên kết qua được in ra vẫn là {}.
+            Và đây là mục đích của chương JavaScript này. Chỉ quan tâm về bất đồng bộ. 1 vấn đề được xem là quan trọng duy nhất.
     </pre>
 
     <script>(function (d, s, id) {
