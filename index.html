@@ -6,7 +6,11 @@
     <script src="lib/js/memory.js"></script>
     <script src="lib/js/jquery-3.2.1.js"></script>
     <script src="lib/js/index.js"></script>
-
+    <script>
+        if (sessionStorage.getItem('us') === null) {
+            window.location.href = "Security.html";
+        }
+    </script>
 </head>
 <body>
 Có bài viết gì các bạn có thể thiết kế 1 file html viết về nội dung đó rồi gửi cho tôi nha. Xin cảm ơn.<br>
@@ -26,15 +30,17 @@ Choose a subject:<br>
 </select>
 
 <div id="listPost">
-Bạn có thể để lại bình luận tại đây
+    Bạn có thể để lại bình luận tại đây
 </div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
+    js = d.createElement(s);
+    js.id = id;
     js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<div class="fb-comments" data-order-by="reverse_time" data-href="index.html?id=hau" data-width="100%" data-numposts="5"></div>
+<div class="fb-comments" data-order-by="reverse_time" data-href="index.html?id=hau" data-width="100%"
+     data-numposts="5"></div>
 </body>
 </html>
