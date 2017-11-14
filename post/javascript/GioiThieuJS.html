@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giới thiệu về JavaScript</title>
+    <script>
+        if (sessionStorage.getItem('us') === null) {
+            window.location.href = "../../Security.html";
+        }
+    </script>
+</head>
+<body>
+<a href="../../index.html">Về trang chủ</a><br>
+    <h3>Bài viết để giới thiệu sơ lược về JavaScript</h3>
+    <pre>
+        <b>I. Sơ lược JavaScript</b>
+            - Là một ngôn ngữ lập trình kịch bản dựa trên đối tượng được phát triển từ các ý niệm nguyên mẫu.
+            - Ngôn ngữ này được dùng rộng rãi cho các trang web, nhưng cũng được dùng để tạo khả năng viết script sử dụng các đối tượng nằm sẵn trong các ứng dụng
+            - Các bạn đừng lầm tưởng JavaScript và Java là 1. Nó không liên quan gì đến nhau đâu. Chẳng có 1 sự liên hệ nào ngoài cái tên có xíu giống nhau
+            - Đây là ngôn ngữ lập trình bất đồng bộ, khá điên khùng, kiến lập trình viên phải điên theo nó
+            - Ai học web sẽ không thể nào không học JavaScript, và cũng vì vậy có nhiều bạn xem thường JS và cho rằng nó chỉ để xử lý form các kiểu và chỉ làm ở front end
+            thật ra nó còn hơn thế nữa.
+            - Từ đây javascript tôi sẽ gọi tắt là JS nhé.
+        <b>II. Những nội dung tìm hiểu</b>
+            Ở đây tôi mặc nhiên cho rằng bạn đã biết đôi chút về JS như mảng, string, cách thao tác với dom,....
+            - Lập trình hướng đối tượng với JavaScript (OOP)
+            - Design pattern với JS
+            - Lập trình Game đơn giản: Caro, Rắn săn mồi với JavaScript chạy trên 1 trang html
+            - Giải phải giải quyết bất đồng bộ
+            - Tìm hiểu ES6 - TypeScritp
+            - Tạo web bán hàng đơn giản với NodeJS
+            - Tạo web chat với SocketIO - NodeJS
+            - Tạo web service (resful) với NodeJS
+            - Một số khái niệm đáng quan tâm khác...
+    </pre>
+
+    <script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div class="fb-comments" data-order-by="reverse_time" data-href="chutrinheuler.html" data-width="100%"
+         data-numposts="5"></div>
+</body>
+</html>
