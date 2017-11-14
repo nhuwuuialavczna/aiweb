@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bảo mật tài khỏan</title>
+    <script src="lib/js/jquery-3.2.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#adlogin").on('click', function () {
+                $.ajax({
+                    url: "",
+                    success: function (data) {
+                        var val = data.result;
+                        if (val === 'success') {
+                            sessionStorage.setItem('us', 'ok');
+                        }
+                    },
+                    error: function (e) {
+                        console.log(e.message);
+                    }
+                });
+            });
+            $("#uslogin").on('click', function () {
+                $.ajax({
+                    url: "https://freegeoip.net/json/",
+                    success: function (dataOfUser) {
+                        // gửi dữ liệu về server để tiến hành đăng nhập vào hệ thống
+                        $.ajax({
+                            url: "http://serviceaicode.azurewebsites.net/?ip="+dataOfUser,
+                            success: function (data) {
+                                // gửi dữ liệu về server để tiến hành đăng nhập vào hệ thống
+                                alert(data);
+                            }
+                        });
+                    }
+                });
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+Bạn phải đăng nhập trước khi vào web. Nếu đã có tài khoản mời bạn đăng nhập. Nếu không hãy liên hệ admin.<br>
+Bạn chỉ cần nhấn vào đăng nhập ở bên dưới. Hệ thống sẽ đăng nhập cho bạn<br>
+<button id="uslogin">Đăng nhập</button>
+<br>
+Ô dưới đây dành cho quản trị viên:<br>
+Admin code: <input type="text" placeholder="Admin code" id="admincode">
+<button id="adlogin">Đăng nhập</button>
+</body>
+</html>

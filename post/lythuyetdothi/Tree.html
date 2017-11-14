@@ -62,9 +62,42 @@
         - Tuy nhiên trong bài viết này chỉ tìm hiểu về DFS và BFS thôi, hai cái kia sẽ có bài viết riêng vì khá quan trọng
 
     <b>IV. Tìm cây bao trùm bằng DFS</b>
+        1. Mã giả
+            khởi tạo:
+                - Một ma trận vuông (maTrixT) kích thước là n đỉnh và n cột trong đó n là số đỉnh của đồ thị G. và G là đồ thị cần tìm cây bao trùm
+                -1 mảng visited để đánh dấu đỉnh nào đã nằm trong ma trận kề trên
+            chúng ta thực hiện tìm cây bao trùm như sau
+            Đảm bảo rằng G liên thông
+            DFS(v){
+                visited[v] = đã xét
+                foreach đỉnh kề với V gọi là i
+                    if chưa nằm trong T(nghĩa là visited[i] chưa xét
+                        ta thêm cạnh (v,i) vào cây T (tức là matrixT[v][i] = 1
+                        và visited[i] = đã xét
+                        DFS(v)
+            }
+            sau đó in ra maTrixT
+        2. Hiện thực với code Java
+            ta có số đỉnh là soDinh, và matrix là ma trận kề của G
+
+            private void TaoCayBaoTrumDFS(int v) {
+                visited[v] = true;
+                for (int i = 0; i < soDinh; i++) {
+                    if (!visited[i] && matrix[v][i] > 0) {
+                        matrixT[v][i] = 1;
+                        visited[i] = true
+                        TaoCayBaoTrumDFS(i);
+                    }
+                }
+            }
+            public void printCayT(int v){
+                TaoCayBaoTrumDFS(v);
+                // sau đó in ma trận matrixT tại đây
+            }
+        3. Chú ý: Theo như trên thì đây chỉ là thuật toán DFS dùng đệ quy chỉ thêm bước thêm cạnh cho T (matrixT[v][i] = 1) thôi.
 
     <b>V. Tìm cây bao trùm bằng BFS</b>
-
+        Tương tự như duyệt đồ thị theo BFS nhưng thêm bước thêm cạnh cho T (matrixT[v][i] = 1)
 </pre>
 
 

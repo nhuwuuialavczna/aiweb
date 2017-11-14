@@ -49,28 +49,35 @@
         <b>III. Mã giả</b>
 
         <b>IV. Hiện thực với Java</b>
-                int b[] = new int[soDinh];
-                int c[] = new int[soDinh];
-
-                // khởi tạo xong
-                public void timTatCaChuTrinhHamiltonCuaDoThi(int j){
-                    for(int k=0;k < soDinh; k++){
-                        if(b[k]==0&& maTrix[c[j-1]][k]>0){
-                            b[k]=1;
-                            c[j]=k;
-                        if(j==soDinh-1){
-                            System.out.println(Arrays.toString(c));
-                        }else{
-                            timTatCaChuTrinhHamiltonCuaDoThi(j+1);
-                        }
-                            b[k]=0;
-                        }
+                // các bạn khởi tạo như sau
+                int X[] = new int[soDinh]; //X dùng để chứa chu trình
+                int visit[] = new int[soDinh];// visit lưu các đỉnh đã qua
+                int nSoCTrinh = 0;// đếm số chu trình
+               public void inChuTrinh() {
+                    if (nSoCTrinh == 0) {
+                        System.out.println("\nCac chu trinh Hamiltom co:\n");
                     }
+                    for (int i = 0; i < soDinh; i++) {
+                        System.out.print(X[i] + 1 + "  ");
+                    }
+                    System.out.print(1);
+                    nSoCTrinh++;
+                    System.out.println();
                 }
 
-                private void showpath() {
-                    for (int k = 0; k < soDinh; k++) System.out.printf("%4d", c[k] + 1);
-                    System.out.printf("%4d\n", c[0] + 1);
+                public void timTatCaChuTrinhHamiltonCuaDoThi(int k) {
+                    for (int y = 0; y < soDinh; y++) {
+                        if (matrix[X[k - 1]][y] != 0) {
+                            if ((k == soDinh) && (y == v0)) {
+                                inChuTrinh();
+                            } else if (!visit[y]) {
+                                X[k] = y;
+                                visit[y] = true;
+                                timTatCaChuTrinhHamiltonCuaDoThi(k + 1);
+                                visit[y] = false;
+                            }
+                        }
+                    }
                 }
         <b>V. Giải thích đôi xíu về đoạn code rườm rà trên</b>
             if (b[k]==0 && a[c[j-1]][k])// Nếu đỉnh k chưa duyệt đến và có nối với đỉnh vừa được ghi nhận trước đó (thứ j-1, số hiệu là c[j-1])

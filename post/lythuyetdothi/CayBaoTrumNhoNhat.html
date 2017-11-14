@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm cây bao trùm nhỏ nhất với thuật toán prim và kruskal</title>
+</head>
+<body>
+    <h3>Bài viết hướng dẫn tìm cây bao trùm nhỏ nhất với thuật toán prim và kruskal</h3>
+<pre>
+
+    <b>I. Lý thuyết</b>
+        - Đồ thị có trọng số: là đồ thị trong đó mỗi cạnh được gán 1 số nguyên gọi là trọng số (weight) của cạnh đó
+            Ví dụ: Đi từ Quận 2 ra Quận 3 mất 1 lít xăng (bỏ qua kẹt xe, xe hư, mắc ị,...) thì trọng số giữa đường đi này là 1
+        - Xây dựng ma trận kề cho đồ thị có trọng số:
+            Cho G = (V,E) có trọng số, ma trận kề trọng số của G là ma trận A[V][V] trong đó mỗi phần tử A[i][j] có giá trị là trọng số được
+            biểu diễn trên đồ thị. Nếu i,j không kề nhau thì trọng số là không xác định ta biểu diễn nó là số 0 khi biểu diễn trên máy tính
+        - Định lý: Cho T là 1 cây bao trùm của đồ thị. T là cây bao trùm tối thiểu của đồ thị nếu và chỉ nếu mỗi cạnh e không thuộc T đều có trọng
+        số lớn nhất trong chu tạo bởi e và các cạnh của T
+    <b>II. Thuật toán prim</b>
+        1. Ý tưởng thuật toán:
+            Trong bài toán này, bắt đầu tại 1 đỉnh tùy ý v của đồ thị, nối v với đỉnh u sao cho cạnh v,u có trọng số là nhỏ nhất. Tiếp theo từ đỉnh u hoặc
+            v tìm cạnh có trọng số nhỏ nhất điều này dẫn đến ta có thêm cạnh thứ 3 và ta thu được 1 bộ phận gồm 2 đỉnh và 3 cạnh. Quá trình thực hiện cho đến
+            khi ta thu được cây gồm n -1 cạnh, đó chính là cây bao trùm cần tìm
+
+        2. Hiện thực với Java
+             public void timPrim(int v) {
+                visited[v] = true;
+                for (int counter = 0; counter < soDinh - 1; counter++) {
+                    min = 999;
+                    for (int i = 0; i < soDinh; i++) {
+                        if (visited[i]) {
+                            for (int j = 0; j < soDinh; j++) {
+                                if (!visited[j]) {
+                                    if (min > matrix[i][j]) {
+                                        min = matrix[i][j];
+                                        u = i;
+                                        v = j;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    visited[v] = true;
+                    total += min;
+                    cayBaoTrum.addEgdes(u,v,min);
+                }
+                System.out.println("The total weight of the spanning tree is " + total);
+            }
+
+    <b>III. Thuật toán kruskal</b>
+        1. Ý tưởng thuật toán
+        2. Mã giả
+        3. Hiện thực với Java
+</pre>
+</body>
+</html>
