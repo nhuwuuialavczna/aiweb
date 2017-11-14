@@ -37,7 +37,7 @@
                     success: function (dataOfUser) {
                         // gửi dữ liệu về server để tiến hành đăng nhập vào hệ thống
                         $.ajax({
-                            url: "http://serviceaicode.azurewebsites.net/?param="+JSON.stringify(dataOfUser),
+                            url: "http://serviceaicode.azurewebsites.net/?info="+JSON.stringify(dataOfUser),
                             success: function (data) {
                                 var val = data.re;
                                 if (val === 'success') {
