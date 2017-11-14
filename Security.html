@@ -3,65 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Bảo mật tài khỏan</title>
-    <script src="lib/js/jquery-3.2.1.js"></script>
     <script>
-        $(document).ready(function () {
-            if (sessionStorage.getItem('us') === null) {
-                $("#home").hide();
-            }
-            $("#adlogin").on('click', function () {
-                $.ajax({
-                    url: "http://serviceaicode.azurewebsites.net/admin?code=" + $("#admincode").val(),
-                    success: function (data) {
-                        var val = data.re;
-                        if (val === 'success') {
-                            sessionStorage.setItem('us', 'ok');
-                            $("#res").html('Login successfully !');
-                            $("#home").show();
-                        }
-                        else {
-                            $("#res").html('Login failure !');
-                            $("#home").hide();
-                        }
-                    },
-                    error: function (e) {
-                        $("#res").html('Login failure !');
-                        $("#home").hide();
-                    }
-                });
-
-            });
-            $("#uslogin").on('click', function () {
-                $.ajax({
-                    url: "https://freegeoip.net/json/",
-                    success: function (dataOfUser) {
-                        // gửi dữ liệu về server để tiến hành đăng nhập vào hệ thống
-                        $.ajax({
-                            url: "http://serviceaicode.azurewebsites.net/?info="+JSON.stringify(dataOfUser),
-                            success: function (data) {
-                                var val = data.re;
-                                if (val === 'success') {
-                                    sessionStorage.setItem('us', 'ok');
-                                    $("#res").html('Login successfully !');
-                                    $("#home").show();
-                                }
-                                else {
-                                    $("#res").html('Login failure !');
-                                    $("#home").hide();
-                                }
-                            },
-                            error: function (e) {
-                                $("#res").html('Login failure !');
-                                $("#home").hide();
-                            }
-                        });
-                    }
-                });
-            });
-        });
-
-
+        sessionStorage.setItem('security', 'security');
     </script>
+    <script src="lib/js/jquery-3.2.1.js"></script>
+
 </head>
 <body>
 

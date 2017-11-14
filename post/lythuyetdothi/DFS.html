@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>
+        if (sessionStorage.getItem('us') === null) {
+            window.location.href = "../../Security.html";
+        }
+    </script>
     <title>DFS - duyệt đồ thị theo chiều rộng (Depth-first search)</title>
 </head>
 <body>
@@ -118,10 +123,11 @@
         1. Độ phức tạp không gian của DFS thấp hơn của BFS (tìm kiếm theo chiều rộng).
         2. Độ phức tạp thời gian của hai thuật toán là tương đương nhau và bằng O(|V| + |E|).
 </pre>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
+    js = d.createElement(s);
+    js.id = id;
     js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
