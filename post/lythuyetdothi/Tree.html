@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title>Giới thiệu về cây đồ thị</title>
     <script>
-        sessionStorage.setItem('page', 'security');
+        if (sessionStorage.getItem('us') === null) {
+            window.location.href = "../../Security.html";
+        }
     </script>
+
 </head>
 <body>
 <a href="../../index.html">Về trang chủ</a><br>
