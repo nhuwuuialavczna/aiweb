@@ -11,7 +11,7 @@
 </head>
 <body>
 <a href="../../index.html">Về trang chủ</a><br>
-<h3>Bài viết hướng dẫn sử dụng Callback hell</h3>
+<h3>Bài viết hướng dẫn sử dụng Callback hell để xử lý bất đồng bộ trong JavaScript</h3>
 <pre>
     <b>I. Lý thuyết</b>
         Các bạn vào đây xem nha. <a href="https://toidicodedao.com/2015/02/05/callback-trong-javascript/">CALLBACK TRONG JAVASCRIPT</a>
@@ -132,5 +132,16 @@
            })((result)=> console.log(result));
         });
 </pre>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-order-by="reverse_time" data-href="chutrinheuler.html" data-width="100%"
+     data-numposts="5"></div>
 </body>
 </html>

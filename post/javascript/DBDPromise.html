@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đối tượng Promise để xử lý bất đồng bộ trong JavaScript</title>
+    <script>
+        if (sessionStorage.getItem('us') === null) {
+            window.location.href = "../../Security.html";
+        }
+    </script>
+</head>
+<body>
+<a href="../../index.html">Về trang chủ</a><br>
+<h3>Đối tượng Promise để xử lý bất đồng bộ trong JavaScript</h3>
+<pre>
+    <b>I. Lý thuyết</b>
+       1. Một object Promise đại diện cho một giá trị ở thời điểm hiện tại có thể chưa tồn tại, nhưng sẽ được xử lý và có giá trị vào một
+        thời gian nào đó trong tương lai. Việc này sẽ giúp bạn viết các dòng code xử lý không đồng bộ trông có vẻ đồng bộ hơn.
+        Lấy ví dụ, nếu bạn sử dụng Promise cho việc gọi API để lấy dữ liệu, bạn sẽ tạo ra một đối tượng Promise đại diện cho data lấy được từ API.
+        Điều cốt lõi ở đây là dữ liệu sẽ chưa tồn tại ở thời điểm đối tượng Promise được tạo ra, mà chỉ có thể truy cập sau khi có
+        response từ web service. Trong thời gian chờ lấy dữ liệu, Promise object sẽ đóng vai trò như một proxy cho dữ liệu.
+        Hơn nữa, bạn có thể đính các callback vào Promise object để thực hiện việc xử lý dữ liệu.
+        Các callback này sẽ chỉ thực hiện khi dữ liệu đã sẵn sàng.
+
+        2. Một đối tượng Promise được tạo ra bằng từ khóa new và Contructor là 1 phương thức, Phương thức này nhận vào 2 phương thức là
+        resolve và reject và có thêm các hàm race, all để xử lý các Promise liên tiếp nhau, catch dùng để xử lý ngoại lệ cho các Promise trong khi gọi
+        nhiều Promise
+
+    <b>II. Chuẩn bị như sau để tiến hành: </b>
+        1. 1 file html trong đó có chèn link thư viện Jquery và link file JS chuẩn bị viết
+        2. Mở file đó trên trình duyệt nhấn phím F12. Chuyển qua tab console.
+        3. Vào file JS vừa tạo lúc nảy code. Chú ý: chỉ cần lên trình duyệt nhấn f5 hoặc load lại trang bạn sẽ thấy dc kết quả trong console nội dung của file JS
+        4. Bắt đầu code
+    <b>III. Tiến hành giải quyết bài toán</b>
+        * Chú ý mình dùng Jquery để code nha
+        1. Đầu tiên ta có đoạn code lấy dữ liệu từ https://freegeoip.net/json/ như sau.
+            $(document).ready(function () {
+                $.ajax({
+                    url: "https://freegeoip.net/json/",
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function(err){
+                        console.log(err);
+                    }
+                });
+            });
+
+        2. Chúng ta sẽ viết 1 phương thức để sử dụng Promise như sau:
+
+            let getAjax = () => {
+                return new Promise((resolve, reject) => {
+                    $.ajax({
+                        url: "https://freegeoip.net/json/",
+                        success: function (data) {
+
+                        },
+                        error:function (err) {
+
+                        }
+                    });
+                });
+            };
+            constructor của đối tượng Promise nhận vào 2 tham số là resolve và reject
+            Trong đó resolve để đoán nhận sự thành công và reject đón nhận các error xảy ra
+
+            Chúng ta sử dụng resolve và reject như sau:
+            let getAjax = () => {
+                return new Promise((resolve, reject) => {
+                    $.ajax({
+                        url: "https://freegeoip.net/json/",
+                        success: function (data) {
+                            resolve(data);
+                        },
+                        error:function (err) {
+                            return reject(new Error(err));
+                        }
+                    });
+                });
+            };
+
+            Trong đó hàm resovle có 1 tham số truyền vào đó là kết quả thực hiện thành công
+            Và reject cũng vậy nhưng để nhận vào 1 Error (Error là 1 lớp để in ra lỗi)
+
+        3. Sau khi đã có tối tượng Promise, bạn gọi nó như sau:
+
+            getAjax().then((res) => {
+                console.log(res);
+            }, err => {
+                console.log(err + '')
+            });
+
+            Vì hàm getAjax() trả về 1 Promise nên nó có 2 phương thức then
+            Phương thức then có 2 tham số đó là 2 phương thức. Phương thức đầu tiên để xử lý resovle và thứ 2 để cho reject
+
+        4. Tóm lại đoạn code để xử lý bất đồng bộ cho việc gọi ajax là
+
+            let getAjax = () => {
+                return new Promise((resolve, reject) => {
+                    $.ajax({
+                        url: "https://freegeoip.net/json/",
+                        success: function (data) {
+                            resolve(data);
+                        },
+                        error:function (err) {
+                            return reject(new Error(err));
+                        }
+                    });
+                });
+            };
+
+            getAjax().then((res) => {
+                console.log(res);
+            }, err => {
+                console.log(err + '')
+            });
+    <b>IV. Sử dụng race và all trong Promise để xứ lý bài toán trên: </b>
+        Race, all và catch là 2 hàm nằm trong đối tượng Promise nó dùng để xử lý nhiều Promise liên tiếp nhau. Ở trường hợp gọi ajax này không cần thiết dùng
+        nó. Mình sẽ có 1 bài riêng để hướng dẫn về 3 anh này.
+</pre>
+
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-order-by="reverse_time" data-href="chutrinheuler.html" data-width="100%"
+     data-numposts="5"></div>
+</body>
+</html>
