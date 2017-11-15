@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cách sử dụng callback trong JavaScript</title>
+    <script>
+        if (sessionStorage.getItem('us') === null) {
+            window.location.href = "../../Security.html";
+        }
+    </script>
+</head>
+<body>
+<a href="../../index.html">Về trang chủ</a><br>
+<h3>Bài viết hướng dẫn sử dụng Callback hell</h3>
+<pre>
+    <b>I. Lý thuyết</b>
+        Các bạn vào đây xem nha. <a href="https://toidicodedao.com/2015/02/05/callback-trong-javascript/">CALLBACK TRONG JAVASCRIPT</a>
+        Mình thấy chú ấy viết hay lắm. Copy lại thì mất thời gian với lại mang tiếng copy. Nên mình đưa cái link luôn
+    <b>II. Chuẩn bị như sau để tiến hành: </b>
+        1. 1 file html trong đó có chèn link thư viện Jquery và link file JS chuẩn bị viết
+        2. Mở file đó trên trình duyệt nhấn phím F12. Chuyển qua tab console.
+        3. Vào file JS vừa tạo lúc nảy code. Chú ý: chỉ cần lên trình duyệt nhấn f5 hoặc load lại trang bạn sẽ thấy dc kết quả trong console nội dung của file JS
+        4. Bắt đầu code
+    <b>III. Các ví dụng và tiến hành giải quyết bài toán</b>
+        * Chú ý mình dùng Jquery để code nha
+        1. Đầu tiên ta có đoạn code lấy dữ liệu từ https://freegeoip.net/json/ như sau.
+            $(document).ready(function () {
+                $.ajax({
+                    url: "https://freegeoip.net/json/",
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function(err){
+                        console.log(err);
+                    }
+                });
+            });
+        2. Theo ý muốn là in data hoặc lỗi err ở ngoài hàm ajax.
+        - Chúng ta sẽ bỏ lời gọi ajax vào 1 hàm và tham số truyền vào của hàm là 1 hàm có tên là callback (đặt gì cũng được) như sau:
+        $(document).ready(function () {
+            var getAjax = function (callback) {
+                $.ajax({
+                    url: "https://freegeoip.net/json/",
+                    success: function (data) {
+
+                    },
+                    error: function(err){
+                        console.log(err);
+                    }
+                });
+            };
+        });
+        - Chúng ta đã có hàm getAjax có tham số truyền vào là callback. Tiếp theo chúng ta viết hàm callback như sau:
+        var callback = function (result) {
+            console.log(result);
+        };
+
+        3. Chúng ta sẽ gọi hàm callback ngay sau khi nhận kết quả từ success hoặc error như sau:
+        $(document).ready(function () {
+            var callback = function (result) {
+                console.log(result);
+            };
+
+            var getAjax = function (callback) {
+                $.ajax({
+                    url: "https://freegeoip.net/json/",
+                    success: function (data) {
+                        return callback(data);
+                    },
+                    error:function (err) {
+                        return callback(err);
+                    }
+                });
+            };
+        });
+
+        Vào lúc này callback đã xong. Hàm callback sẽ in ra kết quả sau khi có kết quả từ Ajax
+
+        4. Tiến hành chạy như sau:
+         $(document).ready(function () {
+            var callback = function (result) {
+                console.log(result);
+            };
+
+            var getAjax = function (callback) {
+                $.ajax({
+                    url: "https://freegeoip.net/json/",
+                    success: function (data) {
+                        return callback(data);
+                    },
+                    error:function (err) {
+                        return callback(err);
+                    }
+                });
+            };
+
+            getAjax(callback);
+
+        });
+        Xong rồi đó giờ đã in kết quả sau khi ajax xong và in ở ngoài hàm ajax rồi đó. Bạn có thể viết gọi lại như sau (Khi mở thư viện Jquery lên xem bạn sẽ
+        gặp phải cách viết này):
+
+        $(document).ready(function () {
+            (function (callback) {
+                $.ajax({
+                    url: "https://freegeoip.net/json/",
+                    success: function (data) {
+                        return callback(data);
+                    },
+                    error:function (err) {
+                        return callback(err);
+                    }
+                });
+            })(function (result) {
+                console.log(result);
+            });
+        });
+
+        Hoặc ở ES 6 các bạn viết như sau:
+
+        $(document).ready(()=>{
+            ((callback) =>{
+                $.ajax({
+                    url: "https://freegeoip.net/json/",
+                    success: (data)=> {
+                        return callback(data);
+                    },
+                    error: (err) => {
+                        return callback(err);
+                    }
+                });
+           })((result)=> console.log(result));
+        });
+</pre>
+</body>
+</html>

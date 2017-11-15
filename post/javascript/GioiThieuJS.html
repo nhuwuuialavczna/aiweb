@@ -22,7 +22,7 @@
             thật ra nó còn hơn thế nữa.
             - Từ đây javascript tôi sẽ gọi tắt là JS nhé.
         <b>II. Những nội dung tìm hiểu</b>
-            Ở đây tôi mặc nhiên cho rằng bạn đã biết đôi chút về JS như mảng, string, cách thao tác với dom,....
+            Ở đây tôi mặc nhiên cho rằng bạn đã biết đôi chút về JS như mảng, string, cách thao tác với dom, hiểu biết cơ bản về cú pháp es5 ....
             - Lập trình hướng đối tượng với JavaScript (OOP)
             - NodeJS
             - Xử lý bất đồng bộ trong JavaScript
@@ -33,20 +33,46 @@
             2. Học về npm và tạo web với nodejs
             3. JavaScript là 1 ngôn ngữ bất đồng bộ nghĩa là đoạn code nằm trên chưa chắc đã chạy trước đoạn code nằm dưới và ngược lại
                 Ví dụ:
-                    var a = {};
-                    $("#getdata").on('click', function () {
-                        $.ajax({
-                            url: "https://freegeoip.net/json/",
-                            success: function (dataOfUser) { // ở đây dataOfUser trả về 1 json
-                                a = dataOfUser; // ta gán a cho dataOfUser
-                            }
-                        });
-                    });
-                    console.log(a);
+                    $.ajax({
+                         url: "https://freegeoip.net/json/",
+                         success: function (dataOfUser) { // ở đây dataOfUser trả về 1 json
+
+                        }
+                     });
+
                     Trong đó getdata là id của 1 thẻ html
-                Đoạn code trên được thực thi nếu không phải ngôn ngữ JavaScript kết quả in ra sẽ có giá trị là dataOfUser.
-                Tuy nhiên kết qua được in ra vẫn là {}.
-            Và đây là mục đích của chương JavaScript này. Chỉ quan tâm về bất đồng bộ. 1 vấn đề được xem là quan trọng duy nhất.
+                Ở nhiều trường hợp bạn cần phải in giá trị dataOfUser ở ngoài hàm gọi ajax. Tuy nhiên nếu bạn tạo 1 biến và gán giá trị cho biến đó
+                như sau:
+                var a = {};
+                $.ajax({
+                     url: "https://freegeoip.net/json/",
+                     success: function (dataOfUser) { // ở đây dataOfUser trả về 1 json
+                             a = dataOfUser
+                      }
+                 });
+                rồi gọi console.log(a);
+                Tuy nhìn có vẻ đã logic rồi nhưng thực chất JS là bất đồng bộ. Câu lệnh trước sẽ được thực thi trước nhưng không có nghĩa là hoàn
+                thành trước. Do đó giá trị dc log ra vẫn là {} vì đoạn ajax chưa chạy xong dù chạy trước. và biến a vẫn chua đổi giá trị
+                Nghĩa là hàm log chạy sau nhưng xong trước.
+
+            4. Giải quyết bài toán trên chúng ta có 3 cách như sau.
+                a. Ở phiên bản ECMAScript 5 chúng ta sử dụng callback hell
+                b. Ở phiên bản ECMAScript 6 chúng ta sử dụng đối tượng Promise
+                c. Ở phiên bản ECMAScript 7 chúng ta sử dụng async và await
+
+                * Chú ý: b,c cách trên chỉ là 1 được xây dựng từ callback hell. Nhưng các bạn sẽ hiểu rõ vì sau mà người ta ko dùng callback thôi
+                mà phải đề ra nhiều cách như vậy. Hiện tại có 3 cách trên để xử lý bất đồng bộ, trong đó ECMAScript 7 chúng ta sử dụng async và await sẽ
+                giúp đoạn code bất đồng bộ chạy như là đồng bộ
+
+                * Đồng bộ (Sync) là gì: Đồng bộ là khả năng chạy từ trên xuống dưới từ trái sang phải. Đoạn code nào ghi trước chạy trước chạy xong mới đén đoạn sau:
+                    Ví dụ:
+                        for(int i=0;i < n ;i++){
+                            System.out.print(i);
+                        }
+                        System.out.print(5);
+                    Đoạn code trên thuộc ngôn ngữ Java ( Java là ngôn ngữ đồng bộ) sau khi xong dòng for mới in ra 5
+                * Bất đồng bộ (Async) là quá trình chạy các đoạn code theo trình tự từ trên xuống nhưng không có sự chờ đợi giữa các dòng lệnh. Chạy
+                trước hoàn thành sau là chuyện bình thường với JS. Các bạn đừng nóng. Chúng ta sẽ nhai nó sau các bài viết kế tiếp
     </pre>
 
     <script>(function (d, s, id) {
