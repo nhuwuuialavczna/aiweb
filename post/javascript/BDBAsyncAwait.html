@@ -22,6 +22,58 @@
         3. Vào file JS vừa tạo lúc nảy code. Chú ý: chỉ cần lên trình duyệt nhấn f5 hoặc load lại trang bạn sẽ thấy dc kết quả trong console nội dung của file JS
         4. Bắt đầu code
     <b>III. Tiến hành giải quyết bài toán</b>
+        $(document).ready(function () {
+            $.ajax({
+                url: "https://freegeoip.net/json/",
+                success: function (data) {
+
+                },
+                error: function(err){
+
+                }
+            });
+        });
+
+        Vẫn tiếp tục giải quyết vấn đề cũ theo 1 cách khác nhé:
+
+        Chúng ta sẽ tạo ra 1 Promise như sau:
+
+        let getAjax = () => {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: "https://freegeoip.net/json/",
+                    success: function (data) {
+                        resolve(data);
+                    },
+                    error:function (err) {
+                        return reject(new Error(err));
+                    }
+                });
+            });
+        };
+
+        Cái này đã được hướng dẫn ở bài viết về Promise
+
+        Bước kế tiếp chúng ta sẽ tạo ra phương thức như sau:
+
+        let a = ()=>{
+            let getA = getAjax();
+            console.log(getA);
+        };
+        a();
+
+        Khi chạy chương trình chúng ta sẽ in kết quả là Promise có trạng thái là Pending vì dòng getAjax() chưa xong thì nó đã in ra.
+        Đến đây chúng ta lại mắc phải bấc đồng bộ với cách viết này. Nhưng đừng lo vẫn còn 1  công cụ đó là async và await như đã nói ở trên
+        Chúng ta sử dung nó như sau:
+
+        let a = async()=>{
+            let getA =await getAjax();
+            console.log(getA);
+        };
+
+        Và rồi kết quả đã như ý muốn của chúng ta. Và đoạn code trong phương thức async a đã chạy từ trên xuống dưới như đồng bộ nhờ từ khóa wait
+        Từ khóa await kiến cho các dòng bên dưới nó sẽ đợi nó chạy xong và await sẽ phải nằm trong phương thức async
+
 </pre>
 
 <script>(function (d, s, id) {
@@ -33,7 +85,7 @@
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-order-by="reverse_time" data-href="chutrinheuler.html" data-width="100%"
+<div class="fb-comments" data-order-by="reverse_time" data-href="AsyncAwait.html" data-width="100%"
      data-numposts="5"></div>
 </body>
 </html>

@@ -14,7 +14,109 @@
 
 <pre>
     <b>I. Callback hell - ES 5</b>
+        -Callback có thể xem là 1 hàm được truyền vào trong danh sách tham số của hàm khác. Ví dụ ta có hàm A và hàm B, hàm B được truyền vào trong hàm A
+        Đến 1 lúc nào cần xử lý các chức năng mà hàm B nắm giữ thì hàm B sẽ được gọi. Khi đó hàm B là callback
+        - Như đã biết JS là 1 ngôn ngữ lập trình hướng sự kiện và bất đồng bộ nên chúng ta cần dùng callback để xử lý các sự kiện và tác vụ bất đồng bộ
+        - Ví dụ:
+            $("#a").submit(function(){
+                // đây là body của callback
+            });
+
+        - Khi sử dụng callback function thì phải tuân thủ về kiểu trả về và danh sách tham số truyền vào của hàm callback đó
+        - Đây là sự ảo diệu và điểm mạnh của ngôn ngữ bất đồng bộ này. TUy nhiên nó kiến bao người phải khốn đốn vì sự bất đồng bộ đó
+
     <b>II. Promise - ES 6</b>
+        - Promise là 1 đối tượng được đưa vào từ phiên bản ES 6 dùng để xử lý bất đồng bộ
+        - Một đối tượng Promise được tạo ra với từ khóa new
+        - Khi được tạo ra thì đối tượng Promise có 3 trạng thái là
+            1. Fulfilled: Hành động đã thực hiện xong và thành công
+            2. Rejected: Hành động đã thực hiện xong và thất bại
+            3. Pending: Hành động đang chờ xử lý và thất bại
+        - Trong đó 2 trạng thái Reject và Fulfilled được gọi là Settled, tức là đã thực hiện xong
+
+        * Cách sử dụng Promise
+        1. Khởi tạo Promise như sau:
+            var p = new Promise(function(resovle,reject){
+
+            });
+
+        Trong đó ta thấy: resolve là 1 hàm callback dùng để xử lý hành động thành công
+                          reject là 1 hàm callback dùng để xử lý hành động thất bại
+
+        2. Thenable trong Promise:
+            Hàm then dùng để nhận kết quả từ 2 trạng thái của Promise là thành công hoặc thất bại mà ta khai báo ở Resovle và Reject. Nó có
+            2 tham số truyền vào là 2 hàm callback. Hàm đầu tiên để xử lý Resovle và hàm thứ Hai dùng để xử lý Reject:
+
+            Ví dụ:
+            var a =new Promise((resovle,reject) => {
+                // success
+                resolve(a);
+
+                // Error
+                reject(a);
+            })
+
+            a.then(
+                (success) => {},
+                (error) => {},
+            )
+
+
+        3. Sử dụng lại 1 Promise
+            - Để sử dụng lại promise chúng ta chỉ cần sử dụng 1 hàm rồi return về đối tượng promise như sau:
+            Ví dụ chúng ta có 2 hàm để tính a * b và a / b, mỗi hàm trả 1 về 1 Promise và chúng ta sẽ tìm hiểu cách để sử dụng các Promise liên tiếp nhau
+
+            * Chúng ta có 2 phương thức trả về Promise như sau:
+            // hàm để lấy số chia hết cho 2
+            var chiaHetCho2 = function (a) {
+                return new Promise(function (resovle, reject) {
+                    if (typeof a != 'number' || a % 2 != 0) {
+                        return reject(new Error("Đây không phải là số hoặc không chia hết cho 2! (Thuộc phép chia)"));
+                    }
+                    resovle(a);
+                });
+            };
+            var nhanCho1So = function (a, b) {
+                return new Promise(function (resovle, reject) {
+                    if (typeof a != 'number' || typeof a != 'number') {
+                        return reject(new Error("Đây không phải là số ! (Thuộc phép nhân)"));
+                    }
+                    resovle(a * b);
+                });
+            };
+
+            Lỗi mà reject xử lý ở cả 2 phương thức trên là không phải là số hoặc không chia hết cho 2.
+            Giờ chúng ta sẽ gọi chúng như sau để tính a * b.
+
+            let result = (a,b) => chiaHetCho2(a).then((res) => {
+                nhanCho1So(res, b).then((res) => {
+                    console.log(res);
+                }, (err) => {
+                    console.log(err+'');
+                });
+            }, (err) => {
+                console.log(err+'');
+            });
+
+            1. result(4,5) kết quả là 20
+
+            2. result("4",5); kết quả là error và reject đầu tiên được thực hiện
+
+            3. result(4,"5") kết quả sẽ là 0. nghĩa là đã gặp reject nhưng lỗi ở vị trí thứ 2 nên nó không xử lý mà trả về 0
+
+            Nói cách khác để xử lý nhiều reject chúng ta không thể dùng trong hàm then như thế vì nó chỉ xử lý cái reject đầu tiên
+
+        4. Sử dụng catch trong JavaScript
+
+            Để giải quyết trường hợp đã được nêu tren bước trên ta có thể sử dụng catch và xử lý như sau
+
+            let result = (a,b) => chiaHetCho2(a).
+                                                then((res) => nhanCho1So(res,b)).
+                                                catch((err)=>{console.log(err+'')});
+            Chúng ta có thể gọi các Promise như thế này. Catch sẽ sử lý ngay sau khi gặp reject không qua tâm là trước hay sau như ở trên
+
+        5. Cách sử dụng all và race (Mình sẽ hoàn thành sau).
+
     <b>III. Async và Await - ES 7</b>
 </pre>
 <script>(function (d, s, id) {
@@ -26,7 +128,7 @@
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-order-by="reverse_time" data-href="chutrinheuler.html" data-width="100%"
+<div class="fb-comments" data-order-by="reverse_time" data-href="LyThyetOOP.html" data-width="100%"
      data-numposts="5"></div>
 </body>
 </html>
