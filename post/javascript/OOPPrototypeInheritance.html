@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo đối tượng trong JavaScript và PrototypeInheritance</title>
+    <script>
+        if (sessionStorage.getItem('us') === null) {
+            window.location.href = "../../Security.html";
+        }
+    </script>
+</head>
+<body>
+<h3>Bài viết hướng dẫn khởi tạo đối tượng và PrototypeInheritance trong JavaScript </h3>
+<a href="../../index.html">Về trang chủ</a><br>
+
+<pre>
+    <b>I. Khỏi tạo đối tượng</b>
+        - Trong JS để khởi tạo 1 đối tượng các bạn có thể sử dụng 1 trong các cách sau:
+            1. Dùng cặp dấu {}
+            var a = {};
+            console.log(typeof a); // object
+
+            2. Dùng từ khóa new cho 1 function
+            var a = function A() {
+
+            };
+            console.log(typeof new a());// object
+
+            3. Dùng phương thức create của đối tượng Object
+            var a = Object.create(null);
+            console.log(typeof a);// object
+
+        - Để khởi tạo 1 đối tượng  có constructor và các tham số truyền vào các bạn làm như sau
+            function Person(name) {
+              this.name = name;
+            };
+
+            var p1 = new Person("hau");
+            console.log(p1.name);
+
+            * Chú ý về từ khóa this các bạn nên xem lại bài viết về từ khóa this nha
+
+        - Đây là cách khởi tạo 1 đối tượng có các giá trị cho sẵn
+            var address = {
+                street: "No Street",
+                city: "No city",
+                state: "No state",
+                get getaddress() {
+                    return this.street + ", " + this.city + ", " + this.state;
+                }
+            };
+
+            console.log(address.getaddress);
+
+            Lúc này các bạn không cần dùng từ khóa new vì address = {...} đã là 1 đối tượng
+            Trong đó có:
+                get getaddress() {
+                    return this.street + ", " + this.city + ", " + this.state;
+                }
+            + get là 1 từ khóa biểu thị cho các getter và tương tự cũng có từ khóa set biểu diễn cho các setter và lúc đó các hàm có từ khóa get set được gọi như gọi 1 biến
+
+    <b>II. Tạo phương thức cho đối tượng</b>
+        - Để tạo 1 phương thức cho đối tượng ta có 2 cách cơ bản sau:
+            1. Dùng từ khóa this và tạo trực tiếp trong đối tượng
+                Ví dụ:
+                    function Animal(){
+                        this.name = "Animal";
+                        this.toString = function(){
+                            return "My name is "+ this.name;
+                        }
+                    }
+                Trong ví dụ trên chúng ta đã tạo ra 1 phương thức toString để in ra name của đối tượng Animal và đó cũng là phương thức của đối tượng
+                Object chúng ta chỉ đang override lại phương thức toString thôi.
+
+            2. Dùng từ khóa prototype để tạo phương thức
+                    function Animal(){
+                        this.name = "Animal";
+
+                    }
+
+                    Animal.toString = function(){
+                            return "My name is "+ this.name;
+                    }
+
+         - Để khởi tạo 1 đối tượng các bạn đã được biết đến ở JS căn bản rồi nên tôi không nhắc lại nhiều chúng ta sẽ đến phần trọng tâm là kế thừa
+    <b>III. Cách kế thừa cơ bản của các đối tượng trong JS</b>
+        - Ngôn ngữ JS là ngôn ngữ lập trình hướng sự kiện nên không có sẵn các từ khóa class (Java,C#,C++) hay cơ bản nhất là Struct trong C. Tuy nhiên nói JS không thể làm kế thừa
+        là sai. Chúng ta có thể làm được nhưng phải qua nhiều trò và chiêu thức.
+        Ví dụ ta có 2 đối tượng:
+            var Job = function (pay) {
+                this.pay = pay;
+            };
+            Job.prototype.print = function () {
+                console.log((this.pay ? "Please hire me" : "no thank you"));
+            };
+            var TeachJob = function (title, pay) {
+                this.title = title;
+                this.pay = pay;
+            };
+
+            Chúng ta sẽ làm cho đối tượng TeachJob là con của đối tượng Job như sau:
+                TeachJob.prototype = Object.create(Job.prototype); // Các prototype của Job sẽ là của TeachJob. Nghĩa là đã có sự kế thừa ở đây
+                TeachJob.prototype.constructor = TeachJob;// Chúng ta khỏi tạo 1 đói tượng TeachJob và constuctor là TeachJob
+
+            Giờ chúng ta có thể làm như sau
+            var softwarePosition = new TeachJob("JS Programer", true);
+            softwarePosition.print();
+
+            Như đã thấy lúc chưa thiết lập kế thừa thì TeachJob không hề có phương thức print. Nhưng giờ nó đã có rồi đấy. Hjhj
+
+        - Chúng ta cùng phân tích đoạn code sau để biết rõ sự kế thừa:
+            function Animal(){
+                this.name = "Animal";
+                this.toString = function(){
+                return "My name is "+ this.name;
+              }
+            }
+            function Canine(){
+                this.name = "Canine";
+            }
+
+            function Wolf(){
+                this.name = "Wolf";
+            }
+            Canine.prototype = new Animal();
+            Wolf.prototype = new Canine();
+
+            Canine.prototype.constructor = Canine;
+            Wolf.prototype.constructor = Wolf;
+
+            var aracticWolf = new Wolf();
+            console.log(aracticWolf.toString());
+            console.log(aracticWolf instanceof Animal);
+
+            + Chúng ta có 3 đối tượng Animal chỉ tất cả động vật, Canine chỉ về loài chó và Wolf để chỉ về chó sói
+            Canine.prototype = new Animal(); // thiết lập đối tượng Canine có các prototype kế thừa các prototype của Animal
+            Wolf.prototype = new Canine(); // thiết lập đối tượng Wolf có các prototype kế thừa các prototype của Canine
+
+                Suy ra: Qua 2 dòng code trên chúng ta đã: thiết lập đến 3 sự kế thừa đó là 2 cái nói ở trên và có thêm Wolf có các prototype kế thừa các prototype của Animal
+            Chúng ta có thể khỏi tạo 1 đối tượng có sói và dùng hàm toString, sau khi log hàm toString của Wolf ra thì chúng ta thấy nó đang sử dụng cái toString của Animal
+            Và thể hiện của đối tượng có sói là Animal
+
+            + Chúng ta thêm 1 thuộc tính cho Animal, Canine, Wolf như sau:
+                Animal.prototype.sound = "Grrrr";
+                Canine.prototype.sound = "Woof";
+                Wolf.prototype.sound = "Grrrr Wolof";
+
+            + Thêm phương thức getSound cho đối tượng Animal như sau:
+                Animal.prototype.getSound = function(){
+                    return this.name+"\t"+this.sound;
+                };
+
+                Sau đó gọi aracticWolf.getSound(). Kết quả là "Wolf	Grrrr Wolof"(name+"\t"+sound). Qua kết quả chúng ta có thế thấy Wolf và Canine đã kế thừa phương thức getSound của Animal
+        - Chúng ta tạm dừng ở đây và đã giới thiệu dường như khá nhiều về kế thừa giữa các đối tượng trong JS rồi đó. Ai có ý kiến và khó hiểu về điều gì xin để lại comment
+</pre>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-order-by="reverse_time" data-href="OOPKeThua.html" data-width="100%"
+     data-numposts="5"></div>
+</body>
+</html>

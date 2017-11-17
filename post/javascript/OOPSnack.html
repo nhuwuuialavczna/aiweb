@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hướng dẫn viết game Snack trong JavaScript</title>
+    <script>
+        if (sessionStorage.getItem('us') === null) {
+            window.location.href = "../../Security.html";
+        }
+    </script>
+</head>
+<body>
+<a href="../../index.html">Về trang chủ</a><br>
+<h3>Hướng dẫn làm game rắn săn mồi bằng JS và chạy trược tiếp trên browser</h3>
+
+<pre>
+    <b>I. Chuẩn bị</b>
+        - Tinh thuần và kiến thức
+        - Phần mềm code tốt về autocomplete. Chúng ta code bằng ES6. (Mình dùng IntellIJ Idea). Và NodeJS compile code typescript
+        - Kiến thức từ đầu đến giờ
+        - Html css
+    <b>II. Tiến hành là game:</b>
+        Hiện tại chưa có thời gian làm game này. Tôi sẽ hướng dẫn các bạn qua video
+</pre>
+
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-order-by="reverse_time" data-href="SnackJS.html" data-width="100%"
+     data-numposts="5"></div>
+</body>
+</html>

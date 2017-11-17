@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cách sử dụng class trong es6</title>
+    <script>
+        if (sessionStorage.getItem('us') === null) {
+            window.location.href = "../../Security.html";
+        }
+    </script>
+</head>
+<body>
+<a href="../../index.html">Về trang chủ</a><br>
+<h3>Cách sử dụng class trong ES6</h3>
+    <b>I. Giới thiệu</b>
+        - Từ trước đến nay có lẽ các bạn đã quen với cú pháp JS thuần rồi. Tuy nhiên việc khởi tạo và thiết lập kế thừa khác rườm rà và khó khăn cho các bạn
+        không hiểu rõ. Do đó ở phiên bản ES6. JS cung cấp thêm cho chúng ta từ khóa class và các từ khóa liên quan để thao tác với đối tượng tốt hơn
+        và gần giống với các ngôn ngữ lập trình khác
+    <b>II. Thao tác với đối tượng trong ES6</b>
+        1. Chúng ta khởi tạo class Person như sau:
+            class Person{
+                constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+                sayHello(){
+                    return "xin chao toi là: "+this.name;
+                }
+            }
+
+            Hihi, khá đơn giản đúng không. Trong đó từ khóa constructor để khởi tạo 1 constructor cho class person. và sayHello là 1 phương thức trong đối tượng Person
+
+        2. Tiến hành sử dụng tính năng kế thừa như sau:
+            - Tạo thêm đối tượng Child extends Person:
+                class Child extends Person{
+                    constructor(name,age,hobby){
+                        super(name,age);
+                        this.hobby = hobby;
+                    }
+                    sayHello(){
+                        return "Xin chao e là: "+this.name+" e thích: "+this.hobby;
+                    }
+                }
+                Trong đó có từ khóa super để kế thừa các thuộc tính của Person và chúng ta đang override lại phương thức sayHello
+        3. Nếu đoạn code trên được viết với JS thuần thì như thế nào:
+            var __extends = (this && this.__extends) || (function () {
+                var extendStatics = Object.setPrototypeOf ||
+                ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+                return function (d, b) {
+                extendStatics(d, b);
+                function __() { this.constructor = d; }
+                d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                };
+            })();
+            var Person = (function () {
+                function Person(name, age) {
+                this.name = name;
+                this.age = age;
+                }
+                Person.prototype.sayHello = function () {
+                return "xin chao toi là: " + this.name;
+                };
+                return Person;
+            }());
+            var Child = (function (_super) {
+                __extends(Child, _super);
+                function Child(name, age, hobby) {
+                var _this = _super.call(this, name, age) || this;
+                _this.hobby = hobby;
+                return _this;
+                }
+                Child.prototype.sayHello = function () {
+                return "Xin chao e là: " + this.name + " e thích: " + this.hobby;
+                };
+                return Child;
+            }(Person));
+            var p2 = new Child("haau", 2, "Code");
+            console.log(p2.sayHello());
+        Tôi nghĩ các bạn đang hỏi wtf. Nó là v đó, 1 sự ngắn gọn dể hiểu đến khó diễn tả.
+        Ở các bài sau. Chúng ta sẽ cùng nhau viết game với cú pháp ES6 nhé. Chào các bạn.Ai có thắc mắc xin để lại bình luận
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-order-by="reverse_time" data-href="ClassES6.html" data-width="100%"
+     data-numposts="5"></div>
+</body>
+</html>
