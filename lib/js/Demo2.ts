@@ -1,20 +1,22 @@
-let getAjax = () => {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            url: "https://freegeoip.net/json/",
-            success: function (data) {
-                resolve(data);
-            },
-            error:function (err) {
-                return reject(new Error(err));
-            }
-        });
-    });
-};
+class Person{
+    constructor(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    sayHello(){
+        return "xin chao toi là: "+this.name;
+    }
+}
 
-let a = async()=>{
-    let getA =await getAjax();
-    console.log(getA);
-};
+class Child extends Person{
+    constructor(name,age,hobby){
+        super(name,age);
+        this.hobby = hobby;
+    }
+    sayHello(){
+        return "Xin chao e là: "+this.name+" e thích: "+this.hobby;
+    }
+}
 
-a();
+var p2 = new Child("haau",2,"Code");
+console.log(p2.sayHello());
