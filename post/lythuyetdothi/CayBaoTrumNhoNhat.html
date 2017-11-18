@@ -11,7 +11,7 @@
 </head>
 <body>
 <a href="../../index.html">Về trang chủ</a><br>
-    <h3>Bài viết hướng dẫn tìm cây bao trùm nhỏ nhất với thuật toán prim và kruskal</h3>
+<h3>Bài viết hướng dẫn tìm cây bao trùm nhỏ nhất với thuật toán prim và kruskal</h3>
 <pre>
 
     <b>I. Lý thuyết</b>
@@ -22,7 +22,9 @@
             biểu diễn trên đồ thị. Nếu i,j không kề nhau thì trọng số là không xác định ta biểu diễn nó là số 0 khi biểu diễn trên máy tính
         - Định lý: Cho T là 1 cây bao trùm của đồ thị. T là cây bao trùm tối thiểu của đồ thị nếu và chỉ nếu mỗi cạnh e không thuộc T đều có trọng
         số lớn nhất trong chu tạo bởi e và các cạnh của T
-    <b>II. Thuật toán prim</b>
+    <b>II. Class Tree cho các bạn cần:</b>
+        <a href="/lib/file/Tree.java"></a>
+    <b>III. Thuật toán prim</b>
         1. Ý tưởng thuật toán:
             Trong bài toán này, bắt đầu tại 1 đỉnh tùy ý v của đồ thị, nối v với đỉnh u sao cho cạnh v,u có trọng số là nhỏ nhất. Tiếp theo từ đỉnh u hoặc
             v tìm cạnh có trọng số nhỏ nhất điều này dẫn đến ta có thêm cạnh thứ 3 và ta thu được 1 bộ phận gồm 2 đỉnh và 3 cạnh. Quá trình thực hiện cho đến
@@ -53,10 +55,110 @@
                 System.out.println("The total weight of the spanning tree is " + total);
             }
 
-    <b>III. Thuật toán kruskal</b>
+    <b>IV. Thuật toán kruskal</b>
         1. Ý tưởng thuật toán
+            - Sắp xếp danh sách các cạnh của đồ thị G theo thứ tự từ bé đến lớn
+            - Sau đó thêm tuần từ từng cạnh có trong danh sách cạnh đã được sắp xếp vào cây cần tìm nếu cạnh đó không tạo ra chu trình
+            - Thực hiện cho đến khi nhận được số cạnh nhỏ hơn số đỉnh 1 đơn vị là được
         2. Mã giả
-        3. Hiện thực với Java
+            Khởi tạo:
+                T := rỗng (Cây T)
+                C = CG(CG là tập cạnh của G)
+            while(E<sub>T</sub> < n-1){
+                Chọn e là cạnh có trọng số nhỏ nhất trong tập C.
+                if(T thêm e mà không tạo thành chu trình){
+                    thêm cạnh e vào T
+                }
+            }
+        3. Hiện thực với Java (covert lại code của Tân Nguyễn):
+            Chúng ta cần làm những điều sau trước khi chạy thuật toán:
+            1. Viết phương thức kiểm tra đồ thị có chu trình hay không
+                - Ý tưởng: Dùng dfs để duyệt. duyệt cạnh nào xóa cạnh đó và gặp lại cạnh đã thăm thì báo là có chu trình
+                - Code: (Viết trong Class Tree nha. Xem mục II để viết class Tree
+                    public boolean kiemTraCoChuTrinhHayKhong(int a) {
+                    int[][] matrix1 = new int[maxTrixT.length][maxTrixT.length];
+                    for (int i = 0; i < matrix1.length; i++) {
+                        for (int j = 0; j < matrix1.length; j++) {
+                            matrix1[i][j] = maxTrixT[i][j];
+                        }
+                    }
+                    boolean[] tham = new boolean[maxTrixT[0].length];
+                    Stack< Integer > stack = new Stack<>();
+                    stack.push(a);
+                    while (!stack.empty()) {
+                        a = stack.pop();
+                        tham[a] = true;
+                        for (int i = 0; i < matrix1.length; i++) {
+                            if (matrix1[a][i] < 999 && !stack.contains(i)) {
+                                if (!tham[i]) {
+                                    //thăm rùi xóa
+                                    stack.push(i);
+                                    matrix1[a][i] = 999;
+                                    matrix1[i][a] = 999;
+                                } else
+                                    //gặp lại đỉnh đã thăm thì dừng
+                                    return true;
+
+                            }
+                        }
+                    }
+                    return false;
+                }
+
+            2. Viết phương thức lấy ra danh sách cạnh và sắp xếp nó
+            // phương thức được viết ở class tìm cây bao trùm nhen (Không viết trong class Tree)
+             public int[][] danhSachCanhDaSapXep() {
+                int soCanhMaxTrix = getSoCanh();
+                int length = 0;
+                boolean[] vi = new boolean[soDinh];
+                int[][] danhSachCanh = new int[soCanhMaxTrix / 2][3];
+                for (int i = 0; i < soDinh; i++) {
+                    int m = 0;
+                    int[] k = matrix[i];
+                    for (int j = 0; j < soDinh; j++) {
+                        if (i <= j) {
+                            int trongSo = k[j];
+                            if (trongSo < 999) {
+                                int[] motCanh = new int[3];
+                                motCanh[0] = i;
+                                motCanh[1] = j;
+                                motCanh[2] = trongSo;
+                                danhSachCanh[length++] = motCanh;
+
+                            }
+                        }
+                    }
+                    if (length == soCanhMaxTrix / 2) break;
+                }
+                // sắp xếp danh sách cạnh
+                for (int i = 0; i < danhSachCanh.length - 1; i++) {
+                    for (int j = i + 1; j < danhSachCanh.length; j++) {
+                        int[] temp = danhSachCanh[i];
+                        if (temp[2] > danhSachCanh[j][2]) {
+                            danhSachCanh[i] = danhSachCanh[j].clone();
+                            danhSachCanh[j] = temp.clone();
+                        }
+                    }
+                }
+                return danhSachCanh;
+            }
+
+        3. Và cuối cùng là phương thức Kruskal
+         public Tree kruskal(int v) {
+            int[][] canhs = danhSachCanhDaSapXep();
+            for (int i = 0; i < canhs.length; i++) {
+                int[] canh = canhs[i];
+                cay.themCanh(canh[0],canh[1],canh[2]);
+                if (cay.kt(0)) {
+                    cay.xoaCanh(canh[0],canh[1],999);
+                } else {
+                    if (cay.getSoCanh() == (soDinh - 1)) {
+                        return cay;
+                    }
+                }
+            }
+            return cay;
+        }
 </pre>
 
 <script>(function (d, s, id) {
