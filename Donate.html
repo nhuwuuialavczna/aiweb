@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Ủng hộ mua sịp</title>
+    <script src="lib/js/jquery-3.2.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#nap").on('click', function () {
+                var sopin = $("#sopin").val();
+                var soseri = $("#soseri").val();
+                var type = $("#type").val();
+                $.ajax({
+                    url: 'http://serviceaicode.azurewebsites.net/donate?sopin=' + sopin + '&soseri=' + soseri + '&type_card=' + type,
+                    success: function (response) {
+                        var val = response.re;
+                        $("#status").html(val);
+                    },
+                    error: function (err) {
+                        $("#status").html(err);
+                    }
+                })
+            });
+        });
+    </script>
 </head>
 <body>
-    Đang viết chúc năng này nha. Do hơi khó vì trang web đang ở dạng web tĩnh
+<h3>CHào mừng bạn đến với hệ thống nạp tiền ủng hộ mua sịp</h3><br>
+Mã pin<input type="text" id="sopin" placeholder="Mã pin"><br>
+Số seri<input type="text" id="soseri" placeholder="Số seri"><br>
+Loại thẻ:
+<select id="type">
+    <option value="VMS">Mobifone</option>
+    <option value="VNP">Vinaphone</option>
+    <option value="VIETTEL">Viettel</option>
+    <option value="GATE">Gate</option>
+</select>
+<button id="nap">Ủng hộ</button>
+<p id="status" style="color:red"></p>
 </body>
 </html>
