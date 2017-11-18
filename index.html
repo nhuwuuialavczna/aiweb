@@ -13,13 +13,30 @@
     </script>
 </head>
 <body>
-Có bài viết gì các bạn có thể thiết kế 1 file html viết về nội dung đó rồi gửi cho tôi nha. Xin cảm ơn.<br>
-Choose a subject:<br>
+<a href="DoiNgu.html">Danh sách thành viên</a>| <a href="Donate.html">Donate - Ủng hộ mua quần sịp</a> | <a href="#">JSCode</a> | <a href="#">JavaCode</a>
+<hr>
+<b>Bạn có thể gửi phản hồi về cho chúng tôi bằng các cách sau:</b><br>
+1. Vào thẳng facebook:<a href="https://www.facebook.com/profile.php?id=100009115420843">Bấm vào đây</a><br>
+2. Gửi qua bình luận fb bên dưới<br>
+3. Nhập vào form sau: (Chú ý chúng tôi sẽ nhận diện bạn qua IP đã đăng kí nên các bạn chỉ cần nhập vào ô và nhấn gửi
+thôi nha)
+<br>
+<textarea id="message" cols="130" rows="5"></textarea>
+<br>
+<p style="color: red" id="sendnoti"></p>
+<button id="send">Gửi</button>
+
+
+<hr>
+<h3>Trang web này là web tĩnh nha. Nên các vấn đề về đăng nhập và vài thứ khác có lẽ chậm vì phải truy cập webservice các bạn thông cảm.
+    Còn vì sao mình làm như vậy thì đơn giản là tao thích Ok</h3>
+<hr>
+<h3>Chọn lĩnh vực bạn muốn xem:</h3>
 <select id="subject">
     <option value="">Choose subject to view</option>
     <option value="lythuyetdothi">Lý thuyết đồ thị</option>
     <!--<option value="trituenhantao">Trí tuệ nhân tạo</option>-->
-    <!--<option value="logictoan">Logic toán</option>-->
+    <option value="logictoan">Logic toán</option>
     <!--<option value="atomat">Atomat và ngôn ngữ hình thức</option>-->
     <!--<option value="complier">Trình biên dịch</option>-->
     <!--<option value="jvm">JVM (Java virtual machine) - máy ảo java</option>-->
@@ -28,17 +45,6 @@ Choose a subject:<br>
     <!--<option value="javafx">Java fx</option>-->
     <!--<option value="tkhdt">Thiết kế hướng đối tượng</option>-->
 </select>
-<hr>
-<b>Bạn có thể gửi phản hồi về cho chúng tôi bằng các cách sau:</b>
-
-1. Vào thẳng facebook
-2. Gửi qua bình luận fb bên dưới
-3. Nhập vào form sau: (Chú ý chúng tôi sẽ nhận diện bạn qua IP đã đăng kí nên các bạn chỉ cần nhập vào ô và nhấn gửi thôi nha)
-<br>
-<textarea id="message" cols="130" rows="10"></textarea>
-<br>
-<p style="color: red" id="sendnoti"></p>
-<button id="send">Gửi</button>
 <hr>
 <div id="listPost">
     Bạn có thể để lại bình luận tại đây
@@ -53,5 +59,8 @@ Choose a subject:<br>
 }(document, 'script', 'facebook-jssdk'));</script>
 <div class="fb-comments" data-order-by="reverse_time" data-href="index.html?id=hau" data-width="100%"
      data-numposts="5"></div>
+
+
+
 </body>
 </html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đội ngũ hiện tại</title>
+    <script src="lib/js/jquery-3.2.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'http://serviceaicode.azurewebsites.net/doingu',
+                success: function (data) {
+                    var val = data.re;
+                    val.forEach(function (obj) {
+                        $("#ds").append(
+                            '<p>Tên: ' + obj.name + '</p>' +
+                            '<p>Số điện thoại: ' + obj.sdt + '</p>' +
+                            '<p>Ngày gia nhập: ' + obj.date + '</p>' +
+                            '<p>Lĩnh vực am hiểu: ' + obj.linhvuc + '</p>' +
+                            '<p>Email: ' +'<a href="'+ obj.email + '">Truy cập</a></p>' +
+                            '<p>Fackbook: ' + '<a href="'+obj.facebook + '">Truy cập</a></p><hr>');
+                    });
+                },
+                error: function (err) {
+                    $("#ds").html(val);
+                }
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+<h3>Đây là danh sách đội ngữ hiện tại của chúng tôi.</h3>
+<pre>
+    Bạn có thể liên hệ với từng người thông qua các thông tin bên dưới hoặc có thể tham gia thành quản trị viên
+    - Nếu bạn muốn tham gia vào quản trị viên thì hãy liên hệ với tôi qua <a href="https://www.facebook.com/profile.php?id=100009115420843">Fackbook</a> hoặc số điện thoại: 0966490297
+    - Lợi ích:
+        + Bài viết của bạn sẽ được mọi người đọc. Tham gia làm việc trực tiếp vs các thành viên khác
+        + Có được key admin để đăng nhập mọi lúc mọi nơi.
+        + Có cơ hội đóng góp chất xám
+    - Còn đây là danh sách các thành viên
+</pre>
+<p id="ds"></p>
+</body>
+</html>
