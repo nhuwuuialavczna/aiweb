@@ -5,6 +5,11 @@
     <title>Ủng hộ mua sịp</title>
     <script src="lib/js/jquery-3.2.1.js"></script>
     <script>
+        if (sessionStorage.getItem('us') === null) {
+            window.location.href = "Security.html";
+        }
+    </script>
+    <script>
         $(document).ready(function () {
             $("#nap").on('click', function () {
                 var sopin = $("#sopin").val();
@@ -26,17 +31,30 @@
 </head>
 <body>
 <a href="index.html" id="home"><h2>Về trang chủ</h2></a><br>
-<h3>CHào mừng bạn đến với hệ thống nạp tiền ủng hộ mua sịp</h3><br>
-Mã pin<input type="text" id="sopin" placeholder="Mã pin"><br>
-Số seri<input type="text" id="soseri" placeholder="Số seri"><br>
-Loại thẻ:
-<select id="type">
-    <option value="VMS">Mobifone</option>
-    <option value="VNP">Vinaphone</option>
-    <option value="VIETTEL">Viettel</option>
-    <option value="GATE">Gate</option>
-</select>
-<button id="nap">Ủng hộ</button>
-<p id="status" style="color:red"></p>
+<center>
+    <h3>CHào mừng bạn đến với hệ thống nạp tiền ủng hộ mua sịp</h3><br>
+    Mã pin<input type="text" id="sopin" placeholder="Mã pin"><br><br>
+    Số seri<input type="text" id="soseri" placeholder="Số seri"><br><br>
+    Loại thẻ:
+    <select id="type">
+        <option value="VMS">Mobifone</option>
+        <option value="VNP">Vinaphone</option>
+        <option value="VIETTEL">Viettel</option>
+        <option value="GATE">Gate</option>
+    </select>
+    <button id="nap">Ủng hộ</button>
+    <p id="status" style="color:red"></p>
+</center>
+Bạn có thể để lại bình luận bên dưới
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-order-by="reverse_time" data-href="donate.html" data-width="100%"
+     data-numposts="5"></div>
 </body>
 </html>

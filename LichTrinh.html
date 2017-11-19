@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Hướng dẫn kĩ thuật</title>
+    <script>
+        if (sessionStorage.getItem('us') === null) {
+            window.location.href = "Security.html";
+        }
+    </script>
 </head>
 <body>
 <a href="index.html" id="home"><h2>Về trang chủ</h2></a><br>
@@ -12,7 +17,7 @@
         - Website là 1 web chuyên về nội dung và không chú trọng hình thức. Thứ nhất để giảm bớt cầu kì. Thứ 2 bất cứ ai cũng có thể viết bài cho web vì giao diện quá đơn giản. Nên các bạn
         để dàng đóng góp kiến thức.
         - Website là 1 web tĩnh được truy xuất dữ liệu dựa vào 1 webservice nên quá trình truy cập như đăng nhập có lẽ chậm, các bạn thông cảm.
-        - Hiện tại nội dung website được <a href="DoiNgu.html">chúng tôi ghi từng chữ và là những kiến thức chúng tôi đang có. Nếu ai muốn copy dữ liệu xin hãy để lại nguồn nha</a>
+        - Hiện tại nội dung website được <a href="DoiNgu.html">chúng tôi</a> ghi từng chữ và là những kiến thức chúng tôi đang có. Nếu ai muốn copy dữ liệu xin hãy để lại nguồn nha
         - Website là việc hoàn toàn miễn phí cho các bạn. Chúng tôi không gắn quảng cáo để các bạn cảm thấy thoải mái.
         - Dữ liệu được đề cập có độ chính xác cao. Tuy nhiên không tránh được những sai sót các bạn nhận thấy thì có thể comment bên dưới.
         - Các bạn có thể liên hệ tôi hoặc bất cứ ai trong <a href="DoiNgu.html">đội ngũ</a> để trở thành 1 admin nha.
@@ -36,5 +41,16 @@
         - Chúng tôi sẽ cố gắng viết theo đúng lịch trình. Dự kiến sau 12 tuần (3 tháng) để hoàn thiện cơ bản về nội dung. Sau đó chúng sẽ đến phần chuyên sâu hơn ở mỗi thành phần
         - Lịch trình sẽ được áp dụng và chúng tôi sẽ cung cấp thêm lĩnh vực mới ở tương lai.
 </pre>
+Bạn có thể để lại bình luận bên dưới
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-order-by="reverse_time" data-href="lichtrinh.html" data-width="100%"
+     data-numposts="5"></div>
 </body>
 </html>

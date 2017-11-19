@@ -5,6 +5,12 @@
     <title>Đội ngũ hiện tại</title>
     <script src="lib/js/jquery-3.2.1.js"></script>
     <script>
+        if (sessionStorage.getItem('us') === null) {
+            window.location.href = "Security.html";
+        }
+    </script>
+    <script>
+
         $(document).ready(function () {
             $.ajax({
                 url: 'http://serviceaicode.azurewebsites.net/doingu',
@@ -24,6 +30,9 @@
                     $("#ds").html(val);
                 }
             });
+            if(sessionStorage.getItem('us') == 'admin'){
+                $("#webservice").load('lib/file/Webservice.html');
+            }
         });
 
 
@@ -32,6 +41,7 @@
 <body>
 <a href="index.html" id="home"><h2>Về trang chủ</h2></a><br>
 <h3>Đây là danh sách đội ngữ hiện tại của chúng tôi.</h3>
+<div style="border: 1px solid red" id="webservice"></div>
 <pre>
     Bạn có thể liên hệ với từng người thông qua các thông tin bên dưới hoặc có thể tham gia thành quản trị viên
     - Nếu bạn muốn tham gia vào quản trị viên thì hãy liên hệ với tôi qua <a href="https://www.facebook.com/profile.php?id=100009115420843">Fackbook</a> hoặc số điện thoại: 0966490297
@@ -42,5 +52,16 @@
     - Còn đây là danh sách các thành viên
 </pre>
 <p id="ds"></p>
+Bạn có thể để lại bình luận bên dưới
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-order-by="reverse_time" data-href="doingu.html" data-width="100%"
+     data-numposts="5"></div>
 </body>
 </html>
