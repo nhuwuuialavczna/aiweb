@@ -14,17 +14,60 @@
 <h3>Tìm hiểu về ngũ nghĩa trong logic mệnh đề</h3>
 
 <pre>
+    <b>I. Giới thiệu</b>
+        - Bài trước chúng ta đã tìm hiểu về cú pháp của logic mệnh đề. Bài này sẽ đi tiếp về ngữ nghĩa của logic mệnh đề. Ai chưa xem bài trước nên xem lại nha
+    <b>II. Ngữ nghĩa logic mệnh đề</b>
+        - Tập gồm 2 giá trị {đúng, sai}, {true,false}, {t,f}, {0,1} được gọi là các chân trị
+        - Phép gán biến là phép gán chân trị cho các biến logic
+            Ví dụ: {A = 0, B = 1,...}
+        - Ngữ nghĩa của 1 logic mệnh đề là 1 chân trị có nghĩa là hoặc đúng(1,t,true) hoặc sai (0,f,false)
+        - Ngữ nghĩa của 1 câu có chứa biến phụ thuộc vào chân trị của biến
+        - Ngữ nghĩa của 1 câu phức thì phụ thuộc vào ngữ nghĩa của các câu thành phần
+        - Cho &phi; là 1 phép gán biến, A là 1 biến, ta kí hiệu &phi;(A) là chân trị của biến A trong phép gán biến &phi;
+            Ví dụ: &phi; = {A= 0, B= 1} thì &phi(A) = 0
+        - Ngữ nghĩa của 1 câu đơn được xác định theo các quy tắc sau:
+            + &phi;(true) = 1. Không phụ thuộc vào &phi;
+            + &phi;(false) = 0. Không phụ thuộc vào &phi;
+        - Ngữ nghĩa của 1 câu phức được xác định theo các qui tắt có trong bảng chân trị như sau; (Ở đây mình không biểu diễn thành bảng
+            mà biểu điễn bằng ngôn ngữ tự nhiên cho các bạn có cái nhìn ngon hơn)
+            + Với &phi;(&alpha;) = 0, &phi;(&beta;) = 0. Thì &phi;(&alpha; ^ &beta;) = 0,&phi;(&alpha; v &beta;) = 0, &phi;(&alpha; &rarr; &beta;) = 1, &phi;(&alpha; <--> &beta;) = 1
 
+            + Với &phi;(&alpha;) = 0, &phi;(&beta;) = 1. Thì &phi;(&alpha; ^ &beta;) = 0,&phi;(&alpha; v &beta;) = 1, &phi;(&alpha; &rarr; &beta;) = 1, &phi;(&alpha; <--> &beta;) = 0
+
+            + Với &phi;(&alpha;) = 1, &phi;(&beta;) = 0. Thì &phi;(&alpha; ^ &beta;) = 0,&phi;(&alpha; v &beta;) = 1, &phi;(&alpha; &rarr; &beta;) = 0, &phi;(&alpha; <--> &beta;) = 0
+
+            + Với &phi;(&alpha;) = 1, &phi;(&beta;) = 1. Thì &phi;(&alpha; ^ &beta;) = 1,&phi;(&alpha; v &beta;) = 1, &phi;(&alpha; &rarr; &beta;) = 1, &phi;(&alpha; <--> &beta;) = 1
+        - Các toán tử logic "phản ánh" các phát biểu thông thường của con người:
+            + &not; (Phủ định - regation) Không, chẳng phải
+            + ^ (hội - conjunction) : và, vừa, hơn nữa, lại còn
+            + v ( tuyển - disjunction) : hoặc , hay
+            + &rarr; (kéo theo - implication): Suy ra, cho thấy, nếu thì
+            + <--> (tương đương - equivalence): Khi và chỉ khi, nếu và chỉ nếu, cũng như
+        - Tuy nhiên ngữ nghĩa của các toán tử logic là hoàn toàn xác định và đơn giản
+    <b>III. Các ví dụ:</b>
+        - Xét 2 ngôn ngữ tự nhiên:
+            A: "Tôi bị đau và tôi đi khám bác sĩ"
+            B: "Tôi đi khám bác sĩ và tôi bị đau"
+
+            Ngữ nghĩa của 2 câu này là khác nhau. Tuy nhiên, trong 2 mệnh đề thì &alpha;^&beta; luôn cùng nghĩa với &beta;^&alpha;
+        - Xét câu sau trong ngôn ngữ tự nhiên:
+            A: "Nếu tôi sinh ra trước Pytago tôi đã phát minh ra định lý về tam giác vuông"
+            Câu này được xem là không tưởng hoặc sai hoặc có vấn đề
+            Tuy nhiên trong logic mênh đề câu &alpha; &rarr; &beta; luôn đúng bất cứ khi nào &alpha; sai (mà không phụ thuộc và ngữ nghĩa của &beta;)
+    Xin kết thúc bài này tại đây nha. Bài kế tiếp sẽ tìm hiểu là <a href="LGMDChanLyVaMauThuan.html">Chân lý và mâu thuẫn trong logic mệnh đề</a>
 </pre>
 
-<script>(function(d, s, id) {
+
+<script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
+    js = d.createElement(s);
+    js.id = id;
     js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-order-by="reverse_time" data-href="lythuyetdothi/NguNghiaLogicMenhDe.html" data-width="100%" data-numposts="5"></div>
+<div class="fb-comments" data-order-by="reverse_time" data-href="lythuyetdothi/NguNghiaLogicMenhDe.html"
+     data-width="100%" data-numposts="5"></div>
 </body>
 </html>

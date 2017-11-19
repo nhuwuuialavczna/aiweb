@@ -14,17 +14,42 @@
 <h3>Tìm hiểu về hệ quả tương đương trong logic mệnh đề</h3>
 
 <pre>
-
+    <b>I. Giới thiệu</b>
+        - Ở bài trước chúng ta đã tìm hiểu về <a href="LGMDChanLyVaMauThuan.html">chân lý và mâu thuẫn trong logic mệnh đề</a> bài này sẽ tiếp tục với hệ quả và tương đương logic
+    <b>II. Hệ quả và tương đương logic</b>
+        - Câu b được gọi là hệ quả logic của câu a nếu với mọi phép gán biến &phi;, nếu &phi; |= &alpha; thì &phi; |= &beta;, kí tự &alpha; |= &beta;
+        - Nếu &beta; là hệ quả logic của &alpha; và &alpha; là hệ quả logic của &beta; thì &alpha; và &beta; được gọi là tương đương logic với nhau, kí hiệu &alpha; &Xi; &beta;
+        - Định lý:
+            + &alpha; |= &beta; khi và chỉ khi &alpha; ==> &beta;
+            + &alpha; &Xi; &beta; khi và chỉ khi &alpha; <==> &beta;
+        - Qui tắc tương đương:
+            + &alpha; &rarr; &beta; &Xi; (&alpha; &rarr; &beta;) ^ (&beta; &rarr; &alpha;)
+            + &alpha; &rarr; &beta; &Xi; &not; &alpha; v &beta;
+            + &alpha; v &alpha; &Xi; &alpha; và &alpha; ^ &alpha; &Xi; &alpha;
+            + &alpha; ^ true &Xi; &alpha; và &alpha; v true &Xi; true
+            + &alpha; ^ false &Xi; false và &alpha; v false &Xi; &alpha;
+            + Giao hoán: &alpha; ^ &beta; &Xi; &beta; ^ &alpha; và &alpha; v &beta; &Xi; &beta; v &alpha;
+            + Kết hợp: &alpha; ^ (&beta; ^ &gamma;) &Xi; (&alpha; ^ &beta;) ^ &gamma; và &alpha; v (&beta; v &gamma;) &Xi; (&alpha; v &beta;) v &gamma;
+            + Demorgan: &not;&not; &alpha; &Xi; &alpha;, &not;(&alpha; ^ &beta;) &Xi; &not;&alpha; ^  &not;&beta;
+            + Phân phối: &alpha; ^ (&beta; v &gamma;) &Xi; &alpha; ^ &beta; v &alpha; ^ &gamma;
+        - Câu &alpha; được gọi là biến đổi tương đương thành câu &beta; nếu &alpha; &Xi; &beta;
+        - Chúng ta thường dùng các qui tắt tương đương đã nêu để thực hiện biến đổi tương đương
+        - Rút gọn câu &alpha; là biến đổi câu &alpha; thành câu &beta; tương đương nhưng đơn giản hơn. Đơn giản hơn về hình thức nhưng nội dung vẫn giữ nguyên
+    <b>III. Chú ý:</b>
+        - Tôi đã giới thiệu xong cho các bạn về Hệ quả tương đương trong logic mệnh đề.
+        - Bài sau chúng ta sẽ tìm hiểu <a href="LGMDCNF.html">Dạng chuẩn CNF là thế nào nhé</a>
 </pre>
 
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
+    js = d.createElement(s);
+    js.id = id;
     js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-order-by="reverse_time" data-href="lythuyetdothi/HeQuaTuongDuong.html" data-width="100%" data-numposts="5"></div>
+<div class="fb-comments" data-order-by="reverse_time" data-href="lythuyetdothi/HeQuaTuongDuong.html" data-width="100%"
+     data-numposts="5"></div>
 </body>
 </html>
