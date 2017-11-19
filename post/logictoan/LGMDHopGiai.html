@@ -4,16 +4,34 @@
     <meta charset="UTF-8">
     <title>Tìm hiểu về hợp giải</title>
     <script>
-        if (sessionStorage.getItem('us') === null) {
-            window.location.href = "../../Security.html";
-        }
+//        if (sessionStorage.getItem('us') === null) {
+//            window.location.href = "../../Security.html";
+//        }
     </script>
 </head>
 <body>
 <a href="../../index.html">Về trang chủ</a><br>
 <h3>Tìm hiểu về hợp giải trong logic mệnh đề</h3>
-
 <pre>
+    <b>I. GIới thiệu </b>
+        - Ở bài trước chúng ta đã tìm hiểu xong <a href="LGMDHeChungMinh.html">Hệ chứng minh</a>. Hôm nay sẽ đi tiếp đến hợp giải trong logic mệnh đề nha
+    <b>II. Hợp giải</b>
+        - Luật hợp giải (resolution)
+            &alpha; v &beta;
+           &not;&beta; v &gamma;
+          ---------
+            &alpha; v &beta;
+        - Luật thừa số hóa (factoring)
+             &alpha; v &alpha;
+            ---------
+              &alpha;
+        - Hợp giải  + thừa số hóa là đúng và đủ
+        - Hợp giải đòi hỏi tất cả các câu phải ở dạng <a href="LGMDCNF.html">CNF</a>
+        - Hợp giải là hệ chương trình rất phù hợp với máy
+        - Hình ảnh
+        * Chứng minh phản chứng bằng hợp giải
+            k |= &alpha; khi và chỉ khi k v {&not;&alpha;} không thõa mãn được
+            {P v Q, P &rarr; R, Q &rarr; R} |= R ?
 
 </pre>
 

@@ -14,17 +14,58 @@
 <h3>Tìm hiểu về suy diễn và chứng minh trong logic mệnh đề</h3>
 
 <pre>
+    <b>I. Giới thiệu</b>
+        - Ở bài trước chúng đã đã tìm hiểu 1 cách để chuẩn hóa mệnh đề logic sang dạng chuẩn CNF. Bài này sẽ tìm hiểu về suy diễn và chứng minh nha. Đầu tiên sẽ điểm qua vài nội dung cơ bản
+        - Cơ sở tri thức (kB - knowledge base) là 1 tập hợp các tri thức
+            + Mỗi tri thức là 1 câu phát biểu về thế giới
+        - Suy diễn (Inference) là quá trình rút ra tri thức mới từ kB
+        - Logic là 1 hệ hình thức cho phép biểu diễn và xử lý tri thức:
+            + Tri thức là 1 câu logic
+            + kB là 1 tập các câu logic
+            + Suy diễn là quá trình rút ra câu logic mới từ 1 tập câu logic
+    <b>II. Suy diễn và chứng minh</b>
+        - Nếu mọi câu trong kB, k đều đúng theo phép gán &phi;, tức là &phi;(&alpha;) = 1, với mọi &alpha; thuộc k, thì ta nói &phi; là 1 mô hình của k, kí hiệu &phi; |= k
+        - Một kB được gọi là thỏa mãn được nếu nó có ít nhất 1 mô hình
+        - Câu &alpha; được gọi là hệ quả logic của kB k nếu với mọi phép gán biến &phi;, nếu &phi; |=  k thì &phi; |= &alpha; kí hiệu: k |= &alpha;
+        - Định lí:
+            + (Phản chứng) Với mọi kB, và câu &alpha; ta có k |= &alpha; khi và chỉ khi k v {&not;&alpha;} là không thỏa mãn được
+            + Mọi kB chứa hằng sai false đều không thỏa mãn được
+            + Với mọi câu &alpha; và &alpha ^ &alpha; &Xi; false
+        - Suy điễn trên 1 kB là tìm kiếm các câu &alpha; mà k |= &alpha;
+        - Chứng minh là khẳng định k |= &alpha; là đúng hoặc sai
+        - Hai phương pháp chứng mình thường dùng trong logic mệnh đề là:
+            + Chứng minh bằng cách liệt kê: kiểm tra tất cả các phép gán biến để cho thấy mọi mô hình của k cũng là mô hình của &alpha;
+            + Chứng minh bằng các luật suy diễn: dùng các luật suy diễn để dẫn ra &alpha; từ k
+    <b>III. Các cách chứng minh trong logic mệnh đề</b>
+        1. Chứng minh bằng cách liệt kê:
+            - Để kiểm tra k |= &alpha; có thể dùng thủ tục liệt kê
+            - Liệt kê tất cả phép gán biến
+            - Chọn những phép gán biến mà tất cả các câu câu trong k là đúng
+            - Kiểm tra xem &alpha; có đúng trong tất cả các phép gán biến này không
+            - Thủ tục luôn hoạt động được nhưng kém hiệu quả:
+                . Với n biến, độ phức tạp thời gian là O(2<sup>n</sup>) và độ phức tạp không gian là O(n)
+        2. Chứng minh bằng các luật suy diễn:
+            - Việc chứng minh có thể được thực hiện nhanh bằng cách dùng các luật suy diễn
+            - Các luật suy diễn là nỗ lực hình thức hóa quá trình suy luận của con người
+            - Tuy nhiên, phải hiệu quả và có thể bàn giao cho máy: đơn giản, chính xác, tự động được
+            => "Suy luận theo kiểu không cần suy luận"
 
+    <b>IV. Giải các ví dụ:</b>
+
+    <b>V. Kết</b>
+        - Chúng ta sẽ kết thúc tại đây nhé. Bài sau chúng ta sẽ cùng tìm hiểu về <a href="LGMDHeChungMinh.html">Hệ chứng minh trong logic mệnh đề</a> nha.
 </pre>
 
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
+    js = d.createElement(s);
+    js.id = id;
     js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-order-by="reverse_time" data-href="lythuyetdothi/SUyDIenCHusngminh.html" data-width="100%" data-numposts="5"></div>
+<div class="fb-comments" data-order-by="reverse_time" data-href="lythuyetdothi/SUyDIenCHusngminh.html" data-width="100%"
+     data-numposts="5"></div>
 </body>
 </html>

@@ -14,17 +14,42 @@
 <h3>Tìm hiểu về hệ chứng minh trong logic mệnh đề</h3>
 
 <pre>
+    <b>I. Giới thiệu</b>
+       - Ở bài trước chúng ta đã tìm hiểu được <a href="LGMDSuyDienVaChungMinh.html">Suy diễn và chứng minh</a> giờ cùng nhau đi đến hệ chứng minh trong logic mệnh đề nhé
+    <b>II. Hệ chứng minh</b>
+        - Hệ chứng minh là tập hợp các luật suy diễn cùng với thủ tục dùng các luật suy diễn này
+        - Hệ chứng minh H gọi là chứng minh được câu &alpha; từ kB k, kí hiệu k |-<sub>h</sub>&alpha; (đọc là k suy diễn ra &alpha;) nếu với các luật suy diễn (và thủ tục chứng minh) của mình, H khẳng định k |= &alpha; là đúng
+        - Các câu trong k gọi là tiền đề (premise)
+        - Các câu trong &alpha; gọi là kết luận (conclusion)
+        - Hệ chứng minh H gọi là hệ chứng minh đúng (sound) nếu: k |-<sub>h</sub>&alpha; thì k |= &alpha; với mọi câu &alpha;
+        - Hệ chứng minh H gọi là đủ (complete) nếu: k |= &alpha; thì k |-<sub>h</sub>&alpha; với mọi câu &alpha;
+        - Một chứng minh là 1 dãy các câu:
+            + Các câu đầu tiên là các tiền đề (Các câu thuộc k)
+            + Sau đó ta có thể viết được câu kế tiếp là kết quả của việc áp dụng một luật suy diễn lên các câu trước đó
+            + Khi câu &alpha; xuát hiện thì ta đã chứng minh được &alpha; từ k
+        - Nếu các luật suy diễn là đúng, thì những câu &alpha; chứng minh được từ k là hệ quả logic của k
+        - Nếu cac luật suy diễn là đủ thì những câu &alpha; là hệ quả logic của k thì chứng minh được từ k
+    <b>III. Hệ suy diễn tự nhiên</b>
+        - Các quy luật suy diễn tự nhiên là các quy luật suy diễn "mô phỏng" cách suy luận của con người
+        - Hình ảnh
+        - Hệ suy diễn tự nhiên dùng nhiều luật suy diễn nên gây hệ số phân nhánh lớn trong việc chứng minh
+        - Nếu dùng quá ít luật thì hệ chứng minh không đủ. Nhiều câu là hệ quả logic nhưng không chứng minh được
+        - Cần 1 hệ chứng minh đúng, ít luật nhưng đủ để có thể tự động hóa quá trình chứng minh trên máy
 
+    <b>VI. Kết</b>
+        - Mình xin kết thúc bài này tại đây. Bài kế tiếp là <a href="LGMDHopGiai.html">Hợp giải trong logic mệnh đề </a>nhé
 </pre>
 
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
+    js = d.createElement(s);
+    js.id = id;
     js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-order-by="reverse_time" data-href="lythuyetdothi/HeChungMinh.html" data-width="100%" data-numposts="5"></div>
+<div class="fb-comments" data-order-by="reverse_time" data-href="lythuyetdothi/HeChungMinh.html" data-width="100%"
+     data-numposts="5"></div>
 </body>
 </html>

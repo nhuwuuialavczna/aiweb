@@ -14,7 +14,31 @@
 <h3>Tìm hiểu về chuẩn CNF trong logic mệnh đề</h3>
 
 <pre>
-
+    <b>I. Giới thiệu</b>
+        - Ỏ bài trước chúng ta đã tìm hiểu về <a href="LGMDHeQuaTuongDuong.html">hệ quả và tương đương logic</a>. Hôm nay sẽ đến với phần quan trọng không kém là dạng chuẩn CNF
+    <b>II. Dạng chuẩn CNF (Conjunctive) </b>
+        - Một trực kiện là 1 biến hoặc 1 phủ định của 1 biến; tương ứng gọi là trực kiên dương hoặc trực kiện âm
+        - Một mệnh đề là tuyển (v) của các trực kiện
+        - Một câu CNF là hội (^) của các mệnh đề
+        - Ví dụ:
+            + A ^ (A v B) ^ (A v &not;B v &not;D) là câu CNF
+            + &not;&not; A v (A ^ B) không là câu CNF
+        - Chú ý: Đừng nhằm từ mệnh đề với mệnh đề
+        - CHuyển đồi câu &alpha; về dạng CNF là biến đổi 1 câu &alpha; thành 1 câu CNF. Việc chuẩn hóa hình thức câu logic sẽ giúp cho việc xử lý câu logic hiệu quả hơn
+        - Mọi câu logic mệnh đề đều có thể chuyển sang dạng CNF theo các bước sau:
+            + Bước 1: Xóa <-->
+            + Bước 2: Xóa &rarr;
+            + Bước 3: Đưa mọi phủ định và trực kiện âm vào trong
+            + Bước 4: Phân phối nếu cần
+        - Ví dụ chuyển câu: &alpha; = (A v B) &rarr; (&not; B ^ A) về dạng CNF. Chúng ta sử dụng các qui tắt tương đương ở bài <a href="LGMDHeQuaTuongDuong.html">Hệ quả tương đương và logic</a>
+            &alpha; &Xi; &not; (A v B) v (&not;B ^ a)
+            &alpha; &Xi; (&not;A ^ &not;B) v (&not;B ^ A)
+            &alpha; &Xi; ((&not;A ^ &not;B) v &not;B) ^ ((&not;A ^ &not;B) v A)
+            &alpha; &Xi; ((&not;A  v &not;B) ^ (&not;B v &not;B)) ^ ((&not;A v A) ^ (&not;B v A))
+            &alpha; &Xi; ((&not;A  v &not;B) ^ &not;B) ^ (true ^ (&not;B v A))
+            &alpha; &Xi; ((&not;A  v &not;B) ^ &not;B) ^ (&not;B v A)
+    <b>III. Chú ý</b>
+        - Tôi xin kết thúc bài này tại đây. Các bạn có ý kiến gì xin liên hệ mình nha. Bài kế tiếp là <a href="LGMDSuyDienVaChungMinh.html">suy diễn và chứng minh trong logic mệnh đề</a>
 </pre>
 
 <script>(function(d, s, id) {
