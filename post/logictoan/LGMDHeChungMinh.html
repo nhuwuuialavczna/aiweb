@@ -31,7 +31,18 @@
         - Nếu cac luật suy diễn là đủ thì những câu &alpha; là hệ quả logic của k thì chứng minh được từ k
     <b>III. Hệ suy diễn tự nhiên</b>
         - Các quy luật suy diễn tự nhiên là các quy luật suy diễn "mô phỏng" cách suy luận của con người
-        - Hình ảnh
+            <img src="../../lib/img/logictoan/logicmenhde/suydientunhien.png">
+            + Ví dụ: {P &and; Q, P &rarr; R, Q &and; R &rarr; S} |= ?
+
+            Bước        Câu                     Nguồn gốc
+            1           P &and; Q                   Tiền đề
+            2           P &rarr; R                   Tiền đề
+            3           Q &and; R &rarr; S               Tiền đề
+            4           P                       1 and - elim
+            5           R                       4,2 Modus Ponens
+            6           Q                       1 and - Elim
+            7           Q &and; R                   5,6 and - Intro
+            8           S                       3,7 modus ponens
         - Hệ suy diễn tự nhiên dùng nhiều luật suy diễn nên gây hệ số phân nhánh lớn trong việc chứng minh
         - Nếu dùng quá ít luật thì hệ chứng minh không đủ. Nhiều câu là hệ quả logic nhưng không chứng minh được
         - Cần 1 hệ chứng minh đúng, ít luật nhưng đủ để có thể tự động hóa quá trình chứng minh trên máy

@@ -14,7 +14,25 @@
 <h3>Tìm hiểu về logic horn logic mệnh đề</h3>
 
 <pre>
+    <b>I. Giới thiệu</b>
+        - Ở bài trước chắc bạn đã nhức não với <a href="LGMDHopGiai.html">hợp giải</a> rồi nhỉ. Đây là bài cuối cùng về logic mệnh đề đó là bài logc horn
+    <b>II. Logic Horn</b>
+        - Là 1 dạng logic hạn chế để có thể suy diễn chứng minh hiệu quả hơn
+        - Mệnh đề Horn: là câu logic có 1 trong2 dạng:
+            + Sự kiện (fact): là 1 câu chỉ gồm biến
+                . Ví dụ: P, Q, R,...
+            + Luật( rule): là 1 câu dạng &alpha; &rarr; Q
+                . Q là biến, gọi là kết luận của luật
+                . &alpha; là hội của một hoặc nhiều biến, gọi là tiền đề của luật
+                . Ví dụ: P &rarr; R, R &and; Q &rarr; R, P &and; Q &and; T &rarr; R,....
+        - Tam đoạn luận là đúng và đủ với kB Horn
+            &alpha; &rarr; &beta;
+            &alpha;
 
+            ----
+            &beta;
+        - Thuật toán suy diễn tiến và suy diễn lùi chạy trên kB Horn rất tự nhiên và hiệu quả
+        Hiện tại chúng tôi đang thảo luận về 2 thuật toán này
 </pre>
 
 <script>(function (d, s, id) {

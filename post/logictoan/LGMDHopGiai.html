@@ -28,11 +28,80 @@
         - Hợp giải  + thừa số hóa là đúng và đủ
         - Hợp giải đòi hỏi tất cả các câu phải ở dạng <a href="LGMDCNF.html">CNF</a>
         - Hợp giải là hệ chương trình rất phù hợp với máy
-        - Hình ảnh
         * Chứng minh phản chứng bằng hợp giải
             k |= &alpha; khi và chỉ khi k v {&not;&alpha;} không thõa mãn được
             {P v Q, P &rarr; R, Q &rarr; R} |= R ?
+            Câu             CNF
+            P v Q           P v Q
+            P &rarr;R           &not;P v R
+            Q &rarr;R           &not;Q v R
+            &not;R              &not;R
+            -----------------------------
 
+            Bước        Câu             Nguồn gốc
+            1           P v Q           Tiền đề
+            2           &not;P v R          Tiền đề
+            3           &not;Q v R          Tiền đề
+            4           &not;R          Phủ định kết luận
+            5           Q v R           1, 2
+            6           &not;P              2, 4
+            7           &not;Q              3, 4
+            8           R               5, 7
+            9           (false)         4, 8
+
+        - Thủ tục Robinson - Divis Putman (Hợp giải)
+            1. Biến đổi tất cả các câu thành dạng CNF
+            2. Lấy phủ định kết luận đưa vào kB
+            3. Lặp:
+                a. Nếu trong kB có chứa 2 mệnh đề mâu thuẫn (Ví dụ: P và &not;P) thì trả vê yes
+                b. Sử dụng 1 biến mệnh đề để hợp giải
+                    . Lấy tất cả các câu chứa mệnh đề được lựa chọn
+                    . Áp dụng luật hợp giải lên mọi cặp câu chứa khẳng định và phủ định của biến mệnh đề
+                    . Viết các câu kết quả mới và xóa các câu đã sử dụng
+                c. Lập cho đến khi không còn biến mệnh đề nào hợp giải được
+            4. Trả về N<sub>0</sub>
+    <b>III. Làm 1 số bài tập về hợp giải</b>
+        Cho K = {A &rarr; B v D, D &rarr; E &and; F, F &and; A &rarr; &not;B}
+            - Hỏi K |= A &rarr; &not;D ?
+            - Hỏi K |= A &and; B &rarr;D ?
+        Giải:
+            Bước 1: Biến đổi các câu trong K về dạng hội chuẩn:
+                - A &rarr; B v D &Xi; &not;A v B v D
+                - D &rarr; E &and; F &Xi; &not;D v (E &and; F)
+                                 &Xi; (&not;D v E)&and;(&not;D v F)
+                Tách thành 2 câu: {&not;D v E, &not;D v F}
+                - E &and; A &rarr; &not;B &Xi; &not;(E &and; A) v &not;B
+                                      &Xi; &not;E v &not;A) v &not;B
+
+                Vậy K = {&not;A v B v D, &not;D v E, &not;D v F, &not;E v &not;A v &not;B}
+            Bước 2: Tiến hành chạy thuật toán:
+                * Hỏi K |= A &rarr; &not;D ?
+                - Phủ định kết luận &not;(A => B) &Xi; &not;(&not;A v &not;D) &Xi; A &and; D, tách thành 2 câu {A,D} đưa vào K
+
+                Biến hợp giải           Các câu logic                                                                                   Ghi chú
+                                        {&not;A v B v D, &not;D v E, &not;D v F, &not;E v &not;A v &not;B, A, D}
+                A                       {<u>&not;A v B v D</u>, &not;D v E, &not;D v F, <u>&not;E v &not;A v &not;B</u>, A, D}
+                B                       {<u>B v D, &not;E v &not;B</u>, &not;D v E, &not;D v F, D}
+                D                       {<u>D v &not;E, &not;D v E, &not;D v F, D</u>}
+                                        {&not;E v E, &not;E v F, E, F}                                                                          &not;E v E &Xi; true
+                E                       {&not;E v F, E, F}
+                                        {F}
+                        Không còn hợp giải được nữa
+                Kết luận A &rarr; &not;D không là hệ quả logic của K
+                --------------------------------------------------------------
+                * Hỏi K |= A &and; B &not;D ?
+                - Phủ định kết luận &not;(A &and; B => &not;D) &Xi; &not;(&notA &and; B) v &not;D) &Xi; A &and; B &and; D, tách thành ba câu {A, B, D} đưa vào k
+
+                Biến hợp giải           Các câu logic                                                                                   Ghi chú
+                                        {&not;A v B v D, &not;D v E, &not;D v F, &not;E v &not;A v &not;B, A, D}
+                A                       {<u>&not;A v B v D</u>, &not;D v E, &not;D v F, <u>&not;E v &not;A v &not;B</u>, <u>A</u>, D}
+                B                       {<u>B v D, &not;E v &not;B</u>, &not;D v E, &not;D v F, <u>B</u>, D}
+                D                       {<u>D v &not;E</u>, &not;E, <u>&not;D v E, &not;D v F, D</u>}
+                                        {&not;E v E, &not;E v F, E, F, &not;E}
+                Xuất hiện mâu thuẫn (E, &not;E)
+                Kết luận  A &and; B &not;D là hệ quả logic của K
+        <b>IV.Kết</b>
+            Chúng ta đã tìm hiểu xong về hợp giải. Các bạn có thắc mắc gì liên hệ mình hoặc để lại bình luận nha. Bài kế tiếp là <a href="LGMDLogicHorn.html">Logic Horn</a>
 </pre>
 
 <script>(function(d, s, id) {
