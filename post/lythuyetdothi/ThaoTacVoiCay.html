@@ -21,16 +21,39 @@
             + Xác định các tâm của cây
             + Tìm cây bao trùm (Có bài hướng dẫn riêng)
             + Áp dụng để làm giải thuật Huffman ( Có bài hướng dẫn riêng)
+        - Chú ý: TÔi chỉ cung cấp thuật toán thôi nha. Không có code. Các bạn cứ làm theo thuật toán là được. Show hoài cũng ko dc
+
+    <b>II. Giải quyết từng bài</b>
+        Kiểm tra đồ thị đã liên thông trước nhé
+        1. Kiểm tra đồ thị có phải là cây hay không
+            - Cách 1: Kiểm tra xem số cạnh có bằng số đỉnh trừ 1 chưa. Có thì đó là cây
+            - Cách 2: Kiểm tra đồ thị có chu trình hay không. Có thì không phải là cây
+        2. TÍnh độ lệch tâm của cây: (từ đỉnh v, v tùy ý)
+            - Bước 1: Các bạn phải xác đinh đường đi từ v đến các đỉnh còn lại khác v
+            - Bước 2: Cho độ dài của các đường đi tìm được vào mảng
+            - Bước 3: Phần tử lớn nhất trong mảng chính là độ lệch tâm của đỉnh v
+        3. Tìm bán kính của cây:
+            - Bước 1: Tìm độ lệch tâm của tất cả đỉnh cho vào 1 mảng
+            - Bước 2: Phần tử nhỏ nhất trong đó là bán kính và là tâm của đồ thị
+        4. Xác định các tâm của đồ thị
+            - Bước 1: Tìm bán kính của đồ thị
+            - Bước 2: Các đỉnh có độ lệch tâm bằng bán kính là các tâm của đồ thị
+    <b>III. Chú ý:</b>
+        - Các bài trên quá đơn giản. Thuật toán chỉ có thế thôi nên các bạn tự viết code nha. Nếu không ổn có thể liên hệ mình để nhận code hoặc teamview để hướng dẫn trực tiếp
+
+
 </pre>
 
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
+    js = d.createElement(s);
+    js.id = id;
     js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-order-by="reverse_time" data-href="lythuyetdothi/ThaoTacVoiCay.html" data-width="100%" data-numposts="5"></div>
+<div class="fb-comments" data-order-by="reverse_time" data-href="lythuyetdothi/ThaoTacVoiCay.html" data-width="100%"
+     data-numposts="5"></div>
 </body>
 </html>
