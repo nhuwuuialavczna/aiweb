@@ -11,10 +11,50 @@
 </head>
 <body>
 <a href="../../index.html">Về trang chủ</a><br>
-<h3>Tìm hiểu về ngũ nghĩa trong logic vị từ</h3>
+<h3>Tìm hiểu về ngữ nghĩa trong logic vị từ</h3>
 
 <pre>
+    <b>I. Xét cơ sở tri thức k1</b>
+        (1) P(b,a)
+        (2) P(c,b)
+        (3) &forall;x,y, P(x,y) &rarr; Q(x,y)
+        (4) &forall;x,y,z, Q(x,y) &and; Q(y,z) &rarr; Q(x,z)
+        Tri thức mà k1 biểu diễn là gì ?
+            - Hiểu thế nào
+            - Ý nghĩa các câu
+            - Đúng hay sai
 
+        * Ví dụ 1, trong thế giới các hộp {A, B, C,...}
+            - a hiểu là A
+            - b hiểu là B
+            - c hiểu là C
+            - P hiểu là ontop
+            - Q hiểu là above
+            - (1) nghĩa là B chồng lên A (đúng)
+            - (2) nghĩa là C chồng lên B (đúng)
+            - (3) nghĩa là với mọi hộp A, B thì A chồng lên B thì A nằm trên B (đúng)
+            - (4) nghĩa là với mọi hộp A, B, C thì A nằm trên B và B nằm trên C thì A nằm trên C (đúng)
+
+         * Ví dụ 2, trong thế giới bạn bè {An, Bình, Chương,...}
+            - a hiểu là An
+            - b hiểu là Bình
+            - c hiểu là Chương
+            - P hiểu là friend
+            - Q hiểu là know
+            - (1) nghĩa là bình là bạn an (đúng)
+            - (2) nghĩa là Chương bạn bình (đúng)
+            - (3) nghĩa là nếu là bạn bè thì biết nhau (đúng)
+            - (4) nghĩa là nếu An biết Bình và Bình biết Chương thì A biết Chương (sai)
+    <b>II. Xét cơ sở tri thức k2</b>
+        (1) Q(a,f(a,b))
+        (2) &forall;x,y | Q(x,f(x,y))
+         * Ví dụ trong thế giới các số tự nhiên: N = {0,1,2,..}
+            - a hiểu là 1, b hiểu là 2
+            - f hiểu là + q hiểu là &le;
+            - (1) nghĩa là 1 &le; 3 (đúng)
+            - (2) nghĩa là với mọi x,y x+y luôn &le; x (đúng)
+    <b>III. Kết </b>
+        - Chúng ta sẽ kết thúc tại đây nhé. Bài kế tiếp là <a href="LGVTDienGiaiMoHinh.html">diễn giải và mô hình trong logic vị từ</a>
 </pre>
 
 <script>(function(d, s, id) {

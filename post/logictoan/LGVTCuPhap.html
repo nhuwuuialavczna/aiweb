@@ -14,7 +14,86 @@
 <h3>Tìm hiểu về cú pháp trong logic vị từ</h3>
 
 <pre>
+    <b>I. Giới thiệu logic vị từ</b>
+        * Tri thức khai báo:
+            - Khai báo (có hay không) các tính chất quan hệ giữa các đối tượng 1 cách tường minh hoặc ngầm định
+            - ví dụ:
+                (1) Marry là mẹ và tom là con của marry     Mô tả    {Marry, tom}
+                (2) Mọi bà mẹ đều yêu quí con mình          ----->      mother
+                                                                      child - of
+                                                                        loves
+                    Khai báo của ngôn ngữ tự nhiên                  Tri thức khai báo
+        -----------------------------------------------------------------------------
+            (1) mother(marry) &and; child-of(tom,marry)
+            (2) &forall; x,y, mother(x) &and; child-of(y,x) &rarr; loves(x,y)
+            Câu của logic hình thức
 
+            - Cách biểu diễn trên là logic hình thức (Symbolic logic)
+        * Logic là hệ tri thức cho phép biểu diễn và xử lý tri thức khai báo
+    <b>II. Logic vị từ (Predicate logic)</b>
+        - Logic mệnh đề chỉ xử lý được trên các sự kiện, là các khẳng định hoặc đúng hoặc sai
+        - Logic vị từ cho phép ta nói về các đối tượng, tính chất của chúng, quan hệ giữa chúng
+        - Logic vị từ là 1 ngôn ngữ hình thức cho phép biểu điễn:
+            + Đối tượng
+            + Thuộc tính của đối tượng
+            + QUan hệ giữa các đối tượng
+        - Đối tượng ('cái' / 'thinh')
+            + Là chủ đề bàn luận
+            + được gọi tên bằng danh từ trong ngon ngữ
+        - Hàm là ánh xạ xác định 1 đối tượng thông qua 1 hoặc nhiều đối tượng khác:
+            + Số lượng đối sô của hàm gọi là arity của hàm f có arity là n thường kí hiệu là f/n
+            + Những đối tượng được xác định qua hàm gọi là đối tượng phức; ngược lại gọi là đối tượng đơn
+            + Ví dụ:
+                "Nam" là đối tượng đơn
+                "Cha của nam" là đối tượng phức được xác định thông qua đối tượng "nam" và hàm "cha của" / 1)
+        - Thuộc tính / Quan hệ:
+            + Là những thứ mà chủ đề bàn luận có hay không
+            + được gọi tên bằng vị từ (động từ, tính từ) trong ngôn ngữ tự nhiên
+        - Quan hệ giữa n đối tượng của tập U thường được hình thức hóa như 1 tập con của u
+            + n gọi là số ngôi của quan hệ; quan hệ Q có n ngôi thường được kí hiệu là Q/n
+            + Quan hệ có số ngôi là 1 thường được gọi là thuộc tính; quan hệ có số ngôi lớn hơn 1 gọi là quan hệ
+            + Ví dụ:
+                "đẹp","xấu"... là các thuộc tính
+                "yêu","ghét"... là các quan hệ
+    <b>III. Cú pháp của logic vị từ</b>
+        - Tập các kí hiệu logic vị từ:
+            + Hằng (constant)
+            + Tên hàm (functor)
+            + vị từ (Predicate) - anh này chúng ta sẽ làm việc ở Steam API Java 9
+            + biến (variable)
+            + Lượng từ (quantifier): {&forall;,&exist;}
+            + Kí hiệu nối logic (connective): { = , &not;, &and;, v , &rarr;, <--->}
+            + Kí hiệu phụ trợ: { '(' , ')' , ',' }
+        - Biểu thức logic là dãy các kí hiệu logic
+        - Hạng tử (term) là biểu thức logic đúng theo các quy tắc cú pháp sau:
+            1 Các hằng là các hạn tử
+            2 Các biến là các hạng tử
+            3 Nếu t1,t2,t3,,.... t<sub>n</sub> là các hạng tử và f/n là 1 tên hàm thì f(t1,t2,t3,...) là hạng tử
+
+            + Hạng tử theo qui tắt (1), (2) gọi là hạng tử đơn, hạng tử theo quy tắt (3) gọi là hạng tử phức
+            + Hạng tử không chứa biến gọi là hạng tử nền (ground term)
+        - Công thức logic (formula) là biến quy tắc theo đúng các cú pháp sau:
+            (1) Nếu p/n là vị từ: t1,t2,.. tn là các hạng tử thì p(t1,t2....) là công thức
+            (2) Nếu t1, t2 là hạng tử thì t1 = t2 là công thức
+            (3) Nếu F, G là công thức thì &not;F, F &and;, F &or; G, F &rarr; G, F <---> G là các công thức
+            (4) Nếu F là công thức, X là các biến thì &forall;X,F và &exist;X,F là các công thức
+
+            * Công thức theo quy tắc (1),(2) gọi là qui tắc đơn, công thức theo qui tắc (3),(4) gọi là các quy tắt phức.
+            * Trong (4) nếu F chứa biến X thì biến X trong F được gọi là bị kết cuộc
+        - Biến không bị kết cuộc gọi là biến tự do.
+        - Công thức không chứa biến gọi là công thức nền (ground term)
+        - Công thức không có biến tự do gọi là câu (sentence)
+        - Tập các câu gọi là cơ sở tri thức
+        - Ví dụ:
+            + P &forall; Q f(v không là công thức
+            + P(X,Y) là hạng tử nếu P là tên hàm, và là công thức đơn nếu P là vị từ
+            + Giả sử P,Q là các vị từ; f,g là các tên hàm là các tên hàm; x,y là các biến, a,b là các hằng thì:
+                . f(g(a,x)) là hạng tử phức
+                . P(g(a,b)) là công thức đơn và không chứa biến nào nên là công thức nền và do đó là câu
+                . &forall;x, Q(x,y) là công thức phức không là câu. Trong đó x gọi biến bị kêt cuộc còn y gọi là biến tự do
+                . &exist;y,(P(y) &and; (&forall;x,P(x,y)) là câu phức.
+    <b>IV. Kết</b>
+        - Chúng ta kết thúc phần giới thiệu và cú pháp của logic vị từ ở đây. Bài kế tiếp sẽ tìm hiểu <a href="LGVTNguNghia.html">Ngữ nghĩa logic vị từ</a>
 </pre>
 
 <script>(function(d, s, id) {

@@ -14,7 +14,55 @@
 <h3>Tìm hiểu về diễn giải và mô hình trong logic vị từ</h3>
 
 <pre>
+    <b>I. Diễn giả</b>
+        - Một diễn giả &phi; của 1 cơ sở trị thức k là 1 tập hợp u và 1 ánh xạ gắn:
+            + Mỗi hằng c với 1 phần tử &Phi;(c) thuộc u
+            + Mỗi tên hàm f/n với 1 hàm &Phi;(f): u<sup>n</sup> &rarr; u
+            + Mỗi từ P/n với 1 quan hệ &Phi;(P) &isin; u<sup>n</sup>
+        - U gọi là thế giới, vũ trụ,... hay miền phát biểu, kí hiệu |&Phi;|
+        - Một diễn giải của 1 cơ sở tri thức là 1 "cách hiểu" cơ sở tri thức đó
+            + Là cầu nối từ "cai biểu diễn" (câu logic) đến "cái được biểu diễn" (đối tượng, thuộc tính, quan hệ)
+        - Với &Phi; là 1 diễn giải của cơ sở tri thức K; ngữ nghĩa của hạng tử t, &Phi;(t), là 1 đối tượng thuộc |&Phi;|, được
+        xác định theo các qui tắt ngữ nghĩa sau:
+            + nếu t là hằng c thì &Phi;(t) = &Phi;(c)
+            + nếu t là biến X thì &Phi;(t) là đối tượng mà biến X 'tham chiếu' đến
+            + nếu t là hạng tử phức f(t1,t2,t3,...); thì &Phi;(t)= &Phi;(f)(&Phi;(t1),&Phi;(t2),...(&Phi;(t<sub>n</sub>))
+        - Với &Phi; là 1 diễn giải của cơ sở tri thức K; ngữ nghĩa của câu S, &Phi;(S), là 1 chân trị, được xác định theo các qui tắt ngữ nghĩa sau:
+            + Nếu S là P(t1,t2,t3,...) thì &Phi;(S) = true nếu các đối tượng &Phi;(t1),&Phi;(t2),... có quan hệ &Phi;(P) với nhau, ngược lại thì &Phi;(S) = false
+            + Nếu S là t1 = t2 thì &Phi;(S) = true nếu 2 đối tượng &Phi;(t1) và &Phi;(t2) là một, tức là &Phi;(t1) = &Phi;(t2), ngược lại thì &Phi;(S) = false
+            + Ngữ nghĩa của cac phép nối như trong logic mệnh đề
+        - Nếu S là &forall; X,F thì &Phi;(S) = true nếu &Phi;(F) = true với mọi X thuộc |&Phi;|; ngược lại &Phi;(S) = false
+        - &forall; là lượng từ hình thức hóa của 'tất cả', 'hết thảy','mọi','ai cũng'
+        - Ví dự, "Sinh viên CNTT thì thông minh'
+            + &forall;X, SV-CNTT(X) &rarr; thong-minh(X)
+            + Nếu U là 1 tập sinh viên {An, Bình,...} thì câu trên tương đương với
+                SV-CNTT(An) &rarr; thong-minh(An) &and; SV-CNTT(Bình) &rarr; thong-minh(Bình) &and;.....
 
+        - Nếu S là &exist;; X,F thì &Phi;(S) = true nếu &Phi;(F) = true với một X nào đó thuộc |&Phi;|; ngược lại &Phi;(S) = false
+        - &exist;; là lượng từ hình thức hóa của 'có 1', 'tồn tại','một vài'.
+        - Ví dự, "Có Sinh viên CNTT thì thông minh'
+            + &exist;;X, SV-CNTT(X) &and; thong-minh(X)
+            + Nếu U là 1 tập sinh viên {An, Bình,...} thì câu trên tương đương với
+                SV-CNTT(An) &rarr; thong-minh(An) &or; SV-CNTT(Bình) &rarr; thong-minh(Bình) &or;.....
+        - Xét K2.
+            (1) Q(a,f(a,b))
+            (2) &forall;x,y | Q(x,f(x,y))
+            Một diễn giải &Phi; của K2 đã nói là:
+                + |&Phi;| = N = {0,1,2,...}
+                + &Phi;(a) = 1, &Phi;(b) = 2
+                + &Phi;(f) = +, &Phi;(q) = &le;
+            Ngữ nghĩa của K2 theo &Phi;;
+                - &Phi;(a) = 1, &Phi;(b) = 2, &Phi;(f(a,b)) = 1 + 2 = 3
+                - &Phi;(Q(a,f(a,b)) = 1 &le; 3 = true
+                - &Phi;(&forall;XY,Q(X,f(X,Y) = true vì x &le; x + y với mọi trường hợp của x và y trên N
+            Nhận xét: Ngữ nghĩa của câu là hoàn toàn xác định theo diễn giải
+
+    <b>II. Mô hình</b>
+        - Với diễn giải &Phi; và câu S, nếu &Phi;(S) = true thì ta nói à S đúng theo &Phi;, kí hiệu &Phi; |= S
+        - Diễn giải &Phi; được gọi là mô hình của cơ sở tri thức  K khi và chỉ khi &Phi; |= S với mọi câu S &isin; K, kí hiệu &Phi; |= K
+        - Một cơ sở tri thức K được gọi là thỏa mãn được nếu có 1 mô hình cho nó, ngược lại K được gọi là không thỏa mãn được
+    <b>III. Kết</b>
+        - Chúng ta kết thúc tại đây nhé. Dài quá ngán. với lại nhiêu đó học đủ rồi. Bài kế tiếp sẽ tìm hiểu về <a href="LGVTHeQuaTuongDuong.html">hệ quả và tương đương nha</a>
 </pre>
 
 <script>(function(d, s, id) {
