@@ -15,6 +15,12 @@
 <h3>Các ví dụ về chuyển câu logic vị từ thành các mệnh đề hạn định</h3>
 
 <pre>
+    1. p(a, b) &and; p(a,c) không là sự kiện nhưng có thể tách thành 2 sự kiện p(a, b) và p(a, c), tức là:
+        {p(a,b) &and; p(a, c)} &Xi; {p(a, b), p(a, c)}
+    2. &forall; X, t(X) <--> r(X)
+        &Xi; &forall;X, (t(X) &rarr; r(X)) &and; (r(X) &rarr; t(X))
+        &Xi; (&forall;X, t(X) &rarr; r(X)) &and; (&forall;X, r(X) &rarr; t(X))
+        &Xi; {r(X) <-- t(X), t(X) <-- r(X)}
 
 </pre>
 

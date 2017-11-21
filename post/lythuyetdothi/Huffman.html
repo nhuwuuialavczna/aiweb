@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm hiểu về thuật toán Huffman</title>
+    <script>
+        if (sessionStorage.getItem('us') === null) {
+            window.location.href = "../../Security.html";
+        }
+    </script>
+</head>
+<body>
+<a href="../../index.html">Về trang chủ</a><br>
+<h3>Bài viết hướng dẫn về thuật toán huffman</h3>
+<pre>
+    <b>I.Giới thiệu giải thuật huffman tĩnh (Lý thuyết đồ thị)</b>
+        1. Khái niệm, nhược điểm:
+            - Thuật toán huffman tĩnh sẽ giúp bạn mã hóa 1 tập tin hoặc đơn giản là mã hóa 1 chuỗi kí tự lúc đã biết chính xác tập tin đó hoặc chuỗi kí tự đó. Nghĩa là đã có 1 file
+            và bạn chắc chắn rằng nó sẽ không nhận thêm dữ liệu nữa.
+            - Tư tưởng chính:
+                +Sử dụng vài bits để biểu diễn 1 kí tự
+                + Độ dài "mã bit" cho các kí tự không giống nhau:
+                    . Kí tự xuất hiện nhiều lần &rarr; biểu diễn bằng mã ngắn
+                    . Kí tự xuất hiện ít lần &rarr; biểu diễn bằng mã dài
+
+        2. Thuật toán nén:
+            1. Duyệt file hoặc duyệt chuỗi. Lập bảng thống kê số lần xuất hiện của các kí tự
+            2. Phát sinh cây huffman dựa vào bảng thống kê
+            3. Từ cây huffmam phát sinh bảng mã bit cho các kí tự
+            4. Duyệt file &rarr; thay thế các kí tự bằng mã bit tương ứng
+            5. Luu lại thông tin của cây huffman để giải nén
+
+        3. Nhược điểm
+            - Chúng ta phải tính trước hoặc cài đặt cho máy tính số lần xuất hiện của các kí tự
+            - Duyệt file đến 3 lần: 1 lần xác định số lần xuất hiện, 1 lần ghi lại thông tin giải nén, 1 lần giải nén
+            - Cần phải lưu thông tin cho việc giải nén
+            - Dữ liệu phải hoàn thiện
+            Tuy nhiên thuật tóan huffman động sẽ giải quyết các nhược điểm này.
+
+    <b>II. Hướng dẫn cài đặt giải thuật huffman tĩnh</b>
+        * Chúng ta sẽ cùng nhau nén chuỗi "dai hoc nong lam" nha.
+        1. Lập bảng thống kê:
+            Từ          Số lần xuất hiện
+            a           2
+            o           2
+            n           2
+            d           1
+            i           1
+            h           1
+            g           1
+            l           1
+            m           1
+
+        2 Phát sinh cây huffman
+
+    <b>III. Giải thuật huffman động (Xem ở mục cấu trúc dữ liệu nâng cao)</b>
+
+</pre>
+
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-order-by="reverse_time" data-href="Huffman.html" data-width="100%"
+     data-numposts="5"></div>
+</body>
+</html>

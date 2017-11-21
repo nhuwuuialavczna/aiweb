@@ -14,7 +14,32 @@
 <h3>Tìm hiểu về đích và truy vấn hạn định trong logic hạn định</h3>
 
 <pre>
+    <b>I. Đích hạn định</b>
+        - Một dạng mệnh đề khong có trực kiện khẳng định được gọi là 1 đích hạn định
+        - Một đích hạn định:
+            &forall;(&not;A<sub>1</sub> &or;... &or; &not;A<sub>n</sub>)
+            thường được viết ở dạng Horn:
+            <--- A<sub>1</sub> &and;... &and; A<sub>n</sub> hay <--- A<sub>1</sub>,...,A<sub>n</sub>
+        Với n &ge; 0 và mỗi A<sub>i</sub> là 1 công thức đơn được gọi là đích con
+        - Trong đích hạn định:
+            <--- A<sub>1</sub>,...,A<sub>n</sub>
+            + Nếu n = 0 thì <--- &Xi; false <-- true &Xi; false nên là 1 hằng sai, thường được viết là &EmptySmallSquare;và gọi là đích rỗng
+        - Một cơ sở tri thức có chứa đích rỗng thì không thỏa mãn được
 
+    <b>II. Truy vấn hạn định</b>
+        - Một đích hạn định
+            &forall;(&not;A<sub>1</sub> &or;...&or; &not;A<sub>n</sub>)
+        có thể viết ở dạng:
+            &not;&exist;(A<sub>1</sub> &and;...&and; A<sub>n</sub>)
+        - Dạng &exist;(A<sub>1</sub> &and;...&and; A<sub>n</sub>) được gọi là truy vấn hạn định, thường được viết là A<sub>1</sub>,...,A<sub>n</sub>
+        - Đích hạn định là phủ định của truy vấn hạn định
+        - Với cơ sở tri thức K:
+            + K |= &exist;(A<sub>1</sub> &and;...&and; A<sub>n</sub>) khi và chỉ khi K &bigcup; {&not;&exist;(A<sub>1</sub> &and;...&and; A<sub>n</sub>) &Xi; &forall;(&not;A<sub>1</sub> &or;...&or; &not;A<sub>n</sub>) = <-- A<sub>1</sub>,...,A<sub>n</sub>}
+            không thỏa mãn được
+        - K là không thỏa mãn được nếu K |= &EmptySmallSquare;
+
+    <b>III. Kết</b>
+        - Xong, các bạn hãy học thuộc bài để đến với bài <a href="LGHDChuyenViTuThanhMenhDe.html">Chuyển câu logic vị từ thành các mệnh đề hạn định nha</a>
 </pre>
 
 <script>(function(d, s, id) {

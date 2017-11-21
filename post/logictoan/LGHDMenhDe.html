@@ -14,7 +14,50 @@
 <h3>Tìm hiểu về mệnh đề hạn định và mệnh đề Horn</h3>
 
 <pre>
-
+    <b>I. Dạng mệnh đề</b>
+        1. Bao đóng lượng từ
+            - Với công thức F, gọi x1, x2,... là tất cả các biến tự do trong F thì:
+                + Câu &forall;x1...&forall;xn, F được gọi là "bao đóng với mọi" của F, kí hiệu là &forall; F
+                + Câu &exist;x1,.... &exist;xn, F được gọi là "bao đóng tồn tại" của F, kí hiệu là &exist;F
+            - Nếu S là 1 câu thì &forall;S = &exist;S = S
+        2 Ví dụ:
+            - Nếu a là hằng, x là biến
+                + Với F = p(a,f(a)) thì &forall;F = &exist;F  F = p(a,f(a))
+                    .F không chứa biến, F là công thức nền
+                + Với F = &exist;X, P(X,a) thì &forall;F = &exist;F = F = &exist;X,p(X,a)
+                    .F không chứa biến tự do, F là câu
+                + Với F = &exist;Y, p(X,Y) thì:
+                    .&forall;F = &forall;X&exist;Y, p(X, Y)
+                    . &exist;F = &exist;X&exist;Y, p(X,Y)
+        3 Một dạng mệnh đề
+            - Một dạng mệnh đề là 1 câu có dạng
+            &forall;(L<sub>1</sub>V... L<sub>n</sub>V) với mỗi L<sub>i</sub> là 1 công thức đơn hay phủ định của công thức đơn
+            - L<sub>i</sub> được gọi là trực kiện khẳng định (positive literal) nếu L<sub>i</sub> là 1 công thức đơn, ngược lại gọi là trực kiện phủ định (negative literal)
+            - Dạng mệnh đề là 1 "dạng chuẩn"
+    <b>II. Mệnh đề hạn định</b>
+        1. Mệnh đề hạn định:
+            - Một mệnh đề chứa đúng 1 trực kiện khẳng định gọi là mệnh đề hạn định
+            - Mệnh đề hạn định:
+                &forall;(A<sub>0</sub> &or; &not;A<sub>1</sub> &or;...&or; &not;A<sub>n</sub>
+            thường được viết ở dạng Horn:
+            A<sub>0</sub> <--- A<sub>1</sub> &and;... &and; A<sub>n</sub> hay A<sub>0</sub> <--- A<sub>1</sub>,...,A<sub>n</sub>
+            Với n &ge; 0 và mỗi A<sub>i</sub> là 1 công thức đơn
+        2. Luật (rule) và sự kiện (fact):
+            - A<sub>0</sub> <--- A<sub>1</sub>,...,A<sub>n</sub>
+                + Nếu n &ge; 0 thì gọi là luật
+                    . A<sub>0</sub> gọi là đầu (head);A<sub>1</sub>,...,A<sub>n</sub> gọi là thân (body) của luật
+                + Nếu n = 0 thì A<sub>0</sub> <-- &Xi; A<sub>0</sub> <-- true &Xi; A<sub>0</sub>, nên thường được viết là A<sub>0</sub> gọi là sự kiện
+            - Một tập hữu hạn các mệnh đề hạn định được gọi là 1 cơ sở tri thức hạn định,còn được gọi là 1 chương trình logic
+            - Dạng mệnh đề hạn định là 1 "dạng hạn chế"
+        3. Ví dụ:
+            Nếu a,b là các hằng, X là biến:
+                - Với F = p(a,b) thì F là 1 sự kiện
+                - Với F = p(X,b) thì &forall;F = &forall;X, p(X,b) là 1 sự kiện
+                - Với F = &forall;X, &not;p(X,b) thì F không phải là sự kiện vì &not;p(X,b) không phải là công thức đơn
+                - Với F = &forall;X&exist;Y, p(X, Y) &rarr; q(X,a) thì F không là luật nhưng &forall;X&forall;Y, p(X, Y) &rarr; q(X,a) là 1 luật
+                - &forall;X, p(X) &and; q(X) &rarr; là 1 luật và thường được viết là r(X) <--- p(X), q(X) (với quy ước X là biến)
+    <b>III. Kết</b>
+        - Chúng ta sẽ dừng tại đây nhé. Bài kế tiếp sẽ cùng nhau tìm hiểu về <a href="LGHDDichVaTruyVan.html">Đích và truy vấn</a> trong logic hạn định
 </pre>
 
 <script>(function(d, s, id) {
