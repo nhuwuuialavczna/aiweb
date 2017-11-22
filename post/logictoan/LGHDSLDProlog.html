@@ -14,6 +14,32 @@
 <h3>Hợp giải SLD, Cây SLD, Hệ suy diễn Prolog</h3>
 
 <pre>
+    <b>I. Hợp giải SLD</b>
+        - Luật suy diễn cho truy vấn hạn định trên cơ sở tri thức hạn định
+        - Phản chứng bằng việc đưa ra phản ví dụ
+        - Là sự hòa quyện của:
+            + Đặc biệt hóa và đổi tên biến (đồng nhất)
+            + Phản đảo và Modus Pones (Modus Tollens)
+                . Suy diễn lùi(backward chaining)
+            + GIới thiệu hội
+        - Là trường hợp đặc biệt của hợp giải Robinson: Linear resolution for Definite clauses with Selection function
+        - Luật:
+            <img src="../../lib/img/logictoan/logichandinh/hopgiaisldluat.png">
+    <b>II. Dẫn xuất SLD (SLD - derivation)</b>
+        - Cho P là 1 cơ sở tri thức hạn định, R là qui tắt chọn, G<sub>0</sub> là 1 đích hạn định. Dẫn xuất hạn định của G<sub>0</sub> (trên P, dùng R) là dãy:
+            G<Sub>0</Sub> ==> G<Sub>1</Sub> ==> ... ==> G<Sub>n</Sub>
+        với G<sub>i+1</sub> là kết quả hợp giải của G<sub>i</sub> với 1 câu C<sub>i</sub> trong P, dùng 1 đích con A của G<sub>i</sub> bằng qui tắc chọn R với đồng nhất tử là &Phi;<sub>i</sub> nếu:
+            - n = &infin;, gọi là dẫn xuất vô hạn
+            - G<sub>n</sub> = &EmptySmallSquare;, gọi là dẫn xuất thành công
+            - n < &infin;, G<sub>n</sub> &ne; &EmptySmallSquare; và G<sub>n</sub> không hợp giải được nữa, gọi là dẫn xuất thất bại
+        - Phép thế kế hợp&Phi; =  &Phi;<sub>0</sub>&Phi;<sub>1</sub> ... &Phi;<sub>n-1</sub> , được gọi là phép thế của dẫn xuất
+            + Nếu n = 0 thì &Phi; = {}
+        - Phép thế của 1 dẫn xuất thành công mà chỉ hạn chế trên các biến của G<sub>0</sub> thì gọi là lời giải của dẫn xuất
+        - Ví dụ:
+            <img src="../../lib/img/logictoan/logichandinh/danxuatsld.png">
+
+
+
 </pre>
 
 <script>(function(d, s, id) {

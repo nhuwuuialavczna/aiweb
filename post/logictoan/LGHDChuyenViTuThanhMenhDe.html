@@ -21,7 +21,28 @@
         &Xi; &forall;X, (t(X) &rarr; r(X)) &and; (r(X) &rarr; t(X))
         &Xi; (&forall;X, t(X) &rarr; r(X)) &and; (&forall;X, r(X) &rarr; t(X))
         &Xi; {r(X) <-- t(X), t(X) <-- r(X)}
-
+    3. &not;(&exist;X,u(X) &and; &not;w(X))
+        &Xi; &forall;X, &not;(u(X) &and; &not;w(X))
+        &Xi; &forall;X, &not;u(X) &or;  w(X)
+        &Xi; &forall;X, u(X) &rarr; w(X)
+    4. &forall;X,v(X) &or; s(X) &rarr; w(X)
+        &Xi;X,&not;(v(X) &or; s(X)) &or; w(X)
+        &Xi;X,(&not;v(X) &and; &not;s(X)) &or; w(X)
+        &Xi;X, (&not;v(X) &or;w(X)) &and; (&not;s(X) &or; w(X))
+        &Xi;X,(v(X) &rarr; w(X)) &and; (s(X) &rarr; w(X))
+        &Xi;{w(X) <-- v(X), w(X) <-- s(X)}
+    5. &exist;X,p(X,a) không là sự kiện nhưng nếu gọi b là hằng thỏa p(b,a) thì:
+        - &exist;X,p(X,a) &Xi; p(b,a) (là 1 sự kiện)
+        - b gọi là hằng Skolem
+    6. &exist;XY,q(X,Y) không là sự kiện nhưng nếu gọi a,b là các hằng thỏa q(a,b) thì:
+        - &exist;XY,q(X,Y) &Xi; q(a,b) (là 1 sự kiện)
+        - Lưu ý: chọn 2 hằng khác nhau vì nếu không q(a,a) &Xi;&exist;X,q(X,Y)
+    7. &exist;X,&forall;Y,r(X,Y) không là sự kiện nhưng nếu gọi a là hằng thỏa &forall;Y, r(a,Y) thì:
+        - &exist;X,&forall;Y,r(X,Y) &Xi; &forall;Y, r(a,Y) (là 1 sự kiện)
+    8.&forall;X,&exist;Y,s(X,Y) không là sự kiện nhưng nếu gọi f là hàm thỏa &forall;X,s(X,f(X)) thì:
+        - &forall;X,&exist;Y,s(X,Y) &Xi; &forall;X,s(X,f(X)) (là 1 sự kiện)
+        - f gọi là hàm Skolem
+    * Kết thúc phần này tại đây: Kế tiếp chúng ta sẽ tìm hiểu về <a href="LGHDSuyDienPhepTheDongNhat.html">suy diễn, phép thế, đồng nhất</a> trong logic hạn định
 </pre>
 
 <script>(function(d, s, id) {

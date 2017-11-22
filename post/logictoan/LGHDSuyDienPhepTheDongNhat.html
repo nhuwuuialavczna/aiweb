@@ -14,6 +14,69 @@
 <h3>Suy điễn logic, phép thế, phép đồng nhất trong logic hạn định</h3>
 
 <pre>
+    <b>I. Suy diễn logic</b>
+        - Suy diễn là quá trình rút ra kết luận (conclusion) từ các tiền đề (premises)
+            + Dãy các  bước dẫn ra kết luận từ các tiền đề
+            + Kết luận là hê quả logic của các tiền đề
+        - Luật suy diễn là qui tắc được dùng tại mỗi bước suy diễn
+        - Luật suy diễn được hình thức hóa từ các nguyên tắc suy luận của con người
+        - Vài luật suy diễn tự nhiên hay dùng:
+            <img src="../../lib/img/logictoan/logichandinh/luatsuydien.png">
+        -Ví dụ:
+            <img src="../../lib/img/logictoan/logichandinh/vidu.png">
+    <b>II. Hệ suy diễn</b>
+        - Hệ suy diễn là 1 hệ thống các luật suy diễn cùng với cách thức áp dụng chúng để suy diễn
+        - Cho K là 1 cơ sở tri thức, S là 1 câu. Nếu hệ thống suy diễn H
+            + Dẫn ra được kết luận S từ các tiền đề K thì kí hiệu K |-<sub>H</sub>S
+            + không dẫn ra được S từ các tiền đề K thì kí hiệu  K \-<sub>H</sub>S
+        - Một hệ suy diễn H được gọi là:
+            + đúng (sound) nếu K |-<sub>H</sub>S thì K |= S
+            + đủ (complete) nếu K |= S thì K |-<sub>H</sub>S
+        với mọi cơ sở tri thức K và mọi câu S
+        - Ví dụ:
+            + Xét hệ suy diễn H mà với mọi cơ sở tri thức K, mọi câu S đều có  K |-<sub>H</sub>S
+            + Xét hệ suy diễn I mà với mọi cơ sở tri thức K, mọi câu S đề có K \-<sub>H</sub>S
+            + H là đủ nhưng không đúng
+            I là đúng nhưng không đủ
+    <b>III. Phép thế</b>
+        - Phép thế là tập hữu hạn các cặp {X1/t1,.., Xn/tn}, với ti là các hạng tử, Xi là các biến, Xi &ne; ti và Xi &ne; Xj với i &ne; j
+            + Nếu n = 0 thì gọi là phép rỗng, kí hiệu &#8455;
+        - Gọi &Phi; = {X1/ t1,..., Xntn} là 1 phép thế, E là 1 hạng tử/ công thức. Kết quả của việc áp &Phi; lên E, kí hiệu E&Phi;, là 1 hạng tử/ công thức có được
+        bằng cách thay thế đồng thời các ti vào mọi xuất hiện tự do của Xi trong E
+            + E&Phi; được gọi là 1 biểu hiện (instance) của E
+        - Ví dụ:
+            <img src="../../lib/img/logictoan/logichandinh/phepthevidu.png">
+        - Cho các phép thế:
+            &Phi; = {X<sub>1</sub>/S<sub>1</sub>,...,X<sub>m</sub>/S<sub>m</sub>}
+            &bcy; = {Y<sub>1</sub>/T<sub>1</sub>,...,Y<sub>n</sub>/T<sub>n</sub>}
+        - Kết hợp của &Phi; với &bcy;, kí hiệu &Phi;&bcy;, là phép thế tạo từ tập:
+            {X<sub>1</sub>/S<sub>1</sub>&bcy;,...,X<sub>m</sub>/S<sub>m</sub>&bcy;,Y<sub>1</sub>/T<sub>1</sub>,...,Y<sub>n</sub>/T<sub>n</sub>}
+            bằng cách xóa bớt các X<sub>i</sub>S<sub>i</sub>&bcy; (1&le; i &le;m)
+            và xóa bớt Y<sub>j</sub>/t<sub>j</sub> nếu Y<sub>j</sub> &isin; {X<sub>1</sub>,...,X<sub>n</sub>}(1 &le; j &le; m)
+        - Phép thế &Phi; được nói là tổng quát hơn phép thế &bcy; khi và chỉ khi tồn tại phép thế &gamma; sao cho &bcy; = &Phi;&gamma;
+        - Gọi &Phi;, &bcy;, &gamma; là các phép thế và E là 1 hạng tử/ công thức. Thì:
+            + E(&Phi;&bcy;) = (E&Phi;)&bcy;
+            + (&Phi;&bcy;)&gamma; = &Phi;(&bcy;&gamma;)
+            + &#8455;&Phi; = &Phi;&#8455; = &Phi;
+        - Ví dụ:
+            <img src="../../lib/img/logictoan/logichandinh/phepthevidu2.png">
+    <b>IV. Đồng nhất (Unification)</b>
+        - Hai hạng tử/ công thức E1,E2 được gọi là đồng nhất được nếu có phép thế &Phi; sai cho E1&Phi; = E2&Phi;, &Phi; được gọi là đồng nhất tử (unifer) của E1 và E2
+            + ĐỒng nhất tử &bcy; của E1,E2 được gọi là đồng nhất tử tổng quát (mgu) nếu nó tổng quát hơn mọi đồng nhất tử khác của E1, E2
+            + Lưu ý: Hai hạng tử/ công thức là bằng nhau (=) khi và chỉ khi chúng giống nhau hoàn toàn về hình thức
+        - Ví dụ:
+             <img src="../../lib/img/logictoan/logichandinh/dongnhatvidu.png">
+        -Thủ tục đồng nhất:
+            + Nhân 2 hạng tử/ công thức, cho biết có đồng nhất được không, nếu có thì cho biết mgu
+            + Thực hiện đệ qui trên cấu trúc của các hạng tử/ công thức
+            + Kiểm tra các phép thế có tương hợp (compatible) hay không
+            + Lựa chọn có kiểm tra biến là  phần con thực sự của hạng tử không
+                .Ví dụ: X đồng nhất với f(X)?
+                    Yes, nếu không kiểm tra
+                    No, nếu có kiểm tra (occurs check)
+    <b>V. Kết</b>
+        - Chúng ta tạm dừng tại đây nha các bạn. Bài kế tiếp sẽ tìm hiểu về <a href="LGHDSLDProlog.html">Hợp giải SLD, Cây SLD, Hệ suy diễn Prolog</a>
+
 </pre>
 
 <script>(function(d, s, id) {
