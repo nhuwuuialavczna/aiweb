@@ -12,7 +12,29 @@
 <body>
 <a href="../../index.html">Về trang chủ</a><br>
 <h3>Khái niệm ngôn ngữ hình thức</h3>
-
+<pre>
+    <b>I. Khái niệm</b>
+        - Ngôn ngữ hình thức: là công cụ để con người thực hiện giao tiếp với máy, ngôn ngữ hình thức sử dụng những quy tắt về cú pháp, ngữ nghĩa chặt chẽ.
+        - Bảng chữ cái Alphabet: &Sum; = {a,b}, &Sum; = {0,1}
+        - Từ: w1 = a, w2 = aa, w3 = aaa,..., w4 = &epsilon; (Từ rỗng)
+        - Ngôn ngữ:
+            + Là tập con được trích ra từ tập &Sum; *
+                L1 = {a, ab}
+                L2 = {aaa,ba,baa}
+        - Phép kết nối:
+            + Giữa 2 từ w và u là 1 từ có dạng wu
+            VD: w = a, u = ab
+                => wu = aab | wu <> uw
+            + Giữa 2 ngôn ngữ L và M là 1 ngôn ngữ có dạng LM:
+                => L.M = {w.u | w &isin; L ; u &isin; M}
+        - Phép lũy thừa: w<sup>n</sup> là phép kết nối từ đó với chính nó n lần. Lũy thừa bậc n của ngôn ngữ L là phép kết nối ngôn ngữ L với chính nó n lần
+        - Phép hợp giữa 2 ngôn ngữ L và M là 1 ngôn ngữ mới chứa tất cả các từ hoặc thuộc L hoặc thuộc M
+        - Bao đóng sao và bao đóng dương của L: là tập cả mọi loại lũy thừa của L.
+        - Phép đảo: W<sup>R</sup>
+            + W =abc ; W<sup>R</sup> = cba
+            + W = &epsilon; => W<sup>R</sup> = &epsilon;
+            + L<sup>R</sup> = {W<sup>R</sup> | w &isin; L)
+</pre>
 
 <script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
