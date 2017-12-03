@@ -1,35 +1,1 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Văn phạm</title>
-    <script>
-        if (sessionStorage.getItem('us') === null) {
-            window.location.href = "../../Security.html";
-        }
-    </script>
-</head>
-<body>
-<a href="../../index.html">Về trang chủ</a><br>
-<h3>Tìm hiểu văn phạm trong ngôn ngữ hình thức</h3>
-<pre>
-    <b>I. Khái niệm</b>
-        - Văn phạm là tập các quy tắt để sinh ra 1 tập hợp các từ trong các liên kết của những từ đó trên 1 bảng chũ cái alphabet &Sum; cho trước
-        - Văn phạm của 1 ngôn ngữ hình thức dựa trên bảng chữ cái quy định nghĩa như 1 bộ gồm 4 thành phần:
-            G = {V,T,P,S)
-
-</pre>
-
-<script>(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<div class="fb-comments" data-order-by="reverse_time" data-href="VanPham.html" data-width="100%"
-     data-numposts="5"></div>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <title>Văn phạm</title>    <script>        if (sessionStorage.getItem('us') === null) {            window.location.href = "../../Security.html";        }    </script></head><body><a href="../../index.html">Về trang chủ</a><br><h3>Tìm hiểu văn phạm trong ngôn ngữ hình thức</h3><pre>    <b>I. Khái niệm</b>        - Văn phạm là tập các quy tắt để sinh ra 1 tập hợp các từ trong các liên kết của những từ đó trên 1 bảng chũ cái alphabet &Sum; cho trước        - Văn phạm của 1 ngôn ngữ hình thức dựa trên bảng chữ cái quy định nghĩa như 1 bộ gồm 4 thành phần:            G = {V,T,P,S}            + V: tập các biến (A,B,C,D,...S). Trong đó S là biến khởi đầu            + Tập các kí hiệu kế thúc (a,b,c)                . T dựa trên tập &Sum;                . V &and; T = &empty;            + P là tập các quy tắt sinh: X &rarr; Y                . X là 1 từ duy nhất được lấy ra từ tập (Y &or; T) và X phải chứa ít nhất 1 biến trong nó                . Y là 1 từ tùy ý lấy ra từ tập (V &and; T) <sup>*</sup>        <b>II. Các ví dụ:</b>            1. V = {S, A}, T = {a,b,c}                P0 : S &rarr; aBBC                p1 : B &rarr; b                p2 : B &rarr; ba                p3 : BB &rarr; bBa                Yêu cầu dẫn xuất ra abbac                    C1: S => aBBc => abBc => abbac                    C2: S => aBBC => aBbac => abbac                    C3: S => aBBc => abBac => abbac            2. V = {S}, T = {a}. P: S &rarr; aS | &epsilon;                S => aS => aaS => aaaS => aaaa                S => &epsilon;                L = {a<sup>n</sup> | n &ge; 0}</pre><script>(function (d, s, id) {    var js, fjs = d.getElementsByTagName(s)[0];    if (d.getElementById(id)) return;    js = d.createElement(s);    js.id = id;    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=172705486575651";    fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script><div class="fb-comments" data-order-by="reverse_time" data-href="VanPham.html" data-width="100%"     data-numposts="5"></div></body></html>

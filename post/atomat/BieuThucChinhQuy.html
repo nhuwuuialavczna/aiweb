@@ -12,7 +12,47 @@
 <body>
 <a href="../../index.html">Về trang chủ</a><br>
 <h3>Tìm hiểu về biểu thức chính quy</h3>
-
+<pre>
+    <b>I. Khái niệm</b>
+        - Biểu thức đại số: Là sự kết hợp các chữ cái và các số với nhau, thông qua các phép +,- *, / và các đấu ngoặc () nhằm biểu thị cho 1 điều gì đó
+        - Biểu thức chính quy trong ngôn ngữ hình thức là tập hợp các từ các kí hiệu thuộc bảng chữ cái alphabet với nhau thông qua các phép hợp (+) các phép nối (.)
+        phép bao đóng sao * và dấu ngoặc
+    <b>II. Các dạng bài tập và công thức</b>
+        1 Các dạng bài tập
+            - R -> L: Biểu thức chính quy biểu hiện cho ngôn ngữ nào
+            - L -> R: Ngôn ngữ này biểu hiện của biểu thức chính quy nào
+            - Chứng minh bát bỏ 2 biểu thức chính quy
+        2 Công thức:
+            - L(a) = {a}
+            - L(r + s) = L(r) &or; L(s)
+            - L(r . s) = L(r) . L(s)
+            - L(r<sup>*</sup>) = (L(r))<sup>*</sup>
+            - L (0) = &empty;
+            - L(1) = {&epsilon;}
+    <b>III. Giải quyết các dạng bài tập</b>
+        1. Dạng 1: R -> L
+            - a => L(a) = {a}
+            - a + b => L(a + b) = L(a) &or; L(b) = {a,b}
+            - ab => L(ab) = L(a).L(b) = {ab}
+            - a* => L(a*) => (L(a))* = {a} * = {&epsilon;,a,aa,aaa,aaaa,...]
+            - a*ba* => L = {Tùy ý trên &Sum; = {a,b} sao cho  chỉ  có duy nhất 1 b trong từ đó}
+        2. Dạng 2: L -> R
+            - L = {với mọi từ tùy ý trên bảng chữ cái &Sum; = {a,b}}
+                {a + b} *
+            - L = {mọi tùy ý trên &Sum; = {a,b} và có độ dài chia hết cho 3}
+                (abb + aab + aba + bbb + bba + bab + abb + aaa)*
+            - L = { Tùy ý trên {a,b} và luôn có ít nhất chuỗi aaa trong từ đó}
+                (a+b)*.aaa.(a+b)*
+        3. Dạng 3: Chứng minh và bát bỏ:
+            1. (r + s)* = r* + s*
+                - L(r + s)*  = (L(r + s))* = (L(r) &or; L(s))* = {r, s}*
+                - r* + s* = L(r)* + L(s) * = {&epsilon;,r,rr,rrr,...} &or; {&epsilon;,s,ss,sss,...} = {&epsilon;,r,rr,rrr,s,ss,sss,...}
+                => Biểu thức chính quy trên là sai
+            2. (rs + s)* = ((r + 1)s)*
+                L(rs + s)*  = (L(rs + s))* = (L(rs) &or; L(s))* = {rs, s}*
+                L((r + 1)s)* = (L(r + 1)s) * = (L(r + 1).L(s))* = ((L(r) &or; L(1))L(s))*
+                             = ({r} &or; {&epsilon;})(s))* = ({r, &epsilon;}(s))* = {rs, s}*
+</pre>
 
 <script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];

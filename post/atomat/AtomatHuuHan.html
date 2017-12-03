@@ -12,7 +12,44 @@
 <body>
 <a href="../../index.html">Về trang chủ</a><br>
 <h3>Tìm hiểu Atomat hữu hạn đơn định và không đơn định</h3>
+<pre>
+    <b>I. Khái niệm</b>
+        - Atomat hữa hạn đơn định (DFA: Deterministic Finate Auto mata)
+        - Atomat hữu hạn không đơn định (NFA: Non - Deterministic Finate Auto mata)
+        - Một ngôn ngữ chính quy được chấp nhận bởi 1FA
+    <b>II. DFA</b>
+        - Cấu trúc của 1 DFA: A = < Q, &Sum;, &delta;, q0, F >
+            Trong đó: Q là các trạng thái
+                      &Sum; là ngôn ngữ
+                      &delta; là hàm chuyển
+                      q0 là trạng thái ban đầu
+                      F là trạng thái kết thúc
+        - Ví dụ 1:
+            A = < {q0,q1}, {a}, &delta;,q0,q0 >
+            &delta;(q0,a) = q1; &delta;(q1, a) = q0
+                .Giải thích atomat A như sau:
+                    + Chúng ta có tập các trạng thái: q0,q1
+                    + Ngôn ngữ gồm 1 kí tự a
+                    + Các hàm chuyển: Từ q0 đọc vào a sẽ chuyển sang q1 và q1 đọc vào a sẽ chuyễn sang q0
+                    + Các trạng thái bắt đầu và kết thúc đều là q0
+                .Vẽ atomat trên như sau:
+                    <img src="../../lib/img/atomat/huuhan/DFAVD1.png">
+                    + Chúng ta có trạng thái mở đầu và kết thúc là q0 nên có 2 vòng tròn. Vòng nhỏ là bắt đầu vòng lớn là kết thúc
+                . Ngôn ngữ của atomat trên là:  L = {a<sup>2n</sup>}
+                . Từ atomat trên chúng ta có thể biết được các văn phạm của nó:
+                    + S0 -> aS1 | &epsilon;
+                    + S0 -> aS1
+                    + S1 -> aS0
+                    + aS1 -> aaS0 -> aa
+        - Ví dụ 2:
+            S -> aA
+            A -> abB
+            B -> aC | c
+            C -> bB
+                . Từ các văn phạm trên chúng ta sẽ vẽ atomat như sau:
+                <img src="../../lib/img/atomat/huuhan/DFAVD2.png">
 
+</pre>
 
 <script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
