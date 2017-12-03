@@ -64,6 +64,27 @@
                 <img src="../../lib/img/atomat/huuhan/DFAVD7.png">
             + c. L1= {&forall;w &isin; {a,b}* có số lượng từ a là chẵn}
                 <img src="../../lib/img/atomat/huuhan/DFAVD8.png">
+    <b>III. NFA</b>
+        Cấu trúc: A = < {q0,q1,q2}, {a,b}, &Delta;, {q0}, {q0} >
+        - Ví dụ 1:
+            &Delta;(q0,a) = q1
+            &Delta;(q1,b) = q0
+            &Delta;(q1,b) = q2
+            &Delta;(q2,a) = q0
+            <img src="../../lib/img/atomat/huuhankhongdondinh/FAVD1.png">
+
+        - Ví dụ 2:
+            <img src="../../lib/img/atomat/huuhankhongdondinh/FAVD2.png">
+            (a + b)* a (a + b)aa*
+        - Ví dụ 3:
+            L = {a<sup>x</sup>b<sup>y</sup>c<sup>z</sup> | x,y,z &isin; N}
+            <img src="../../lib/img/atomat/huuhankhongdondinh/FAVD3.png">
+        - Ví dụ 4:
+            L = {a<sup>x</sup>b<sup>y</sup>c<sup>z</sup> | x,y,z &isin; N, x = 2k,  k &isin; N}
+            <img src="../../lib/img/atomat/huuhankhongdondinh/FAVD4.png">
+        - Ví dụ 5:
+            L = {&forall;w &isin; {x,y,z}* | Số lượng x + số lượng y = 4k,  k &isin; N}
+            <img src="../../lib/img/atomat/huuhankhongdondinh/FAVD5.png">
 </pre>
 
 <script>(function (d, s, id) {
