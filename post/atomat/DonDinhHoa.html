@@ -11,7 +11,33 @@
 </head>
 <body>
 <a href="../../index.html">Về trang chủ</a><br>
-<h3>Tìm hiểu đơn định hóa</h3>
+<h3>Tìm hiểu đơn định hóa - Cách chuyển NFA thành DFA</h3>
+<pre>
+    A = < {q0,q1,q2,q3},{a,b}, &Delta;, {q0}, {q1} >
+    &Delta;(q0 , a) = q1    &Delta;(q1 , a) = q2
+    &Delta;(q0 , a) = q2    &Delta;(q1 , b) = q0
+    &Delta;(q0 , b) = q0    &Delta;(q1 , b) = q3
+    &Delta;(q0 , b) = q1    &Delta;(q2 , a) = q2
+    &Delta;(q0 , b) = q3    &Delta;(q3 , b) = q1
+
+    NFA                     a                   b
+    q0                      {q1, q2}            {q0, q1, q2}
+    q1                      {q3}                {q0,q3}
+    q2                      {q2}                &empty;
+    q3                      &empty;             {q1}
+
+
+    NFA -> DFA              a                   b
+    Q0 {q0}                 {q1, q2}            {q0, q1, q3}
+    Q1 {q1, q2}             {q2}                {q0, q3}
+    Q2 {q0, q1, q3}         {q1, q2}            {q0, q1, q3}
+    Q3 {q2}                 {q2}                &empty;
+    Q4 {q0, q3}             {q1, q2}            {q0, q1, q3}
+
+    <img src="../../lib/img/atomat/dondinhhoa/DDHVD1.png">
+
+
+</pre>
 
 
 <script>(function (d, s, id) {
