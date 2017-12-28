@@ -1,0 +1,163 @@
+bed|giường|danh từ
+chair|cái ghế|danh từ
+egg|trứng|danh từ
+fish|cá|danh từ
+answer|câu trả lời|danh từ
+song |bài hát|danh từ
+vacation|kì nghỉ|danh từ
+investigation|cuộc điều tra|danh từ
+old letter|thư cũ|danh từ
+sad|buồn|tính từ
+conference|hội nghị|danh từ
+light meal|bữa ăn nhẹ|danh từ
+fantastic|tuyệt diệu|tính từ
+unusually|bất thường|tính từ
+joke|đùa|động từ
+purse|cái ví|danh từ
+lessons|bài học|danh từ
+suitcase|vali|danh từ
+mistake|ngộ nhận|động từ
+honest|chân thật, thật thà|tính từ
+hourly|hàng giờ, liên tiếp|tính từ
+wage|tiền lương|danh từ
+union|liên hiệp|danh từ
+underground|ngầm|danh từ
+rainstorm|bão mưa|danh từ
+huge|to, khổng lồ|tính từ
+passengers|hành khách|danh từ
+angry|bực bội|tính từ
+instantly|ngay lập tức|trạng từ
+frequent|thường xuyên|trạng từ
+effective|có hiệu lực|tính từ
+quite|khá|tính từ
+unique|độc nhất, chỉ có một|tính từ
+salesman|người bán hàng|danh từ
+convincs|thuyết phục|động từ
+secretary|thư kí|danh từ
+efficient|hiệu quả|danh từ
+professor|giáo sư|danh từ
+elephent|con vôi| danh từ
+trouble|rắc rối|danh từ
+advice|khuyên bảo|danh từ
+violence|bạo lực|danh từ
+furniture|đồ nội thất|danh từ
+enjoying|thưởng thức|động từ
+recommended|đề nghị|động từ
+dentist|bác sĩ nha khoa|danh từ
+volcano|núi lửa|danh từ
+vacuum|khoàng chân không|danh từ
+dropped |giảm|tính từ
+closet|tủ quần áo|danh từ
+bear|con gấu|danh từ
+backyard|sân sau|danh từ
+luxury|sang trọng|danh từ
+practice|thực hành|động từ
+be quite|hãy im lặng|động từ
+exhausted|kiệt sức|tính từ
+bleed|chảy máu|động từ
+still|vẫn, yên tâm|động từ
+deal|thỏa thuận|động từ
+fascinating|hấp dẫn|tính từ
+centurion|đội trưởng|danh từ
+dessert|món tráng miệng |danh từ
+sprays|xịt nước|đông từ
+exotic|kì lạ|tính từ
+cruise|đi tuần|động từ
+cheetah |con báo|danh từ
+prey|con mồi|danh từ
+reviews|đánh giá|danh từ
+terrible|khủng khiếp|tình từ
+exploded|nổ|động từ
+warranty|sự bảo đảm|danh từ
+mall|trung tâm mua sắm|danh từ
+heard|nghe|động từ
+awful|khủng khiếp|tính từ
+supposed |giả dịnh|tính từ
+awesome |tuyệt vời|tình từ
+recipe |công thức|danh từ
+vanilla|vani|danh từ
+postcard|bưu thiếp|danh từ
+borrow|mượn|động từ
+glad|vui vẻ|động từ
+delicious|ngon|tính từ
+conference |hội nghị|danh từ
+speakers|diễn giả|danh từ
+still|còn|trạng từ
+hanging |treo|danh từ
+straight|thẳng|tính từ
+chance|cơ hội|danh từ
+trusts|hi vọng, trong cậy|động từ
+self-confidence|tự tin|tính từ
+politicians|chính trị gia|danh từ
+fridge|tủ lạnh|danh từ
+unfortunately|không may|trạng từ
+sunshine|ánh sáng mặt mời |danh từ
+spaghetti |mì ống ý|danh từ
+cupboard|cái tủ|danh từ
+juice|nước ép|danh từ
+thirsty|khát nước|tính từ
+a|nhỏ, một ít|đại từ
+abandon|bỏ, từ bỏ|động từ
+abandoned|bị bỏ rơi, bị ruồng bỏ|tính từ
+ability|khả năng, năng lực|danh từ
+able|có năng lực, có tài|tính từ
+about|khoảng, về|trạng từ, giới từ
+above|ở trên|trạng từ, giới từ
+abroad|ở, ra nước ngoài, ngoài trời|trạng từ
+absence|sự vắng mặt|danh từ
+absent|vắng mặt, nghỉ|tính từ
+absolute|tuyệt đối, an toàn|tính từ
+absolutely|tuyệt đối, an toàn|trạng từ
+absorb|thu hút, hấp thu, lôi cuốn|động từ
+abuse|lộng hành, lạm dụng|động từ, danh từ
+acdemic|thuộc học viện, đại học, viện hàn lâm|tính từ
+accent|trọng âm, dấu trọng âm|danh từ
+accept|chấp nhận, chấp thuận|động từ
+acceptable|có thể chấp nhận, chấp thuận|tính từ
+access|lối, cửa, đường vào|danh từ
+accident|tai nạn, rủi ro|danh từ
+by accident|tình cờ|tính từ
+accidental|tình cờ, bất ngờ|tính từ
+accidentally|tình cờ, ngẫu nhiên|trạng từ
+accommodation|sự thích nghi, sự điều tiết, sự làm cho phù hợp|danh từ
+accompany|đi theo, đi cùng, kèm theo|động từ
+according to|theo, y theo|giới từ
+account|tài khoản, kế toán, tính toán, tính đến|động từ, danh từ
+accurate|đúng đắn, chính xác, xác đáng|tính từ
+accurately|đúng đắng, chính xác|trạng từ
+accuse|tố cáo, buộc tội, kết tội|động từ
+achieve|đạt được, giành được|động từ
+achievement|thành tích, thành tựu|danh từ
+acid|axit|danh từ
+acknowlegde|công nhận, thừa nhận|động từ
+acquire|dành được, đạt được, kiếm được|động từ
+across|qua, ngang qua|trạng từ, giới từ
+act|hành động, hành vi|động từ
+action|hành động, hành vi, tác động|danh từ
+active|tích cực, nhanh nhẹn|tính từ
+actively|tích cực, nhanh nhẹn|trạng từ
+activity|sự tích cực, sự nhanh nhẹn|danh từ
+actor|nam diễn viên|danh từ
+actress|nữa diễn viên |danh từ
+actual|thực tế, có thật|tính từ
+actually|hiện nay, hiện tại|trạng từ
+adapt|tra, lấp vào|động từ
+add|cộng, thêm vào|động từ
+addition|tính cộng, phép cộng|tính từ
+additional|thêm vào, tăng thêm|tính từ
+address|địa chỉ|danh từ
+adequate|đầy, đầy đủ|tính từ
+adequately|tương xứng, thỏa đáng|trạng từ
+adjust|điều chỉnh|động từ
+admiration|sự khâm phục, sự thán phục|danh từ
+admire|khâm phục, thán phục|động từ
+admit|nhận vào, cho vào, kết hợp|động từ
+adopt|nhận làm con nuôi, bố mẹ nuôi|đông từ
+adult|người lớn, người trưởng thành|danh từ
+advance|sự tiến bộ, tiến lên|danh từ, động từ
+advanced|tiến lên, tiến bộ|tính từ
+advantage|sự thuận lợi, lợi ích, lợi thế|danh từ
+#
+I ... to school|go|simple tense
+How ... you ?|are|simple tense
+Bye ...|bye|tao lao
