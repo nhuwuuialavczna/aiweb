@@ -1,0 +1,65 @@
+1 số bài tập:
+	* JavaScript collection framework.
+		Trong JavaScript chưa có collection framework. Nếu làm xong phần bài tập này sẽ tạo thành 1 framework cho JavaScript. Hữu dụng đấy
+		
+		- Hiện thực cấu trúc dữ liệu List với các phương thức sau:
+			+ add(data)
+			+ add(index,data)
+			+ addFirst()
+			+ addLast()
+			+ addAll(list)
+			
+			+ subList(start,end)
+			+ retail(list)
+			
+			+ remove(index)
+			+ remove(data)
+			+ removeIf(condition)
+			
+			+ replace(index,data);
+			+ replaceAll(oldData,newData)
+			
+			+ size();
+			+ isEmpty();
+			
+			+ find(data);
+			+ get(index);
+			+ getFrist();
+			+ getLast();
+			
+		
+			+ sort(comparable);
+			+ covertToMap
+		- Hiện thực cấu trúc dữ liệu Stack với các phương thức sau: 
+			+ push(data)
+			+ peek()
+			+ pop()
+			+ isEmpty()
+			+ size()
+			
+			
+		- Hiện thực cấu trúc dữ liệu Queue với các phương thức sau:
+			+ add(data)
+			+ peek()
+			+ poll()
+			+ isEmpty()
+			+ size()
+			
+		- Hiện thực cấu trúc dữ liệu Map với các phương thức sau:	Cấu trúc này dạng key, value. Không cho phép trùng key
+			+ put(k,v)
+			+ putAll(map)
+			+ size();
+			+ get(k)
+			+ get(k, v);
+			+ isEmpty();
+			+ remove(k)
+			+ remove(k,v)
+			+ removeIf(condition)
+			+ sort()
+			+ covertToList()
+			
+			
+			
+		- Hiện thực cấu trúc dữ liệu Set với các phương thức sau:	 Cấu trúc này không cho các phần tử trùng nhau	
+			
+			
